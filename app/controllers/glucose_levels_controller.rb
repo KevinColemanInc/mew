@@ -1,7 +1,7 @@
 class GlucoseLevelsController < ApplicationController
 
   def index
-    @glucose_levels = GlucoseLevel.where("serial_number = ?", params[:serial_number]).order(:measured_at)
+    @glucose_levels = GlucoseLevel.where("serial_number = ?", params[:serial_number]).order(:measured_at) if params[:serial_number]
   end
 
   def create
