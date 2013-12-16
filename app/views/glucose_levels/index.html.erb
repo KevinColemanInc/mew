@@ -22,7 +22,7 @@
     </form>
   </div>
 </div>
-<% if @glucose_levels.length > 0 %>
+<% if @glucose_levels and @glucose_levels.length > 0 %>
 <div class="row">
   <div class="col-md-12">
     <h3>Results - <%= @glucose_levels.length %> found.</h3>
@@ -56,6 +56,8 @@
     </tbody>
   </table>
 </div>
+<% elsif params[:serial_numer].nil? %>
+
 <% else %>
 <div class="row">
   <div class="col-md-12">
