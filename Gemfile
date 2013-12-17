@@ -3,7 +3,9 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-
+group :production do
+  gem 'newrelic_rpm'
+end
 
 gem 'pg'
 
