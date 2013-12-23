@@ -7,4 +7,6 @@ Mew::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'glucose_levels#index'
 
+  post 'glucose_levels' => 'glucose_levels#create'
+
 end
