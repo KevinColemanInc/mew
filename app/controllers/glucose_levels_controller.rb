@@ -1,4 +1,5 @@
 class GlucoseLevelsController < ApplicationController
+  protect_from_forgery :except => [:create]
 
   def index
     @glucose_levels = GlucoseLevel.where("serial_number = ?", params[:serial_number]).order(:measured_at) if params[:serial_number]
@@ -13,7 +14,9 @@ class GlucoseLevelsController < ApplicationController
                                                                                 :retrieved_at,
                                                                                 :MAP,
                                                                                 :measured_at))
-    render 
+     respond_to do |format|
+      format.json { render :json => @glucose_level }
+    end
   end
 
 end

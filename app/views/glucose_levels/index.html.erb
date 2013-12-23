@@ -11,7 +11,7 @@
         <label class="control-label col-md-4" id="email_txt">Device Serial Number</label>
         <div class="controls col-md-6">
           <div class="input-group">
-           <input id="serial_number" name="serial_number" type="text" class="form-control" value="">
+           <input id="serial_number" name="serial_number" type="text" class="form-control" value="<%= params[:serial_number] if params[:serial_number] %>">
             <span class="input-group-btn">
               <button class="btn btn-default" type="submit">Search</button>
             </span>
@@ -56,7 +56,7 @@
     </tbody>
   </table>
 </div>
-<% elsif params[:serial_numer].nil? %>
+<% elsif params[:serial_number].nil? %>
 
 <% else %>
 <div class="row">
