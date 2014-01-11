@@ -6,8 +6,7 @@ class GlucoseLevelsController < ApplicationController
   end
 
   def create
-    puts params
-    @glucose_level = GlucoseLevel.create!(params.permit( :serial_number, 
+    @glucose_level = GlucoseLevel.create!(params.require(:glucose_level).permit(:serial_number, 
                                                                                 :glucose_value,
                                                                                 :type,
                                                                                 :retrieved_at,
