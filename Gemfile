@@ -34,4 +34,6 @@ group :development, :test do
   gem "binding_of_caller"
 end
 
+gem 'rails_12factor', group: :production
+
 gem 'devise'
