@@ -7,12 +7,11 @@ class GlucoseLevelsController < ApplicationController
 
   def create
     @glucose_level = GlucoseLevel.create!(params.require(:glucose_level).permit( :serial_number, 
-                                                                                :glucose_valuesystolic, 
+                                                                                :glucose_value, 
                                                                                 :diastolic, 
-                                                                                :pulse, 
-                                                                                :measured_at,
+                                                                                :type,
                                                                                 :retrieved_at,
-                                                                                :MAP,
+                                                                                :code_number,
                                                                                 :measured_at))
      respond_to do |format|
       format.json { render :json => @glucose_level }
