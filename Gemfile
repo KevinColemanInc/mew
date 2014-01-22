@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '4.1.0beta1'
 
 group :production do
   gem 'newrelic_rpm'
@@ -30,10 +30,13 @@ gem 'turbolinks'
 group :development, :test do
   gem 'rspec-rails'
   gem "better_errors"
-  gem 'figaro'
   gem "binding_of_caller"
 end
 
+gem 'high_voltage', '~> 2.1.0'
 gem 'rails_12factor', group: :production
 
-gem 'devise'
+gem 'rails_admin', github: 'sferik/rails_admin'
+gem 'devise', github: 'plataformatec/devise'
+
+gem 'spring',        group: :development
