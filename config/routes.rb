@@ -1,4 +1,5 @@
 Mew::Application.routes.draw do
+  mount RailsAdmin::Engine => '/admin_panel', :as => 'rails_admin'
   resources :glucose_levels
 
   # The priority is based upon order of creation: first created -> highest priority.
