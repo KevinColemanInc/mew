@@ -5,7 +5,7 @@ Mew::Application.routes.draw do
   devise_for :case_managers
   resources :communication_devices
 
-  resources :measurement_devices
+  resources :meters
 
   mount RailsAdmin::Engine => '/admin_panel', :as => 'rails_admin'
   resources :glucose_levels
