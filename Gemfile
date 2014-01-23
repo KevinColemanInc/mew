@@ -26,6 +26,8 @@ gem 'turbolinks'
 
 gem 'simple_form'
 
+gem 'human_power'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
