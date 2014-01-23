@@ -2,10 +2,12 @@ Mew::Application.routes.draw do
   resources :patient_groups
 
   devise_for :patients
-  devise_for :case_managers
-  resources :communication_devices
+  devise_for :case_managers, controllers: {:sessions => 'case_managers/sessions'}
 
+  resources :communication_devices
   resources :meters
+
+  resources :patients
 
   mount RailsAdmin::Engine => '/admin_panel', :as => 'rails_admin'
   resources :glucose_levels

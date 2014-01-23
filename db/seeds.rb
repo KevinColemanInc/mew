@@ -1,14 +1,10 @@
+puts 'starting seeding...'
+CaseManager.destroy_all
+case_manager_kevin = CaseManager.create!(email: "kevin.coleman@gatech.edu", password: "password")
+case_manager_ben = CaseManager.create!(email: "bjpatz@gmail.com", password: "password")
 
-GlucoseLevel.destroy_all
-10.times do
-  glucose_levels = GlucoseLevel.create!(serial_number: "FaFa-FaFa-FaFa-FaFa",
-                                        glucose_value: rand(255),
-                                        systolic: rand(255),
-                                        diastolic: rand(255),
-                                        pulse: rand(255),
-                                        measured_at: rand(255),
-                                        retrieved_at: rand(255),
-                                        MAP: rand(255),
-                                        measured_at: Time.now - (rand(3)).days - - (rand(50)).hours
-                                        )
-end
+Patient.destroy_all
+case_manager_kevin = Patient.create!(email: "kevin.coleman@gatech.edu", password: "password2")
+case_manager_ben = Patient.create!(email: "bjpatz@gmail.com", password: "password2")
+
+puts 'ending seeding.'
