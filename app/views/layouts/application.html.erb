@@ -22,15 +22,14 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
       <% if current_case_manager %>
-      <li><%= link_to 'Change Password', edit_case_manager_registration_path %></li>
-      <li><%= link_to 'Log out', destroy_case_manager_session_path, method: :delete %></li>
+      <li><%= link_to 'Case Manager Change Password', edit_case_manager_registration_path %></li>
+      <li><%= link_to 'Case Manager Log out', destroy_case_manager_session_path, method: :delete %></li>
       <% else %>
       <li><%= link_to 'Case Manager Login', new_case_manager_session_path %></li>
       <% end %>
-
       <% if current_patient %>
-      <li><%= link_to 'Change Password', edit_patient_registration_path %></li>
-      <li><%= link_to 'Log out', destroy_patient_session_path, method: :delete %></li>
+      <li><%= link_to 'Patient Change Password', edit_patient_registration_path %></li>
+      <li><%= link_to 'Patient Log out', destroy_patient_session_path, method: :delete %></li>
       <% else %>
       <li><%= link_to 'Patient Login', new_patient_session_path %></li>
       <% end %>

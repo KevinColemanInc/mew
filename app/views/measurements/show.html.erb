@@ -1,8 +1,48 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Email:</strong>
-  <%= @measurement.email %>
+  <strong>Glucose Value:</strong>
+  <%= @measurement.glucose_value %>
+</p>
+
+<p>
+  <strong>Measured At:</strong>
+  <%= @measurement.measured_at %>
+</p>
+
+<p>
+  <strong>Retrieved At:</strong>
+  <%= @measurement.retrieved_at %>
+</p>
+
+<p>
+  <strong>created at:</strong>
+  <%= @measurement.created_at %>
+</p>
+
+<p>
+  <strong>Code Number:</strong>
+  <%= @measurement.code_number %>
+</p>
+
+<p>
+  <strong>Reading Type:</strong>
+  <%= @measurement.reading_type %>
+</p>
+
+<p>
+  <strong>Communication Device Id:</strong>
+  <%= @measurement.communication_device_id %>
+</p>
+
+<p>
+  <strong>Meter Id:</strong>
+  <%= @measurement.meter_id %>
+</p>
+
+<p>
+  <strong>Patient id:</strong>
+  <%= @measurement.patient_id %>
 </p>
 
 <%= link_to 'Edit', edit_measurement_path(@measurement) %> |
