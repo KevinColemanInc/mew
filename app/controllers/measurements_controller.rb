@@ -1,22 +1,67 @@
 class MeasurementsController < ApplicationController
-  protect_from_forgery :except => [:create]
+  before_action :set_measurement, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_model!
 
+  # GET /measurement
   def index
-    @glucose_levels = GlucoseLevel.where("serial_number = ?", params[:serial_number]).order(:measured_at) if params[:serial_number]
+    @measurements = Measurement.all
   end
 
+  # GET /measurements/1
+  def show
+  end
+
+  # GET /measurements/new
+  def new
+    @measurement = Measurement.new
+  end
+
+  # GET /measurements/1/edit
+  def edit
+  end
+
+  # POST /measurements
   def create
-    puts 'params'
-    puts params.inspect
-    @glucose_level = GlucoseLevel.create!(params.permit(:serial_number, 
-                                                                                :glucose_value,
-                                                                                :reading_type,
-                                                                                :retrieved_at,
-                                                                                :code_number,
-                                                                                :measured_at))
-     respond_to do |format|
-      format.json { render :json => @glucose_level }
+    @measurement = Measurement.new(measurement_params)
+
+    if @measurement.save
+      redirect_to @measurement, notice: 'measurement was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
+  # PATCH/PUT /measurements/1
+  def update
+    if @measurement.update(measurement_params)
+      redirect_to @measurement, notice: 'measurement was successfully updated.'
+    else
+      render action: 'edit'
+    end
+  end
+
+  # DELETE /measurements/1
+  def destroy
+    @measurement.destroy
+    redirect_to measurements_url, notice: 'measurement was successfully destroyed.'
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_measurement
+      @measurement = Measurement.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def measurement_params
+      params.require(:measurement).permit(:email)
+    end
+
+    def authenticate_model!
+      if case_manager_signed_in?
+          true
+      else
+          authenticate_patient!
+      end
+  end
 end

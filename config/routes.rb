@@ -1,16 +1,16 @@
 Mew::Application.routes.draw do
   resources :patient_groups
-
-  devise_for :patients
+  
+  devise_for :patients, controllers: {:sessions => 'patients/sessions'}
   devise_for :case_managers, controllers: {:sessions => 'case_managers/sessions'}
-
+  resources :patients
   resources :communication_devices
   resources :meters
 
-  resources :patients
+  
 
   mount RailsAdmin::Engine => '/admin_panel', :as => 'rails_admin'
-  resources :glucose_levels
+  resources :measurements
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
