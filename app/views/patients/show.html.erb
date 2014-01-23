@@ -4,6 +4,18 @@
   <strong>Email:</strong>
   <%= @patient.email %>
 </p>
+<p>
+  <strong>Sign in count:</strong>
+  <%= @patient.sign_in_count %>
+</p>
+<p>
+  <strong>Last Sign in:</strong>
+  <%= datetime_to_string @patient.last_sign_in_at %>
+</p>
+<p>
+  <strong>Created at:</strong>
+  <%= datetime_to_string @patient.created_at %>
+</p>
 
 <%= link_to 'Edit', edit_patient_path(@patient) %> |
 <%= link_to 'Back', patients_path %>

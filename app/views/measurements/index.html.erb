@@ -1,61 +1,25 @@
-<div class="row">
-  <h1>Glucose Levels</h1>
-  <p class="lead">Search for your FORA G31B's serial number to view its historic glucose levels.</p>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <form id="lookup_glucose_levels" name="input" action="" method="get">
-      <fieldset>
-      <legend>View Glucose Levels</legend>
-      <div class="form-group">
-        <label class="control-label col-md-4" id="email_txt">Device Serial Number</label>
-        <div class="controls col-md-6">
-          <div class="input-group">
-           <input id="serial_number" name="serial_number" type="text" class="form-control" value="<%= params[:serial_number] if params[:serial_number] %>">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="submit">Search</button>
-            </span>
-          </div><!-- /input-group -->
-          Results - <%= @glucose_levels.length %> found.
-        </div>
-      </div>
-    </fieldset>
-    </form>
-  </div>
-</div>
-<% if @glucose_levels and @glucose_levels.length > 0 %>
-<div class="row">
-  <table class="table table-striped table-hover">
-    <thead>
-      <tr>
-        <th>Glucose level (mg/dL)</th>
-        <th>Type</th>
-        <th>Code Number</th>
-        <th>Retrieved At</th>
-        <th>Measured At</th>
-        <th>Created At</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @glucose_levels.each do |glucose_level| %>
-      <tr>
-        <td><%= glucose_level.glucose_value %></td>
-        <td><%= glucose_level.reading_type %></td>
-        <td><%= glucose_level.code_number %></td>
-        <td><%= glucose_level.retrieved_at.strftime("%A, %B %e, %Y at %l:%M %p") %></td>
-        <td><%= glucose_level.measured_at.strftime("%A, %B %e, %Y at %l:%M %p") %></td>
-        <td><%= glucose_level.created_at.strftime("%A, %B %e, %Y at %l:%M %p") %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-<% elsif params[:serial_number].nil? %>
+<h1>Listing measurements</h1>
 
-<% else %>
-<div class="row">
-  <div class="col-md-12">
-    <h3>No results found.</h3>
-  </div>
-</div>
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @measurements.each do |measurement| %>
+      <tr>
+        <td><%= measurement.id %></td>
+        <td><%= link_to 'Show', measurement %></td>
+        <td><%= link_to 'Edit', edit_measurement_path(measurement) %></td>
+        <td><%= link_to 'Destroy', measurement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New measurement', new_measurement_path %>

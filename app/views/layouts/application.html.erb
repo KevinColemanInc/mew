@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Focus Healthcare USA</title>
+  <title>Focused Care Solutions</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -27,7 +27,14 @@
       <% else %>
       <li><%= link_to 'Case Manager Login', new_case_manager_session_path %></li>
       <% end %>
+
+      <% if current_patient %>
+      <li><%= link_to 'Change Password', edit_patient_registration_path %></li>
+      <li><%= link_to 'Log out', destroy_patient_session_path, method: :delete %></li>
+      <% else %>
       <li><%= link_to 'Patient Login', new_patient_session_path %></li>
+      <% end %>
+      
     </ul>
   </div><!-- /.navbar-collapse -->
 </nav>
