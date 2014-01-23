@@ -1,6 +1,6 @@
 class CreateGlucoseLevels < ActiveRecord::Migration
   def change
-    create_table :glucose_levels do |t|
+    create_table :glucose_levels, id: :uuid do |t|
       t.string :serial_number
       t.integer :glucose_value
       t.integer :systolic
