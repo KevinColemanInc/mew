@@ -1,8 +1,8 @@
 Mew::Application.routes.draw do
   resources :patient_groups
   
-  devise_for :patients, controllers: {:sessions => 'patients/sessions'}
-  devise_for :case_managers, controllers: {:sessions => 'case_managers/sessions'}
+  devise_for :patients, controllers: {:sessions => 'patients/sessions', :registrations => 'patients/registrations'}
+  devise_for :case_managers, controllers: {:sessions => 'case_managers/sessions', :registrations => 'case_managers/registrations'}
   resources :patients
   resources :communication_devices
   resources :meters
