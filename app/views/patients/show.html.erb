@@ -10,7 +10,7 @@
 </p>
 <p>
   <strong>Last Sign in:</strong>
-  <%= datetime_to_string @patient.last_sign_in_at %>
+  <%= datetime_to_string @patient.last_sign_in_at if @patient.last_sign_in_at%>
 </p>
 <p>
   <strong>Created at:</strong>

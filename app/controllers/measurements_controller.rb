@@ -4,7 +4,11 @@ class MeasurementsController < ApplicationController
 
   # GET /measurement
   def index
-    @measurements = Measurement.all
+    if current_case_manager
+      @measurements = Measurement.all
+    elsif current_patient
+      @measurements = Measurement.where(patient: current_patient)
+    end
   end
 
   # GET /measurements/1
