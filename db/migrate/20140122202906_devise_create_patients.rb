@@ -1,6 +1,6 @@
 class DeviseCreatePatients < ActiveRecord::Migration
   def change
-    create_table(:patients) do |t|
+    create_table(:patients, id: :uuid) do |t|
       ## Database authenticatable
       t.string :email,              :null => false, :default => ""
       t.string :encrypted_password, :null => false, :default => ""
