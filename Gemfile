@@ -37,6 +37,7 @@ group :development, :test do
   gem "binding_of_caller"
 end
 
+gem 'cancan'
 gem 'tzinfo-data'#, group: :development
 gem 'high_voltage', '~> 2.1.0'
 gem 'rails_12factor', group: :production
