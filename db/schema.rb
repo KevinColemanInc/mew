@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20140124010542) do
     t.uuid "member_id"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
