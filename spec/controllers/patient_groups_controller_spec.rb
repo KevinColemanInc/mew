@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe PatientGroupsController do
+describe MemberGroupsController do
 
 end

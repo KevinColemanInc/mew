@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124010542) do
+ActiveRecord::Schema.define(version: 20140124184128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,14 +31,14 @@ ActiveRecord::Schema.define(version: 20140124010542) do
     t.string   "device_model"
   end
 
-  create_table "communication_devices_members", id: false, force: true do |t|
-    t.uuid "communication_device_id"
-    t.uuid "member_id"
-  end
-
   create_table "communication_devices_meters", id: false, force: true do |t|
     t.uuid "meter_id"
     t.uuid "communication_device_id"
+  end
+
+  create_table "communication_devices_users", id: false, force: true do |t|
+    t.uuid "communication_device_id"
+    t.uuid "member_id"
   end
 
   create_table "measurements", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20140124010542) do
     t.datetime "updated_at"
   end
 
-  create_table "members_member_groups", id: false, force: true do |t|
+  create_table "member_groups_users", id: false, force: true do |t|
     t.uuid "member_id"
     t.uuid "member_group_id"
   end
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20140124010542) do
     t.datetime "updated_at"
   end
 
-  create_table "meters_members", id: false, force: true do |t|
+  create_table "meters_users", id: false, force: true do |t|
     t.uuid "meter_id"
     t.uuid "member_id"
   end
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 20140124010542) do
     t.string   "phone_number"
     t.string   "member_number"
     t.datetime "date_of_birth"
+    t.integer  "roles_mask"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

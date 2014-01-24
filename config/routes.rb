@@ -2,7 +2,7 @@ Mew::Application.routes.draw do
   resources :member_groups
   
   devise_for :users, controllers: {:sessions => 'users/sessions', :registrations => 'users/registrations'}
-  resources :patients
+  resources :members
   resources :communication_devices
   resources :meters
 

@@ -1,0 +1,33 @@
+<%= simple_form_for(@member) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-group">
+    <label for="title"><%= f.label :first_name %></label>
+    <%= f.text_field :first_name, :class => "form-control", :placeholder => "Enter first name"  %>
+  </div>
+
+  <div class="form-group">
+    <label for="title"><%= f.label :last_name %></label>
+    <%= f.text_field :last_name, :class => "form-control", :placeholder => "Enter last name"  %>
+  </div>
+
+  <div class="form-group">
+    <label for="title"><%= f.label :phone_number %></label>
+    <%= f.phone_field :phone_number, :class => "form-control", :placeholder => "Enter phone number"  %>
+  </div>
+
+  <div class="form-group">
+    <label for="title"><%= f.label :member_number %></label>
+    <%= f.text_field :member_number, :class => "form-control", :placeholder => "Enter member number"  %>
+  </div>
+
+  <div class="form-group">
+    <label for="title"><%= f.label :email %></label>
+    <%= f.email_field :email, :class => "form-control", :placeholder => "Enter email"  %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
