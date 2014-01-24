@@ -1,2 +1,0 @@
-class PatientGroupsController < ApplicationController
-end
