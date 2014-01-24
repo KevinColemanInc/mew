@@ -1,4 +1,6 @@
 Mew::Application.routes.draw do
+  resources :case_managers
+
   resources :member_groups
   
   devise_for :users, controllers: {:sessions => 'users/sessions', :registrations => 'users/registrations'}
