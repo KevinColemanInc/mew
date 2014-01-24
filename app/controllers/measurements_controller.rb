@@ -1,14 +1,10 @@
 class MeasurementsController < ApplicationController
   before_action :set_measurement, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_model!
+  before_filter :authenticate_user!
 
   # GET /measurement
   def index
-    if current_case_manager
-      @measurements = Measurement.all
-    elsif current_patient
-      @measurements = Measurement.where(patient: current_patient)
-    end
+    @measurements = Measurement.all
   end
 
   # GET /measurements/1
@@ -61,11 +57,4 @@ class MeasurementsController < ApplicationController
       params.require(:measurement).permit(:email)
     end
 
-    def authenticate_model!
-      if case_manager_signed_in?
-          true
-      else
-          authenticate_patient!
-      end
-  end
 end
