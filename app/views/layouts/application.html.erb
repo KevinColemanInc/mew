@@ -22,8 +22,15 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
       <% if current_user %>
-      <li><%= link_to 'Manage Members', members_path %></li>
-      <li><%= link_to 'Manage Member Groups', member_groups_path %></li>
+
+        <% if current_user.is_a? CaseManager %>
+            <% if current_user.has_role? :case_manager_admin %>
+              <li><%= link_to 'Manage Case Managers', case_managers_path %></li>
+            <% end %>
+          <li><%= link_to 'Manage Members', members_path %></li>
+          <li><%= link_to 'Manage Member Groups', member_groups_path %></li>
+        <% end %>
+
       <li><%= link_to 'Change Password', edit_user_registration_path %></li>
       <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
       <% else %>
