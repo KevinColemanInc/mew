@@ -43,5 +43,6 @@ gem 'rails_12factor', group: :production
 
 gem 'rails_admin', github: 'sferik/rails_admin'
 gem 'devise', github: 'plataformatec/devise'
+gem 'role_model'
 
 gem 'spring',        group: :development
