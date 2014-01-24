@@ -7,11 +7,13 @@ class Ability
     if user_signed_in?
       if user.is_a? CaseManager
         can :manage, Patient
+        
         if user.has_role? :case_manager_admin
             can :manage, CaseManager
         else
             can :read, CaseManager
         end
+
         can :manage, CommunicationDevice
         can :manage, Measurement
         can :manage, Meter
