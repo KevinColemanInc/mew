@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140125004834) do
+ActiveRecord::Schema.define(version: 20140125015910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140125004834) do
     t.string   "phone_number"
     t.string   "device_type"
     t.string   "device_model"
+    t.datetime "last_communicated_at"
   end
 
   create_table "communication_devices_meters", id: false, force: true do |t|
