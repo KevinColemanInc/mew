@@ -1,7 +1,35 @@
 <%= simple_form_for(@case_manager) do |f| %>
   <%= f.error_notification %>
 
-  <div class="inputs">
+  <div class="form-group">
+    <label for="title"><%= f.label :first_name %></label>
+    <%= f.text_field :first_name, :class => "form-control", :placeholder => "Enter first name"  %>
+  </div>
+
+  <div class="form-group">
+    <label for="title"><%= f.label :last_name %></label>
+    <%= f.text_field :last_name, :class => "form-control", :placeholder => "Enter last name"  %>
+  </div>
+
+  <div class="form-group">
+    <label for="title"><%= f.label :phone_number %></label>
+    <%= f.phone_field :phone_number, :class => "form-control", :placeholder => "Enter phone number"  %>
+  </div>
+
+  <div class="form-group">
+    <label for="title"><%= f.label :email %></label>
+    <%= f.email_field :email, :class => "form-control", :placeholder => "Enter email"  %>
+  </div>
+
+  <div class="form-group">
+    <label for="title"><%= f.label :is_an_admin? %></label>
+    <%= check_box("case_manager", "is_an_admin", checked: (@case_manager.has_role? :case_manager_admin))  %>
+  </div>
+
+  <div class="form-group">
+    <label for="title"><%= f.label :is_archived? %></label>
+    <%= check_box("case_manager", "archive", checked: (@case_manager.archived? ? true : false))  %>
+    <%= @case_manager.archived_at  %>
   </div>
 
   <div class="actions">
