@@ -24,6 +24,15 @@
   </tbody>
 </table>
 
+
+<div ng-controller="MemberGroupsCtrl">
+  <ul>
+    <li ng-repeat="member_group in member_groups">
+      {{member_group.first_name}}, {{member_group.last_name}}
+    </li>
+  </ul>
+</div>
+
 <br>
 
 <%= link_to 'New Member group', new_member_group_path %>
