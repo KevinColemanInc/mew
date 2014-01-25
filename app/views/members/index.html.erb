@@ -14,7 +14,10 @@
   <tbody>
     <% @members.each do |member| %>
       <tr>
-        <td><%= member.name %></td>
+        <td><%= member.name %>
+        <% if member.archived? %>
+          <span class="label label-info">Archived</span>
+          <% end %></td>
         <td><%= member.member_number %></td>
         <td><%= member.email %></td>
         <td><%= link_to 'Show', member %></td>

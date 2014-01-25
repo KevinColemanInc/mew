@@ -22,4 +22,8 @@ class User < ActiveRecord::Base
   def archived?
     !archived_at.nil?
   end
+
+  def active_for_authentication?
+    !archived?
+  end
 end

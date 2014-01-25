@@ -11,7 +11,14 @@
   <tbody>
     <% @case_managers.each do |case_manager| %>
       <tr>
-        <td><%= case_manager.name %><td>
+        <td><%= case_manager.name %>
+          <% if case_manager.has_role? :case_manager_admin %>
+          <span class="label label-danger">Admin</span>
+          <% end %>
+          <% if case_manager.archived? %>
+          <span class="label label-info">Archived</span>
+          <% end %>
+        </td>
         <td><%= case_manager.email %></td>
         <td><%= link_to 'Show', case_manager %></td>
         <td><%= link_to 'Edit', edit_case_manager_path(case_manager) %></td>

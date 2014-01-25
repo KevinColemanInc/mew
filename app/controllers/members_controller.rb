@@ -19,11 +19,6 @@ class MembersController < ApplicationController
 
   # GET /members/1/edit
   def edit
-    puts
-    puts
-    puts 'checkbox display' + (@member.archived? ? "checked" : "")
-    puts 'is archived?' + (@member.archived? ? "t" : "f")
-    puts 'raw archive' + (@member.archived_at.to_s)
   end
 
   # POST /members
