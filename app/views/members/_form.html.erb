@@ -1,4 +1,4 @@
-<%= simple_form_for(@member) do |f| %>
+<%= simple_form_for(@member, autocomplete: "off") do |f| %>
   <%= f.error_notification %>
 
   <div class="form-group">
@@ -24,6 +24,11 @@
   <div class="form-group">
     <label for="title"><%= f.label :email %></label>
     <%= f.email_field :email, :class => "form-control", :placeholder => "Enter email"  %>
+  </div>
+
+  <div class="form-group">
+    <label for="title"><%= f.label :archive %></label>
+    <%= check_box("member", "archive", checked: @member.archived? ? true : false)  %>
   </div>
 
 

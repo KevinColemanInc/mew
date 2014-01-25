@@ -10,6 +10,6 @@
   <%= @member.name %>
 </p>
 
-
-<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'View Message history', email_messages_path(@member) %> |
+<%= link_to 'Contact', new_email_message_path(@member) %> | <%= link_to 'Edit', edit_member_path(@member) %> |
 <%= link_to 'Back', members_path %>

@@ -5,7 +5,7 @@ class MeasurementsController < ApplicationController
 
   # GET /measurement
   def index
-    @measurements = Measurement.all
+    @measurements = Measurement.where(member: current_user)
   end
 
   # GET /measurements/1

@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>To:</strong>
+  <%= @email_message.to %>
+</p>
+
+<p>
+  <strong>From:</strong>
+  <%= @email_message.from %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @email_message.body %>
+</p>
+
+<p>
+  <strong>Member:</strong>
+  <%= @email_message.member.name %>
+</p>
+
+<p>
+  <strong>Case manager:</strong>
+  <%= @email_message.case_manager.name %>
+</p>
+
+<%= link_to 'Back', email_messages_path(@email_message.member) %>

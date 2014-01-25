@@ -19,6 +19,11 @@ class MembersController < ApplicationController
 
   # GET /members/1/edit
   def edit
+    puts
+    puts
+    puts 'checkbox display' + (@member.archived? ? "checked" : "")
+    puts 'is archived?' + (@member.archived? ? "t" : "f")
+    puts 'raw archive' + (@member.archived_at.to_s)
   end
 
   # POST /members
@@ -26,7 +31,11 @@ class MembersController < ApplicationController
     @member = Member.new(member_params)
 
     @member.password = "password"
-
+    if params[:member][:archive] == "1"
+      @member.archive
+    else
+      @member.unarchive
+    end
     if @member.save
       redirect_to @member, notice: 'Member was successfully created.'
     else
@@ -38,6 +47,13 @@ class MembersController < ApplicationController
   # PATCH/PUT /members/1
   def update
     if @member.update(member_params)
+      if params[:member][:archive] == "1"
+        @member.archive
+        @member.save
+      else
+        @member.unarchive
+        @member.save
+      end
       redirect_to @member, notice: 'Member was successfully updated.'
     else
       render action: 'edit'

@@ -8,5 +8,4 @@ class Member < User
   has_and_belongs_to_many :communication_devices
   has_and_belongs_to_many :member_groups
 
-
 end

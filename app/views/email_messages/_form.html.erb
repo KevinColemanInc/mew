@@ -1,0 +1,13 @@
+<%= simple_form_for(@email_message) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :to, disabled: "disabled" %>
+    <%= f.input :from, disabled: "disabled" %>
+    <%= f.input :body %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

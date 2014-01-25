@@ -1,0 +1,29 @@
+<h1>Listing Email Messages</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>To</th>
+      <th>From</th>
+      <th>Body</th>
+      <th>Member</th>
+      <th>Case manager</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @email_messages.each do |email_message| %>
+      <tr>
+        <td><%= email_message.to %></td>
+        <td><%= email_message.from %></td>
+        <td><%= email_message.body %></td>
+        <td><%= email_message.member.name %></td>
+        <td><%= email_message.case_manager.name %></td>
+        <td><%= link_to 'Show', email_message_path(email_message.member, email_message) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

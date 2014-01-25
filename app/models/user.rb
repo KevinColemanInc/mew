@@ -11,5 +11,15 @@ class User < ActiveRecord::Base
   	"#{last_name}, #{first_name}"
   end
   
-  
+  def archive
+    self.archived_at = Time.current
+  end
+
+  def unarchive
+    self.archived_at = nil
+  end
+
+  def archived?
+    !archived_at.nil?
+  end
 end
