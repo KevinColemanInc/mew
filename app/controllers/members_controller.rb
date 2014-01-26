@@ -1,11 +1,20 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
-  load_and_authorize_resource
 
   # GET /members
   def index
-    @members = Member.all
+    if params[:not_in_member_group_id]
+      @members = Member.joins("left join member_in_member_groups on member_in_member_groups.member_id = users.id")
+                       .where("member_in_member_groups.id is null or member_in_member_groups.member_group_id != '#{params[:not_in_member_group_id]}'")
+    else
+      @members = Member.all
+    end
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render :json => @members }
+    end
   end
 
   # GET /members/1
@@ -34,7 +43,6 @@ class MembersController < ApplicationController
     if @member.save
       redirect_to @member, notice: 'Member was successfully created.'
     else
-      puts @member.errors
       render action: 'new'
     end
   end

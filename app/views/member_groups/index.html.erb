@@ -6,7 +6,7 @@
       <th>Name</th>
       <th>Description</th>
       <th>Number of members</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -16,6 +16,7 @@
         <td><%= member_group.name %></td>
         <td><%= member_group.description %></td>
         <td><%= member_group.members.length %></td>
+        <td><%= link_to 'Manage Members', member_in_member_groups_path(member_group) %></td>
         <td><%= link_to 'Show', member_group %></td>
         <td><%= link_to 'Edit', edit_member_group_path(member_group) %></td>
         <td><%= link_to 'Destroy', member_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -23,16 +24,6 @@
     <% end %>
   </tbody>
 </table>
-
-
-<div ng-controller="MemberGroupsCtrl">
-  <ul>
-    <li ng-repeat="member_group in member_groups">
-      {{member_group.first_name}}, {{member_group.last_name}}
-    </li>
-  </ul>
-</div>
-
 <br>
 
 <%= link_to 'New Member group', new_member_group_path %>
