@@ -8,4 +8,6 @@ class Member < User
   has_and_belongs_to_many :communication_devices
   has_and_belongs_to_many :member_groups
 
+  has_many :member_in_member_groups
+
 end

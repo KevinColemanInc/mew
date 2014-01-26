@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140125015910) do
+ActiveRecord::Schema.define(version: 20140126004452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,13 @@ ActiveRecord::Schema.define(version: 20140125015910) do
   create_table "member_groups_users", id: false, force: true do |t|
     t.uuid "member_id"
     t.uuid "member_group_id"
+  end
+
+  create_table "member_in_member_groups", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.uuid     "member_id"
+    t.uuid     "member_group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "meters", id: :uuid, default: "uuid_generate_v4()", force: true do |t|

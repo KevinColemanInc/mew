@@ -1,4 +1,9 @@
 Mew::Application.routes.draw do
+
+  get "member_groups/:member_group_id/member_in_member_groups" => "member_in_member_groups#index", as: :member_in_member_groups
+  post "member_groups/:member_group_id/member_in_member_groups" => "member_in_member_groups#create"
+  delete "member_groups/:member_group_id/member_in_member_groups/:id" => "member_in_member_groups#destroy"
+
   resources :case_managers
 
   resources :member_groups
