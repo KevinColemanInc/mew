@@ -1,11 +1,16 @@
 class MemberGroupsController < ApplicationController
   before_action :set_member_group, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
-  load_and_authorize_resource
+
 
   # GET /member_groups
   def index
     @member_groups = MemberGroup.all
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render :json => @member_groups }
+    end
   end
 
   # GET /member_groups/1

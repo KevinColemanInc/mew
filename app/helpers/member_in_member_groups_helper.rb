@@ -1,0 +1,2 @@
+module MemberInMemberGroupsHelper
+end
