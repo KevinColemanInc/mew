@@ -11,16 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140126004452) do
+ActiveRecord::Schema.define(version: 20140126205308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
-
-  create_table "case_managers_member_groups", id: false, force: true do |t|
-    t.uuid "case_manager_id"
-    t.uuid "member_group_id"
-  end
 
   create_table "communication_devices", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.string   "cdid"
@@ -52,6 +47,20 @@ ActiveRecord::Schema.define(version: 20140126004452) do
     t.datetime "updated_at"
   end
 
+  create_table "grouped_members", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.uuid     "member_id"
+    t.uuid     "member_group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "managed_members", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.uuid     "case_manager_id"
+    t.uuid     "member_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "measurements", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.integer  "glucose_value"
     t.datetime "measured_at"
@@ -69,18 +78,6 @@ ActiveRecord::Schema.define(version: 20140126004452) do
   create_table "member_groups", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.string   "name"
     t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "member_groups_users", id: false, force: true do |t|
-    t.uuid "member_id"
-    t.uuid "member_group_id"
-  end
-
-  create_table "member_in_member_groups", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
-    t.uuid     "member_id"
-    t.uuid     "member_group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

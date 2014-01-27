@@ -1,23 +1,21 @@
 Mew::Application.routes.draw do
 
-  get "member_groups/:member_group_id/member_in_member_groups" => "member_in_member_groups#index", as: :member_in_member_groups
-  post "member_groups/:member_group_id/member_in_member_groups" => "member_in_member_groups#create"
-  delete "member_groups/:member_group_id/member_in_member_groups/:id" => "member_in_member_groups#destroy"
+  resources :case_managers do 
+    resources :managed_members, only: [:index, :create, :destroy]
+  end
 
-  resources :case_managers
+  resources :member_groups do
+    resources :grouped_members, only: [:index, :create, :destroy]
+  end
 
-  resources :member_groups
-  get "members/:id/email_messages/new" => "email_messages#new", as: "new_email_message"
-  post "members/:id/email_messages" => "email_messages#create"
-  get "members/:id/email_messages" => "email_messages#index", as: "email_messages"
-  get "members/:id/email_messages/:email_message_id" => "email_messages#show", as: "email_message"
+  resources :members do
+    resources :email_messages, only: [:index, :create, :new, :show]
+  end
+
 
   devise_for :users, controllers: {:sessions => 'users/sessions', :registrations => 'users/registrations'}
-  resources :members
   resources :communication_devices
   resources :meters
-
-
 
   mount RailsAdmin::Engine => '/admin_panel', :as => 'rails_admin'
   resources :measurements
@@ -27,7 +25,4 @@ Mew::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'high_voltage/pages#show', id: 'home'
-
-  post 'glucose_levels' => 'glucose_levels#create'
-
 end

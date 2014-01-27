@@ -40,6 +40,9 @@ group :development, :test do
   gem "binding_of_caller"
 end
 
+gem 'tzinfo-data'#, group: :development
+
+
 gem 'cancan'
 gem 'tzinfo-data'#, group: :development
 gem 'high_voltage', '~> 2.1.0'

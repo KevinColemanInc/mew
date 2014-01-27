@@ -1,0 +1,41 @@
+<%= javascript_tag do %>
+  window.member_group_id = '<%= @member_group.id %>';
+<% end %>
+<div class="row" ng-controller="GroupedMembersCtrl">
+  <div class="col-md-6">
+    <h1>Current members in group</h1>
+    <input type="text" ng-model="current_member_query" />
+    <table class="table">
+      <thead>
+        <tr> 
+          <th>Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="current_member in current_members | filter:current_member_query | orderBy:last_name">
+          <td>{{current_member.member.last_name}}, {{current_member.member.first_name}}</td>
+          <td><button ng-click="removeGroupedMember(current_member)">Remove</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <h1>Members not in group</h1>
+    <input type="text" ng-model="new_member_query" />
+    <table class="table">
+      <thead>
+        <tr> 
+          <th>Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="new_member in new_members | filter:new_member_query | orderBy:last_name">
+          <td>{{new_member.last_name}}, {{new_member.first_name}}</td>
+          <td><button ng-click="addMember(new_member)">Add</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

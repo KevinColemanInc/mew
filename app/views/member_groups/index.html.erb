@@ -15,8 +15,8 @@
       <tr>
         <td><%= member_group.name %></td>
         <td><%= member_group.description %></td>
-        <td><%= member_group.members.length %></td>
-        <td><%= link_to 'Manage Members', member_in_member_groups_path(member_group) %></td>
+        <td><%= member_group.grouped_members.length %></td>
+        <td><%= link_to 'Manage Members', member_group_grouped_members_path(member_group) %></td>
         <td><%= link_to 'Show', member_group %></td>
         <td><%= link_to 'Edit', edit_member_group_path(member_group) %></td>
         <td><%= link_to 'Destroy', member_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
