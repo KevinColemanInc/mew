@@ -44,9 +44,6 @@ class CaseManagersController < ApplicationController
     if @case_manager.save
       redirect_to @case_manager, notice: 'Case manager was successfully created.'
     else
-      puts @case_manager.errors.inspect
-      puts
-      puts
       render action: 'new'
     end
   end

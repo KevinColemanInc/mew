@@ -5,13 +5,13 @@ class MembersController < ApplicationController
   # GET /members
   def index
     if params[:not_in_member_group_id]
-      @members = Member.where(
+      @members = Member.mine(current_user).where(
                    GroupedMember.select(:NULL).where("member_group_id = ? and grouped_members.member_id = users.id", params[:not_in_member_group_id]).exists.not)
     elsif params[:not_managed_by_case_manager_id]
-      @members = Member.where(
+      @members = Member.mine(current_user).where(
                    ManagedMember.select(:NULL).where("case_manager_id = ? and managed_members.member_id = users.id", params[:not_managed_by_case_manager_id]).exists.not)
     else
-      @members = Member.all
+      @members = Member.mine(current_user)
     end
 
     respond_to do |format|

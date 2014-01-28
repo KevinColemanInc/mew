@@ -5,7 +5,7 @@ class MemberGroupsController < ApplicationController
 
   # GET /member_groups
   def index
-    @member_groups = MemberGroup.all
+    @member_groups = MemberGroup.where(created_by: current_user)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -29,7 +29,7 @@ class MemberGroupsController < ApplicationController
   # POST /member_groups
   def create
     @member_group = MemberGroup.new(member_group_params)
-
+    @member_group.created_by = current_user
     if @member_group.save
       redirect_to @member_group, notice: 'Member group was successfully created.'
     else

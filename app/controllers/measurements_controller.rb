@@ -5,7 +5,8 @@ class MeasurementsController < ApplicationController
 
   # GET /measurement
   def index
-    @measurements = Measurement.where(member: current_user)
+    member = Member.find(params[:member_id])
+    @measurements = Measurement.mine(member)
   end
 
   # GET /measurements/1
@@ -15,6 +16,7 @@ class MeasurementsController < ApplicationController
   # GET /measurements/new
   def new
     @measurement = Measurement.new
+    @member = Member.find(params[:member_id])
   end
 
   # GET /measurements/1/edit
@@ -24,6 +26,7 @@ class MeasurementsController < ApplicationController
   # POST /measurements
   def create
     @measurement = Measurement.new(measurement_params)
+    @measurement.retrieved_at = Time.now
 
     if @measurement.save
       redirect_to @measurement, notice: 'measurement was successfully created.'

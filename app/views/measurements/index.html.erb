@@ -24,3 +24,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= link_to 'New Measurement', new_member_measurement_path if current_user.is_a? CaseManager %>

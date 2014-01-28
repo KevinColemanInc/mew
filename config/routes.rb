@@ -10,6 +10,7 @@ Mew::Application.routes.draw do
 
   resources :members do
     resources :email_messages, only: [:index, :create, :new, :show]
+    resources :measurements
   end
 
 
@@ -18,7 +19,7 @@ Mew::Application.routes.draw do
   resources :meters
 
   mount RailsAdmin::Engine => '/admin_panel', :as => 'rails_admin'
-  resources :measurements
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

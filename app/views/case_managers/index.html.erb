@@ -21,8 +21,13 @@
           <% end %>
         </td>
         <td><%= case_manager.email %></td>
-         <td><%= case_manager.managed_members.length %></td>
+        <% unless case_manager.has_role? :case_manager_admin %>
+        <td><%= case_manager.managed_members.length %></td>
         <td><%= link_to 'Manage Members', case_manager_managed_members_path(case_manager) %></td>
+        <% else %>
+        <td></td>
+        <td></td>
+        <% end %>
         <td><%= link_to 'Show', case_manager %></td>
         <td><%= link_to 'Edit', edit_case_manager_path(case_manager) %></td>
       </tr>
@@ -32,4 +37,4 @@
 
 <br>
 
-<%= link_to 'New Case manager', new_case_manager_path %>
+<%= link_to 'New Case manager', new_case_manager_path  %>
