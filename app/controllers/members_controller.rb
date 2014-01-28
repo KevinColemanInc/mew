@@ -5,11 +5,11 @@ class MembersController < ApplicationController
   # GET /members
   def index
     if params[:not_in_member_group_id]
-      @members = Member.joins("left join grouped_members on grouped_members.member_id = users.id")
-                       .where("grouped_members.id is null or grouped_members.member_group_id != '#{params[:not_in_member_group_id]}'")
+      @members = Member.where(
+                   GroupedMember.select(:NULL).where("member_group_id = ? and grouped_members.member_id = users.id", params[:not_in_member_group_id]).exists.not)
     elsif params[:not_managed_by_case_manager_id]
-      @members = Member.joins("left join managed_members on managed_members.member_id = users.id")
-                       .where("managed_members.id is null or managed_members.case_manager_id != '#{params[:not_managed_by_case_manager_id]}'")
+      @members = Member.where(
+                   ManagedMember.select(:NULL).where("case_manager_id = ? and managed_members.member_id = users.id", params[:not_managed_by_case_manager_id]).exists.not)
     else
       @members = Member.all
     end
