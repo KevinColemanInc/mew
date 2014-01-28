@@ -19,7 +19,7 @@
         <td><%= measurement.measured_at %></td>
         <td><%= measurement.code_number %></td>
         <td><%= measurement.reading_type %></td>
-        <td><%= link_to 'Show', measurement %></td>
+        <td><%= link_to 'Show', member_measurement_path(@member, measurement) %></td>
       </tr>
     <% end %>
   </tbody>

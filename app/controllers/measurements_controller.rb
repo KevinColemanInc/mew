@@ -1,12 +1,11 @@
 class MeasurementsController < ApplicationController
-  before_action :set_measurement, only: [:show, :edit, :update, :destroy]
+  before_action :set_measurement, only: [:index, :show, :edit, :update, :destroy]
   before_filter :authenticate_user!
-  load_and_authorize_resource
+  
 
   # GET /measurement
   def index
-    member = Member.find(params[:member_id])
-    @measurements = Measurement.mine(member)
+    @measurements = Measurement.mine(@member)
   end
 
   # GET /measurements/1
@@ -26,10 +25,12 @@ class MeasurementsController < ApplicationController
   # POST /measurements
   def create
     @measurement = Measurement.new(measurement_params)
-    @measurement.retrieved_at = Time.now
+    @measurement.case_manager = current_user if current_user.is_a? CaseManager
+    @measurement.retrieved_at = Time.now unless @measurement.retrieved_at
+    @member = Member.find(params[:member_id])
 
     if @measurement.save
-      redirect_to @measurement, notice: 'measurement was successfully created.'
+      redirect_to member_measurements_path(@member), notice: 'measurement was successfully created.'
     else
       render action: 'new'
     end
@@ -53,12 +54,13 @@ class MeasurementsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_measurement
-      @measurement = Measurement.find(params[:id])
+      @measurement = Measurement.find(params[:id]) if params[:id]
+      @member = Member.find(params[:member_id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def measurement_params
-      params.require(:measurement).permit(:email)
+      params.require(:measurement).permit(:glucose_value, :measured_at, :code_number, :reading_type, :member_id)
     end
 
 end

@@ -21,7 +21,14 @@
     <%= f.text_field :reading_type, :class => "form-control", :placeholder => "Enter reading type"  %>
   </div>
 
+  <!-- Meter -->
+  <div class="form-group">
+    <label for="title"><%= f.label :reading_type %></label>
+    <%= f.text_field :reading_type, :class => "form-control", :placeholder => "Enter reading type"  %>
+  </div>
 
+  <input type="hidden" name="measurement[member_id]" value="<%= @member.id %>">
+  
   <div class="actions">
     <%= f.button :submit %>
   </div>
