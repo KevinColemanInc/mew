@@ -29,5 +29,7 @@ module Mew
         :password  => Rails.application.secrets.mandrill_api_key, # SMTP password is any valid API key
         :authentication => 'login'
       }
+
+    
   end
 end

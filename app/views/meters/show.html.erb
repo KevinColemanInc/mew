@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>MID:</strong>
+  <%= @meter.mid %>
+</p>
+
+<p>
+  <strong>Bluetooth MAC Address:</strong>
+  <%= @meter.bluetooth_mac %>
+</p>
+
+<%= link_to 'Edit', edit_meter_path(@meter) %> |
+<%= link_to 'Back', meters_path %>

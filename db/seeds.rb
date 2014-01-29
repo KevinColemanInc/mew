@@ -16,5 +16,11 @@ member_kevin = Member.create!(phone_number: "4074544981",
 							  last_name: "patz", 
 							  email: "bjpatz+member@gmail.com",
 							  password: "password")
+puts 'made it here'
+Meter.destroy_all
+fora_meter = Meter.create!(mid: "foracare", bluetooth_mac: "FF:MAC:FF")
+
+CommunicationDevice.destroy_all
+fora_meter = CommunicationDevice.create!(cdid: "android-phone", phone_number: "4074531225", device_type: "Android Phone", device_model: "spider man")
 
 puts 'ending seeding.'

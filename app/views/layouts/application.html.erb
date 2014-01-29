@@ -26,6 +26,7 @@
         <% if current_user.is_a? CaseManager %>
             <% if current_user.has_role? :case_manager_admin %>
               <li><%= link_to 'Manage Case Managers', case_managers_path %></li>
+              <li><%= link_to 'Manage Meters', meters_path %></li>
             <% end %>
           <li><%= link_to 'Manage Members', members_path %></li>
           <li><%= link_to 'Manage Member Groups', member_groups_path %></li>

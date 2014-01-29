@@ -1,0 +1,60 @@
+<%= javascript_tag do %>
+  window.meter_id = '<%= @meter.id %>';
+<% end %>
+
+<%= simple_form_for(@meter) do |f| %>
+  <%= f.error_notification %>
+  
+  <div class="form-group">
+    <label for="title"><%= f.label :mid %></label>
+    <%= f.text_field :mid, :class => "form-control", :placeholder => "Enter meter id"  %>
+  </div>
+
+  <div class="form-group">
+    <label for="title"><%= f.label :bluetooth_mac_address %></label>
+    <%= f.text_field :bluetooth_mac, :class => "form-control", :placeholder => "Enter bluetooth mac address"  %>
+  </div>
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+<% if @meter.id %>
+  <div class="row" ng-controller="CommunicationDevicesCtrl">
+    <div class="col-md-6">
+      <h1>Current communication devices for meter</h1>
+      <input type="search" ng-model="current_communication_device_query" />
+      <table class="table">
+        <thead>
+          <tr> 
+            <th>MID</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="current_communication_device in meter_communication_devices | filter:current_communication_device_query | orderBy:mid">
+            <td>{{current_communication_device.cdid}}</td>
+            <td><button ng-click="removeCommunicationDevice(current_communication_device)">Remove</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <h1>Communication devices not linked to meter</h1>
+      <input type="search" ng-model="new_communication_device_query" />
+      <table class="table">
+        <thead>
+          <tr> 
+           <th>MID</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="new_communication_device in new_communication_devices | filter:new_communication_device_query | orderBy:mid">
+            <td>{{new_communication_device.cdid}}</td>
+            <td><button ng-click="addCommunicationDevice(new_communication_device)">Add</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <% end %>
