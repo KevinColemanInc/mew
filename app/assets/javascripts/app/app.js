@@ -1,1 +1,1 @@
-var app = angular.module("Mew", ['ngResource']);
+var app = angular.module("Mew", ['ngResource', 'angularCharts']);
