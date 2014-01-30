@@ -38,6 +38,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'faker'
 end
 
 gem 'tzinfo-data'#, group: :development
