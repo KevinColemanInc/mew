@@ -30,6 +30,8 @@
             <% end %>
           <li><%= link_to 'Manage Members', members_path %></li>
           <li><%= link_to 'Manage Member Groups', member_groups_path %></li>
+        <% elsif current_user.is_a? Member %>
+          <li><%= link_to 'My Case Managers', case_managers_path %></li>
         <% end %>
 
       <li><%= link_to 'Change Password', edit_user_registration_path %></li>

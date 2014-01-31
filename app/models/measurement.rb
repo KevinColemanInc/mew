@@ -1,4 +1,5 @@
 class Measurement < ActiveRecord::Base
+  include Archivable
 	validates :glucose_value, presence: true
 	validates :measured_at, presence: true
 	validates :code_number, presence: true
@@ -15,5 +16,6 @@ class Measurement < ActiveRecord::Base
   def self.mine(user)
   	where(member: user)
   end	
+  
 end
 

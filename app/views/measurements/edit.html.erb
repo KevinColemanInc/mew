@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @measurement %> |
-<%= link_to 'Back', measurements_path %>
+<%= link_to 'Show', member_measurement_path(@member, @measurement) %> |
+<%= link_to 'Back', member_measurements_path %>

@@ -27,8 +27,13 @@
     <%= f.text_field :reading_type, :class => "form-control", :placeholder => "Enter reading type"  %>
   </div>
 
+  <div class="form-group">
+    <label for="title"><%= f.label :is_archived? %></label>
+    <%= check_box("measurement", "archive", checked: @measurement.archived? ? true : false)  %>
+  </div>
+
   <input type="hidden" name="measurement[member_id]" value="<%= @member.id %>">
-  
+
   <div class="actions">
     <%= f.button :submit %>
   </div>

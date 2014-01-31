@@ -1,4 +1,6 @@
 class Member < User
+  include Archivable
+
 	validates :phone_number, presence: true
 	validates :member_number, presence: true
 	

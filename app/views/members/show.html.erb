@@ -1,3 +1,7 @@
+<div ng-controller="MeasurementsCtrl">
+  <div ac-chart="chartType" ac-data="data" ac-config="config" id='chart' class='chart'></div>
+</div>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -7,7 +11,9 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @member.name %>
+  <%= @member.name %> <% if @member.archived? %>
+          <span class="label label-info">Archived</span>
+          <% end %></td>
 </p>
 
 <%= link_to 'View Measurement history', member_measurements_path(@member) %> | 

@@ -3,7 +3,7 @@ class Users::SessionsController < Devise::SessionsController
     if resource.is_a? CaseManager
       members_path
     elsif resource.is_a? Member
-      measurements_path
+      member_measurements_path(resource.id)
     end
   end
   

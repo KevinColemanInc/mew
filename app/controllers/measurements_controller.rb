@@ -27,7 +27,12 @@ class MeasurementsController < ApplicationController
     @measurement = Measurement.new(measurement_params)
     @measurement.case_manager = current_user if current_user.is_a? CaseManager
     @measurement.retrieved_at = Time.now unless @measurement.retrieved_at
-    @member = Member.find(params[:member_id])
+
+     if params[:measurement][:archive] == "1"
+      @measurement.archive
+    else
+      @measurement.unarchive
+    end
 
     if @measurement.save
       redirect_to member_measurements_path(@member), notice: 'measurement was successfully created.'
@@ -38,8 +43,17 @@ class MeasurementsController < ApplicationController
 
   # PATCH/PUT /measurements/1
   def update
+
+    if params[:measurement][:archive] == "1"
+      @measurement.archive
+      @measurement.save
+    else
+      @measurement.unarchive
+      @measurement.save
+    end
+
     if @measurement.update(measurement_params)
-      redirect_to @measurement, notice: 'measurement was successfully updated.'
+      redirect_to member_measurements_path(@member), notice: 'measurement was successfully updated.'
     else
       render action: 'edit'
     end

@@ -11,6 +11,7 @@ Mew::Application.routes.draw do
   resources :members do
     resources :email_messages, only: [:index, :create, :new, :show]
     resources :measurements
+    resources :case_managers, only: [:index]
   end
 
 

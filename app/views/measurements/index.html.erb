@@ -8,17 +8,21 @@
       <th>Retrieved at</th>
       <th>Code Number</th>
       <th>Reading Type</th>
-      <th colspan="1"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @measurements.each do |measurement| %>
       <tr>
-        <td><%= measurement.glucose_value %></td>
+        <td><%= measurement.glucose_value %><% if measurement.archived? %>
+          <span class="label label-info">Archived</span>
+          <% end %></td>
         <td><%= measurement.measured_at %></td>
+        <td><%= measurement.retrieved_at %></td>
         <td><%= measurement.code_number %></td>
         <td><%= measurement.reading_type %></td>
+        <td><%= link_to 'Edit', edit_member_measurement_path(@member, measurement) %></td>
         <td><%= link_to 'Show', member_measurement_path(@member, measurement) %></td>
       </tr>
     <% end %>

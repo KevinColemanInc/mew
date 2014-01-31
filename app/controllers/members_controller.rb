@@ -52,14 +52,14 @@ class MembersController < ApplicationController
 
   # PATCH/PUT /members/1
   def update
+   if params[:member][:archive] == "1"
+      @member.archive
+      @member.save
+    else
+      @member.unarchive
+      @member.save
+    end
     if @member.update(member_params)
-      if params[:member][:archive] == "1"
-        @member.archive
-        @member.save
-      else
-        @member.unarchive
-        @member.save
-      end
       redirect_to @member, notice: 'Member was successfully updated.'
     else
       render action: 'edit'
