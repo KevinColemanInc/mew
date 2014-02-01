@@ -43,6 +43,7 @@ member_ben = Member.create!(phone_number: "4074544981",
 	c = CommunicationDevice.create!(cdid: "CD#{i}",
 																 device_type: "android-phone",
 																 device_model: "Galaxy",
+																 phone_number: Faker::PhoneNumber.phone_number
 																 )
 
 	meter = Meter.create(mid: "M#{i}",
