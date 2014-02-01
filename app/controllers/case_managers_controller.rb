@@ -7,7 +7,11 @@ class CaseManagersController < ApplicationController
 
   # GET /case_managers
   def index
-    @case_managers = CaseManager.all
+    if current_user.is_a? CaseManager
+      @case_managers = CaseManager.all
+    elsif current_user.is_a? Member
+      @case_managers = current_user.case_managers
+    end
   end
 
   # GET /case_managers/1

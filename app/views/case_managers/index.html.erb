@@ -5,7 +5,12 @@
     <tr>
       <th>Name</th>
       <th>Email</th>
-      <th>Members Managed</th>
+      <th>Phone </th>
+      <th>
+      <% if current_user.is_a? CaseManager %>
+      Members Managed
+      <% end %>
+      </th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -13,6 +18,7 @@
     <% @case_managers.each do |case_manager| %>
       <tr>
         <td><%= case_manager.name %>
+        <% if current_user.is_a? CaseManager %>
           <% if case_manager.has_role? :case_manager_admin %>
           <span class="label label-danger">Admin</span>
           <% end %>
@@ -20,10 +26,12 @@
           <span class="label label-info">Archived</span>
           <% end %>
         </td>
+        <% end %>
         <td><%= case_manager.email %></td>
+        <td><%= case_manager.phone_number %></td>
         <% unless case_manager.has_role? :case_manager_admin %>
         <td><%= case_manager.managed_members.length %></td>
-        <td><%= link_to 'Manage Members', case_manager_managed_members_path(case_manager) %></td>
+        <td><%= link_to 'Manage Members', case_manager_managed_members_path(case_manager) if current_user.is_a? CaseManager %></td>
         <% else %>
         <td></td>
         <td></td>
@@ -37,4 +45,4 @@
 
 <br>
 
-<%= link_to 'New Case manager', new_case_manager_path  %>
+<%= link_to 'New Case manager', new_case_manager_path if current_user.is_a? CaseManager  %>
