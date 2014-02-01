@@ -27,7 +27,7 @@ member_ben = Member.create!(phone_number: "4074544981",
 	ManagedMember.create(member:member_ben, case_manager: case_manager_ben)
 
 	ManagedMember.create(member:member_kevin, case_manager: case_manager_ben)
-	ManagedMember.create(member:member_ben, case_manager: case_manager_kevin)
+	ManagedMember.create(member:member_ben, case_manager: case_manager_kevins)
 
 500.times do |i|
 	u = Member.create!(phone_number: Faker::PhoneNumber.phone_number, 
