@@ -18,5 +18,3 @@
 //= require_tree .
 //= require_tree ./app
 //= require bootstrap
-//= require angular-charts
-//= require d3.v3.min
