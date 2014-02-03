@@ -1,28 +1,40 @@
-== README
+# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## RoR work flow
 
-Things you may want to cover:
+### Starting up RoR
 
-* Ruby version
+1. Sync the repository
+2. type "rake db:migrate" // to update the database just incase changes
+3. type in "rails s" // to start the server
 
-* System dependencies
+### Deploy RoR
 
-* Configuration
+1. git push heroku master
+2. heroku run rake db
 
-* Database creation
+### Merge conflicts with no pending changes
 
-* Database initialization
+1. git reset --hard
+2. resync in tool
 
-* How to run the test suite
+### Making changes to the repo
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+1. git checkout master
+2. git pull origin master
+3. git checkout -b <name of new feature>
+4. Make code changes
+5. git add .
+6. git commit -m "comments about feature changes"
+7. git checkout master
+8. git pull origin master
+9. git checkout <name of new feature>
+10. git rebase master
+11. If there are any merge conflicts, it will tell you the name of those files in the errors.  You will need to go into the files and edit them so they reflect how the files should be.
+12. For each file type: git add <file path/file name>
+13. Repeat 11-12 until all files are resolved
+14. git rebase --continue
+15. Repeat 11-14 until all files are resolved
+16. git push origin <name of new feature>
+17. create a pull request
+18. git checkout master
