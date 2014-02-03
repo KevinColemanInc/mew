@@ -4,7 +4,7 @@ Mew::Application.routes.draw do
     resources :managed_members, only: [:index, :create, :destroy]
   end
 
-  resources :member_groups do
+  resources :member_groups, except: [:show] do
     resources :grouped_members, only: [:index, :create, :destroy]
   end
 

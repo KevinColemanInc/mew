@@ -1,5 +1,5 @@
 class MemberGroupsController < ApplicationController
-  before_action :set_member_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_member_group, only: [:edit, :update, :destroy]
   before_filter :authenticate_user!
 
 
@@ -11,10 +11,6 @@ class MemberGroupsController < ApplicationController
       format.html # show.html.erb
       format.json { render :json => @member_groups }
     end
-  end
-
-  # GET /member_groups/1
-  def show
   end
 
   # GET /member_groups/new
@@ -31,7 +27,7 @@ class MemberGroupsController < ApplicationController
     @member_group = MemberGroup.new(member_group_params)
     @member_group.created_by = current_user
     if @member_group.save
-      redirect_to @member_group, notice: 'Member group was successfully created.'
+      redirect_to member_group_grouped_members_path(@member_group)
     else
       render action: 'new'
     end

@@ -15,6 +15,7 @@ class GroupedMembersController < ApplicationController
       respond_to do |format|
         format.json { render :json => @grouped_member }
       end
+
     else
       render action: 'new'
     end
