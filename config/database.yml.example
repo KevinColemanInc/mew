@@ -1,0 +1,16 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: mew_dev
+  pool: 5
+  username: 
+  password: 
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: mew_test
+  pool: 5
+  username: 
+  password: 
+  
