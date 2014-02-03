@@ -21,4 +21,8 @@ class Member < User
     end
   end
 
+  def measurement_count_last_days(days)
+    self.measurements.map{|m| m if (m.measured_at > (Time.now - days.days)) and m.archived_at.nil? }.compact.length
+  end
+
 end
