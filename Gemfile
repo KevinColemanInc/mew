@@ -27,6 +27,8 @@ gem 'turbolinks'
 
 gem 'jbuilder'
 
+gem "tzinfo-data", group: :development
+
 gem 'simple_form'
 
 gem 'human_power'
