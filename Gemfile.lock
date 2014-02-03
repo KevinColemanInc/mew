@@ -187,6 +187,8 @@ GEM
       coffee-rails
     tzinfo (1.1.0)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2013.9)
+      tzinfo (>= 1.0.0)
     uglifier (2.3.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
@@ -218,4 +220,5 @@ DEPENDENCIES
   simple_form
   spring
   turbolinks
+  tzinfo-data
   uglifier
