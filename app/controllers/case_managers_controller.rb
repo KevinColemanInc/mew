@@ -12,6 +12,11 @@ class CaseManagersController < ApplicationController
     elsif current_user.is_a? Member
       @case_managers = current_user.case_managers
     end
+
+    respond_to do |format|
+      format.json
+      format.html
+    end
   end
 
   # GET /case_managers/1

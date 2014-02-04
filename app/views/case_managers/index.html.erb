@@ -1,49 +1,21 @@
 <h1>Listing Case Managers</h1>
 <h4>Found <%= @case_managers.count %> case managers</h4>
-
-<table class='table'>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Phone </th>
-      <th>
-      <% if current_user.is_a? CaseManager %>
-      Members Managed
-      <% end %>
-      </th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+<div ng-controller="CaseManagersCtrl">
+<button ng-click="tableParams.sorting({})" class="btn btn-default pull-right">Clear sorting</button>
+<table class='table' ng-table="tableParams" show-filter="true">
   <tbody>
-    <% @case_managers.each do |case_manager| %>
-      <tr>
-        <td><%= case_manager.name %>
-        <% if current_user.is_a? CaseManager %>
-          <% if case_manager.has_role? :case_manager_admin %>
-          <span class="label label-danger">Admin</span>
-          <% end %>
-          <% if case_manager.archived? %>
-          <span class="label label-info">Archived</span>
-          <% end %>
-        </td>
-        <% end %>
-        <td><%= case_manager.email %></td>
-        <td><%= case_manager.phone_number %></td>
-        <% unless case_manager.has_role? :case_manager_admin %>
-        <td><%= case_manager.managed_members.length %></td>
-        <td><%= link_to 'Manage Members', case_manager_managed_members_path(case_manager) if current_user.is_a? CaseManager %></td>
-        <% else %>
-        <td></td>
-        <td></td>
-        <% end %>
-        <td><%= link_to 'Show', case_manager %></td>
-        <td><%= link_to 'Edit', edit_case_manager_path(case_manager) %></td>
+      <tr ng-repeat="case_manager in $data">
+        <td data-title="'Email'" sortable="'email'"  filter="{ 'email': 'text' }">{{case_manager.email}}</td>
+        <td data-title="'Name'" sortable="'full_name'" filter="{ 'full_name': 'text' }">{{case_manager.full_name}}</td>
+        <td data-title="'Phone Number'" filter="{ 'phone_number': 'text' }">{{case_manager.phone_number}}</td>
+        <td data-title="'Members Managed'" sortable="'managed_members_length'">{{case_manager.managed_members_length}}</td>
+        <td>{{case_manager.links.manage_members}}</td>
+        <td data-ng-bind-html="case_manager.links.show"></td>
+        <td data-ng-bind-html="case_manager.links.edit"></td>
       </tr>
-    <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
 <%= link_to 'New Case manager', new_case_manager_path if current_user.is_a? CaseManager  %>

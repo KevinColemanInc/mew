@@ -16,7 +16,6 @@ class ManagedMembersController < ApplicationController
         format.json { render :json => @managed_member }
       end
     else
-      puts @managed_member.errors.inspect
       render action: 'new'
     end
   end

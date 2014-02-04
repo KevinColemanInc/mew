@@ -6,7 +6,6 @@ class CaseManager < User
   
   roles :case_manager_admin, :case_manager
 
-  #has_many :managed_members
-  #has_many :member_groups
+  has_many :managed_members
 
 end

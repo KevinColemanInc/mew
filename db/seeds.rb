@@ -7,6 +7,15 @@ ManagedMember.destroy_all
 case_manager_kevin = CaseManager.create!(first_name: "kevin", last_name: "coleman", email: "kevin.coleman@gatech.edu", password: "password", roles: [:case_manager_admin])
 case_manager_ben = CaseManager.create!(first_name: "ben", last_name: "patz", email: "bjpatz@gmail.com", password: "password", roles: [:case_manager_admin])
 
+200.times do |i|
+	case_manager_ben = CaseManager.create!(phone_number: Faker::PhoneNumber.phone_number, 
+																				 first_name: Faker::Name.first_name, 
+																				 last_name: Faker::Name.last_name, 
+																				 email: "#{i}" + Faker::Internet.email, 
+																				 password: Faker::Lorem.characters(15), 
+																				 roles: [:case_manager_admin])
+end
+
 member_kevin = Member.create!(phone_number: "4074544981", 
 							  member_number: Time.now.to_i, 
 							  first_name: "kevin", 
