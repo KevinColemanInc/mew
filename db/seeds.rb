@@ -36,7 +36,7 @@ ManagedMember.create(member:member_ben, case_manager: case_manager_ben)
 ManagedMember.create(member:member_kevin, case_manager: case_manager_ben)
 ManagedMember.create(member:member_ben, case_manager: case_manager_kevin)
 
-500.times do |i|
+200.times do |i|
 	u = Member.create!(phone_number: Faker::PhoneNumber.phone_number, 
 							  member_number: "#{rand(100000..1000000000000)}", 
 							  first_name: Faker::Name.first_name, 
