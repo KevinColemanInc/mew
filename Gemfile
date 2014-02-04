@@ -36,7 +36,7 @@ gem 'human_power'
 # Use unicorn as the app server
 # gem 'unicorn'
 
-group :development, :test do
+group :development, :test, :production do
   gem 'rspec-rails'
   gem "better_errors"
   gem "binding_of_caller"
