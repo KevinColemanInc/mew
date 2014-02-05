@@ -5,8 +5,8 @@
 <table class='table' ng-table="tableParams" show-filter="true">
   <tbody>
       <tr ng-repeat="case_manager in $data">
-        <td data-title="'Email'" sortable="'email'"  filter="{ 'email': 'text' }">{{case_manager.email}}</td>
         <td data-title="'Name'" sortable="'full_name'" filter="{ 'full_name': 'text' }">{{case_manager.full_name}}</td>
+        <td data-title="'Email'" sortable="'email'"  filter="{ 'email': 'text' }">{{case_manager.email}}</td>
         <td data-title="'Phone Number'" filter="{ 'phone_number': 'text' }">{{case_manager.phone_number}}</td>
         <td data-title="'Members Managed'" sortable="'managed_members_length'">{{case_manager.managed_members_length}}</td>
         <td>{{case_manager.links.manage_members}}</td>
