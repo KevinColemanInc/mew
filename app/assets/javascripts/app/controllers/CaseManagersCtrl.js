@@ -28,6 +28,4 @@ app.controller('CaseManagersCtrl', ['$scope', '$resource', '$filter', 'ngTablePa
           }, $scope: $scope
       });
     });
-
-
 }]);
