@@ -5,6 +5,11 @@ class MetersController < ApplicationController
   # GET /meters.json
   def index
     @meters = Meter.all
+    
+    respond_to do |format|
+      format.html
+      format.json 
+    end
   end
 
   # GET /meters/1

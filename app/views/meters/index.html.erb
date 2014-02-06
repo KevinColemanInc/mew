@@ -1,27 +1,28 @@
-<h1>Listing meters</h1>
-<h4>Found <%= @meters.count %> meters</h4>
+<div ng-controller="MetersTableCtrl">
+  <h1>Meters</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>MID</th>
-      <th>Bluetooth MAC</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="row">
+    <div class="col-md-8">
+      <input type="search" ng-model="filter.$" class="form-control" />
+    </div>
+    <div class="col-md-2 col-md-offset-2">
+      <button ng-click="tableParams.sorting({})" class="btn btn-default">Clear sorting</button>
+    </div>
+  </div>
 
-  <tbody>
-    <% @meters.each do |meter| %>
-      <tr>
-        <td><%= meter.mid %></td>
-        <td><%= meter.bluetooth_mac %></td>
-        <td><%= link_to 'Show', meter %></td>
-        <td><%= link_to 'Edit', edit_meter_path(meter) %></td>
-        <td><%= link_to 'Destroy', meter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <table class='table' ng-table="tableParams">
+    <tbody>
+        <tr ng-repeat="meter in $data">
+          <td data-title="'Meter ID'" sortable="'mid'">{{meter.mid}}</td>
+          <td data-title="'Bluetooth Mac'" sortable="'bluetooth_mac'">{{meter.bluetooth_mac}}</td>
+          <td data-ng-bind-html="meter.links.show"></td>
+          <td data-ng-bind-html="meter.links.edit"></td>
+          <td data-ng-bind-html="meter.links.destroy"></td>
+        </tr>
+    </tbody>
+  </table>
+  <p><strong>Total members:</strong> {{tableParams.total()}}</p>
+</div>
 
 <br>
 
