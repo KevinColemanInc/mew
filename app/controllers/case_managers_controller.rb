@@ -8,7 +8,7 @@ class CaseManagersController < ApplicationController
   # GET /case_managers
   def index
     if current_user.is_a? CaseManager
-      @case_managers = CaseManager.all
+      @case_managers = CaseManager.includes(:managed_members).all
     elsif current_user.is_a? Member
       @case_managers = current_user.case_managers
     end
