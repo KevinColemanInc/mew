@@ -11,12 +11,12 @@ class MembersController < ApplicationController
       @members = Member.mine(current_user).where(
                    ManagedMember.select(:NULL).where("case_manager_id = ? and managed_members.member_id = users.id", params[:not_managed_by_case_manager_id]).exists.not)
     else
-      @members = Member.includes(:measurements).mine(current_user)
+      @members = Member.includes(:measurements, :managed_members).mine(current_user)
     end
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @members }
+      format.html
+      format.json 
     end
   end
 

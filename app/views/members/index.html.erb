@@ -1,37 +1,30 @@
-<h1>Listing members</h1>
-<h4>Found <%= @members.count %> members</h4>
+<div ng-controller="MembersTableCtrl">
+  <h1>Members</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Member ID</th>
-      <th>Email</th>
-      <th>Total Measurements</th>
-      <th>Measurements in last 28 days</th>
-      <th></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="row">
+    <div class="col-md-8">
+      <input type="search" ng-model="filter.$" class="form-control" />
+    </div>
+    <div class="col-md-2 col-md-offset-2">
+      <button ng-click="tableParams.sorting({})" class="btn btn-default">Clear sorting</button>
+    </div>
+  </div>
 
-  <tbody>
-    <% @members.each do |member| %>
-      <tr>
-        <td><%= member.name %>
-        <% if member.archived? %>
-          <span class="label label-info">Archived</span>
-          <% end %></td>
-        <td><%= member.member_number %></td>
-        <td><%= member.email %></td>
-        <td><%= link_to "#{member.measurements.length}", member_measurements_path(member) %></td>
-        <td><%= link_to "#{member.measurement_count_last_days(28)}", member_measurements_path(member) %></td>
-        <td><%= link_to 'Show', member %></td>
-        <td><%= link_to 'Edit', edit_member_path(member) %></td>
-        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } if current_user.has_role? :case_manager_admin   %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <table class='table' ng-table="tableParams">
+    <tbody>
+        <tr ng-repeat="member in $data">
+          <td data-title="'Name'" sortable="'name'">{{member.name}}</td>
+          <td data-title="'Member Number'" sortable="'email'">{{member.mid}}</td>
+          <td data-title="'Total Measurements'" sortable="'measurement_count'" data-ng-bind-html="member.links.measurement_count"></td>
+          <td data-title="'Measurements in the last 28 days'" sortable="'measurement_count_last_28_days'">{{member.measurement_count_last_28_days}}</td>
+          <td data-ng-bind-html="member.links.show"></td>
+          <td data-ng-bind-html="member.links.edit"></td>
+          <td data-ng-bind-html="member.links.destroy"></td>
+        </tr>
+    </tbody>
+  </table>
+  <p><strong>Total members:</strong> {{tableParams.total()}}</p>
+</div>
 
 <br>
 
