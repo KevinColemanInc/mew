@@ -2,7 +2,7 @@
   window.member_id = '<%= @member.id %>';
 <% end %>
 
-<div ng-controller="EmailMessagesCtrl">
+<div ng-controller="EmailMessagesTableCtrl">
   <h1>Email Messages</h1>
 
   <div class="row">
@@ -13,7 +13,6 @@
       <button ng-click="tableParams.sorting({})" class="btn btn-default">Clear sorting</button>
     </div>
   </div>
-
   <table class='table' ng-table="tableParams">
     <tbody>
         <tr ng-repeat="email_message in $data">

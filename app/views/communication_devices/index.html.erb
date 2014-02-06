@@ -1,34 +1,32 @@
-<h1>Listing Communication devices</h1>
-<h4>Found <%= @communication_devices.count %> communication devices</h4>
+<div ng-controller="CommunicationDevicesTableCtrl">
+  <h1>Communication Devices</h1>
 
+  <div class="row">
+    <div class="col-md-8">
+      <input type="search" ng-model="filter.$" class="form-control" />
+    </div>
+    <div class="col-md-2 col-md-offset-2">
+      <button ng-click="tableParams.sorting({})" class="btn btn-default">Clear sorting</button>
+    </div>
+  </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>cdid</th>
-      <th>Phone number</th>
-      <th>Device type</th>
-      <th>Device model</th>
-      <th>Last communicated at</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @communication_devices.each do |communication_device| %>
-      <tr>
-        <td><%= communication_device.cdid %></td>
-        <td><%= communication_device.phone_number %></td>
-        <td><%= communication_device.device_type %></td>
-        <td><%= communication_device.device_model %></td>
-        <td><%= communication_device.last_communicated_at %></td>
-        <td><%= link_to 'Edit', edit_communication_device_path(communication_device) %></td>
-        <td><%= link_to 'Destroy', communication_device, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+  <table class='table' ng-table="tableParams">
+    <tbody>
+        <tr ng-repeat="communication_device in $data">
+          <td data-title="'Device ID'" sortable="'cdid'">{{communication_device.cdid}}</td>
+          <td data-title="'Phone Number'">{{communication_device.phone_number}}</td>
+          <td data-title="'Device Type'" sortable="'device_type'">{{communication_device.device_type}}</td>
+          <td data-title="'Device Model'" sortable="'device_model'">{{communication_device.device_model}}</td>
+          <td data-title="'Created At'" sortable="'created_at'">{{communication_device.created_at}}</td>
+          <td data-title="'Last Communication'" sortable="'last_communicated_at'">{{communication_device.last_communicated_at}}</td>
+          <td data-ng-bind-html="communication_device.links.manage_members"></td>
+          <td data-ng-bind-html="communication_device.links.show"></td>
+          <td data-ng-bind-html="communication_device.links.edit"></td>
+        </tr>
+    </tbody>
+  </table>
+  <p><strong>Total communication devices:</strong> {{tableParams.total()}}</p>
+</div>
 <br>
 
 <%= link_to 'New Communication device', new_communication_device_path %>

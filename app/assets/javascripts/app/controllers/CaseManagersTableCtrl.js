@@ -1,9 +1,5 @@
-app.controller('CaseManagersCtrl', ['$scope', '$resource', '$filter', 'ngTableParams', function($scope, $resource, $filter, ngTableParams) {
+app.controller('CaseManagersTableCtrl', ['$scope', '$resource', '$filter', 'ngTableParams', function($scope, $resource, $filter, ngTableParams) {
   var CaseManager = $resource('/case_managers.json');
-
-  $scope.$watch("filter.$", function () {
-      $scope.tableParams.reload();
-    });
 
   $scope.case_managers = CaseManager.query(function(response)
     {
@@ -27,5 +23,10 @@ app.controller('CaseManagersCtrl', ['$scope', '$resource', '$filter', 'ngTablePa
             $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
           }, $scope: $scope
       });
+
+      $scope.$watch("filter.$", function () {
+        $scope.tableParams.reload();
+      });
+
     });
 }]);

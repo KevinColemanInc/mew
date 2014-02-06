@@ -1,10 +1,7 @@
-app.controller('EmailMessagesCtrl', ['$scope', '$resource', '$filter', 'ngTableParams', function($scope, $resource, $filter, ngTableParams) {
+app.controller('EmailMessagesTableCtrl', ['$scope', '$resource', '$filter', 'ngTableParams', function($scope, $resource, $filter, ngTableParams) {
   var EmailMessage = $resource('/members/' + window.member_id + '/email_messages.json');
 
-  $scope.$watch("filter.$", function () {
-      $scope.tableParams.reload();
-    });
-
+  
   $scope.case_managers = EmailMessage.query(function(response)
     {
       $scope.tableParams = new ngTableParams({
@@ -27,5 +24,11 @@ app.controller('EmailMessagesCtrl', ['$scope', '$resource', '$filter', 'ngTableP
             $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
           }, $scope: $scope
       });
+
+      $scope.$watch("filter.$", function () {
+        $scope.tableParams.reload();
+      });
+
+
     });
 }]);

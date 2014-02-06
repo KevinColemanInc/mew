@@ -6,6 +6,10 @@ class MeasurementsController < ApplicationController
   # GET /measurement
   def index
     @measurements = Measurement.mine(@member)
+    respond_to do |format|
+      format.json
+      format.html
+    end
   end
 
   # GET /measurements/1

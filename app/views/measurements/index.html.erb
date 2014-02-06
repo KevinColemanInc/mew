@@ -1,33 +1,32 @@
-<h1>Listing measurements</h1>
-<h4>Found <%= @measurements.count %> measurements</h4>
+<%= javascript_tag do %>
+  window.member_id = '<%= @member.id %>';
+<% end %>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Glucose Level</th>
-      <th>Measured at</th>
-      <th>Retrieved at</th>
-      <th>Code Number</th>
-      <th>Reading Type</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+<div ng-controller="MeasurementsTableCtrl">
+  <h1>Measurements</h1>
 
-  <tbody>
-    <% @measurements.each do |measurement| %>
-      <tr>
-        <td><%= measurement.glucose_value %><% if measurement.archived? %>
-          <span class="label label-info">Archived</span>
-          <% end %></td>
-        <td><%= measurement.measured_at %></td>
-        <td><%= measurement.retrieved_at %></td>
-        <td><%= measurement.code_number %></td>
-        <td><%= measurement.reading_type %></td>
-        <td><%= link_to 'Edit', edit_member_measurement_path(@member, measurement) %></td>
-        <td><%= link_to 'Show', member_measurement_path(@member, measurement) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="row">
+    <div class="col-md-8">
+      <input type="search" ng-model="filter.$" class="form-control" />
+    </div>
+    <div class="col-md-2 col-md-offset-2">
+      <button ng-click="tableParams.sorting({})" class="btn btn-default">Clear sorting</button>
+    </div>
+  </div>
+  <table class='table' ng-table="tableParams">
+    <tbody>
+        <tr ng-repeat="measurement in $data">
+          <td data-title="'Glucose Value'" sortable="'glucose_value'">{{measurement.glucose_value}}</td>
+          <td data-title="'Measured At'" sortable="'measured_at'">{{measurement.measured_at}}</td>
+          <td data-title="'Code Number'" sortable="'code_number'">{{measurement.code_number}}</td>
+          <td data-title="'Reading Type'" sortable="'reading_type'">{{measurement.reading_type}}</td>
+          <td data-title="'Archived at'" sortable="'archived_at'">{{measurement.archived_at}}</td>
+          <td data-ng-bind-html="measurement.links.show"></td>
+          <td data-ng-bind-html="measurement.links.edit"></td>
+        </tr>
+    </tbody>
+  </table>
+  <p><strong>Total measurements:</strong> {{tableParams.total()}}</p>
+</div>
 
 <%= link_to 'New Measurement', new_member_measurement_path if current_user.is_a? CaseManager %>
