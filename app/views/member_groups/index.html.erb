@@ -1,30 +1,30 @@
-<h1>Listing Member Groups</h1>
-<h4>Found <%= @member_groups.count %> member groups</h4>
+<div ng-controller="MemberGroupsTableCtrl">
+  <h1>Member Groups</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Number of members</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
+  <div class="row">
+    <div class="col-md-8">
+      <input type="search" ng-model="filter.$" class="form-control" />
+    </div>
+    <div class="col-md-2 col-md-offset-2">
+      <button ng-click="tableParams.sorting({})" class="btn btn-default">Clear sorting</button>
+    </div>
+  </div>
 
-  <tbody>
-    <% @member_groups.each do |member_group| %>
-      <tr>
-        <td><%= member_group.name %></td>
-        <td><%= member_group.description %></td>
-        <td><%= member_group.grouped_members.length %></td>
-        <td><%= link_to 'Manage Members', member_group_grouped_members_path(member_group) %></td>
-        <td><%= link_to 'Show', member_group %></td>
-        <td><%= link_to 'Edit', edit_member_group_path(member_group) %></td>
-        <td><%= link_to 'Destroy', member_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <table class='table' ng-table="tableParams">
+    <tbody>
+        <tr ng-repeat="member_group in $data">
+          <td data-title="'Name'" sortable="'name'">{{member_group.name}}</td>
+          <td data-title="'Description'" sortable="'description'">{{member_group.description}}</td>
+          <td data-title="'Number of Members'" sortable="'number_of_members'">{{member_group.number_of_members}}</td>
+          <td data-ng-bind-html="member_group.links.grouped_members"></td>
+          <td data-ng-bind-html="member_group.links.show"></td>
+          <td data-ng-bind-html="member_group.links.edit"></td>
+          <td data-ng-bind-html="member_group.links.destroy"></td>
+        </tr>
+    </tbody>
+  </table>
+  <p><strong>Total member groups:</strong> {{tableParams.total()}}</p>
+</div>
 <br>
 
-<%= link_to 'New Member group', new_member_group_path %>
+<%= link_to 'New member group', new_member_group_path %>

@@ -9,7 +9,7 @@ class MemberGroupsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render :json => @member_groups }
+      format.json
     end
   end
 
