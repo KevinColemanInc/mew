@@ -1,17 +1,17 @@
-app.controller('CaseManagersCtrl', ['$scope', '$resource', '$filter', 'ngTableParams', function($scope, $resource, $filter, ngTableParams) {
-  var CaseManager = $resource('/case_managers.json');
+app.controller('EmailMessagesCtrl', ['$scope', '$resource', '$filter', 'ngTableParams', function($scope, $resource, $filter, ngTableParams) {
+  var EmailMessage = $resource('/members/' + window.member_id + '/email_messages.json');
 
   $scope.$watch("filter.$", function () {
       $scope.tableParams.reload();
     });
 
-  $scope.case_managers = CaseManager.query(function(response)
+  $scope.case_managers = EmailMessage.query(function(response)
     {
       $scope.tableParams = new ngTableParams({
           page: 1,            // show first page
           count: 10,          // count per page
           sorting: {
-            full_name: 'asc'     // initial sorting
+            created_at: 'desc'     // initial sorting
           }
       }, {
           total: $scope.case_managers.length, // length of data

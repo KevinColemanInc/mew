@@ -3,7 +3,14 @@ class EmailMessagesController < ApplicationController
 
   # GET /email_messages
   def index
-    @email_messages = EmailMessage.where(member_id: params[:id])
+    @member = Member.find(params[:member_id])
+
+    @email_messages = EmailMessage.where(member: @member)
+    
+    respond_to do |format|
+      format.json
+      format.html
+    end
   end
 
   # GET /email_messages/1
@@ -14,20 +21,21 @@ class EmailMessagesController < ApplicationController
   # GET /email_messages/new
   def new
     @email_message = EmailMessage.new
-    @email_message.to = Member.find(params[:id]).email
+    @member = Member.find(params[:member_id])
+    @email_message.to = @member.email
     @email_message.from = current_user.email
   end
 
   # POST /email_messages
   def create
     @email_message = EmailMessage.new(email_message_params)
-    @email_message.member = Member.find(params[:id])
+    @email_message.member = Member.find(params[:member_id])
     @email_message.to = @email_message.member.email
     @email_message.from = current_user.email
     @email_message.case_manager = current_user
 
     if @email_message.save
-      redirect_to email_message_path(@email_message.member, @email_message), notice: 'Email message was successfully created.'
+      redirect_to member_email_message_path(@email_message.member, @email_message), notice: 'Email message was successfully created.'
     else
       render action: 'new'
     end
@@ -36,7 +44,8 @@ class EmailMessagesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_email_message
-      @email_message = EmailMessage.find(params[:email_message_id])
+      @email_message = EmailMessage.find(params[:id])
+      @member = Member.find(params[:member_id])
     end
 
     # Only allow a trusted parameter "white list" through.

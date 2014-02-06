@@ -1,30 +1,32 @@
-<h1>Listing Email Messages</h1>
-<h4>Found <%= @email_messages.count %> email messages</h4>
+<%= javascript_tag do %>
+  window.member_id = '<%= @member.id %>';
+<% end %>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>To</th>
-      <th>From</th>
-      <th>Body</th>
-      <th>Member</th>
-      <th>Case manager</th>
-      <th></th>
-    </tr>
-  </thead>
+<div ng-controller="EmailMessagesCtrl">
+  <h1>Email Messages</h1>
 
-  <tbody>
-    <% @email_messages.each do |email_message| %>
-      <tr>
-        <td><%= email_message.to %></td>
-        <td><%= email_message.from %></td>
-        <td><%= email_message.body %></td>
-        <td><%= email_message.member.name %></td>
-        <td><%= email_message.case_manager.name %></td>
-        <td><%= link_to 'Show', email_message_path(email_message.member, email_message) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="row">
+    <div class="col-md-8">
+      <input type="search" ng-model="filter.$" class="form-control" />
+    </div>
+    <div class="col-md-2 col-md-offset-2">
+      <button ng-click="tableParams.sorting({})" class="btn btn-default">Clear sorting</button>
+    </div>
+  </div>
 
+  <table class='table' ng-table="tableParams">
+    <tbody>
+        <tr ng-repeat="email_message in $data">
+          <td data-title="'From'" sortable="'from'">{{email_message.from}}</td>
+          <td data-title="'Body'">{{email_message.body}}</td>
+          <td data-title="'Case Manager'" sortable="'case_manager_name'">{{email_message.case_manager_name}}</td>
+          <td data-title="'Sent on'" sortable="'created_at'">{{email_message.created_at}}</td>
+          <td data-ng-bind-html="email_message.links.show"></td>
+        </tr>
+    </tbody>
+  </table>
+  <p><strong>Total email messages:</strong> {{tableParams.total()}}</p>
+</div>
 <br>
+
+<%= link_to 'New email message', new_member_email_message_path(@member) %>

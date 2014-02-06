@@ -1,13 +1,21 @@
-<%= simple_form_for(@email_message) do |f| %>
-  <%= f.error_notification %>
+<%= form_for(@email_message, url: member_email_messages_path(@member)) do |f| %>
 
-  <div class="inputs">
-    <%= f.input :to, disabled: "disabled" %>
-    <%= f.input :from, disabled: "disabled" %>
-    <%= f.input :body %>
+  <div class="form-group">
+    <label for="title"><%= f.label :to %></label>
+    <%= f.text_field :to, :class => "form-control", disabled: "disabled" %>
+  </div>
+
+  <div class="form-group">
+    <label for="title"><%= f.label :from %></label>
+    <%= f.text_field :from, :class => "form-control", disabled: "disabled" %>
+  </div>
+
+  <div class="form-group">
+    <label for="title"><%= f.label :body %></label>
+    <%= f.text_area :body, :class => "form-control", :placeholder => "Enter body", height: "15" %>
   </div>
 
   <div class="actions">
-    <%= f.button :submit %>
+    <%= f.submit class: "btn btn-default" %>
   </div>
 <% end %>
