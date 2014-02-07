@@ -4,7 +4,11 @@ class MetersController < ApplicationController
   # GET /meters
   # GET /meters.json
   def index
-    @meters = Meter.all
+    if params[:member_id]
+      @meters = Meter.joins("join meters_users on meters_users.meter_id = meters.id").where("meters_users.member_id = ?", params[:member_id])
+    else
+      @meters = Meter.all
+    end
     
     respond_to do |format|
       format.html

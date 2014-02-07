@@ -1,7 +1,8 @@
 app.controller('MetersTableCtrl', ['$scope', '$resource', '$filter', 'ngTableParams', function($scope, $resource, $filter, ngTableParams) {
-  var Meter = $resource('/meters.json');
   
-  $scope.meters = Meter.query(function(response)
+  var Meter = $resource('/meters.json');
+
+  $scope.meters = Meter.query({member_id: window.member_id },function(response)
     {
       $scope.tableParams = new ngTableParams({
           page: 1,            // show first page

@@ -1,32 +1,4 @@
-<%= javascript_tag do %>
-  window.member_id = '<%= @member.id %>';
-<% end %>
-
-<div ng-controller="MeasurementsTableCtrl">
-  <h1>Measurements</h1>
-
-  <div class="row">
-    <div class="col-md-8">
-      <input type="search" ng-model="filter.$" class="form-control" />
-    </div>
-    <div class="col-md-2 col-md-offset-2">
-      <button ng-click="tableParams.sorting({})" class="btn btn-default">Clear sorting</button>
-    </div>
-  </div>
-  <table class='table' ng-table="tableParams">
-    <tbody>
-        <tr ng-repeat="measurement in $data">
-          <td data-title="'Glucose Value'" sortable="'glucose_value'">{{measurement.glucose_value}}</td>
-          <td data-title="'Measured At'" sortable="'measured_at'">{{measurement.measured_at}}</td>
-          <td data-title="'Code Number'" sortable="'code_number'">{{measurement.code_number}}</td>
-          <td data-title="'Reading Type'" sortable="'reading_type'">{{measurement.reading_type}}</td>
-          <td data-title="'Archived at'" sortable="'archived_at'">{{measurement.archived_at}}</td>
-          <td data-ng-bind-html="measurement.links.show"></td>
-          <td data-ng-bind-html="measurement.links.edit"></td>
-        </tr>
-    </tbody>
-  </table>
-  <p><strong>Total measurements:</strong> {{tableParams.total()}}</p>
-</div>
+<h1>Measurements</h1>
+<%= render 'table' %>
 
 <%= link_to 'New Measurement', new_member_measurement_path if current_user.is_a? CaseManager %>

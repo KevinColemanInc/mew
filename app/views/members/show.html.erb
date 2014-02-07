@@ -1,19 +1,46 @@
-<p id="notice"><%= notice %></p>
+<h1>Member Profile</h1>
+<div class="row">
+  <div class="col-md-3">
+    <div class="row">
+      <div class="col-md-12 well">
+        <h2><%= @member.name %></h2><%= link_to 'Edit', edit_member_path(@member) %>
+        <p>Phone: <%= number_to_phone @member.phone_number %></p>
+        <p><%= link_to 'Message history', member_email_messages_path(@member), class: "btn btn-primary" %> <%= link_to 'Contact', new_member_email_message_path(@member), class: "btn btn-success" %> </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 well">
+        <h2>Alerts</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 well">
+        <h2>Notes</h2>
+        <%= form_for @member do |f| %>
+          <div class="form-group">
+            <label for="title"><%= f.label :notes %></label>
+            <%= f.text_area :note, :class => "form-control", :placeholder => "Enter notes", style: "width: 100%"  %>
+          </div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @member.email %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @member.name %> <% if @member.archived? %>
-          <span class="label label-info">Archived</span>
-          <% end %></td>
-</p>
-
-<%= link_to 'View Measurement history', member_measurements_path(@member) %> | 
-<%= link_to 'View Message history', member_email_messages_path(@member) %> |
-<%= link_to 'Contact', new_member_email_message_path(@member) %> | 
-<%= link_to 'Edit', edit_member_path(@member) %> |
-<%= link_to 'Back', members_path %>
+          <div class="actions">
+            <%= f.button :Save, class: "btn btn-default" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8 col-md-offset-1">
+    <div class="row">
+      <div class="col-md-12 well">
+        <h2>Meters</h2>
+        <%= render 'meters/table' %>
+      </div>
+    </div>
+     <div class="row">
+      <div class="col-md-12 well">
+      <h2>Measurements</h2>
+      <%= render 'measurements/table' %>
+      </div>
+    </div>
+  </div>
+</div>

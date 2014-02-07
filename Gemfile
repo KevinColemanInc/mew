@@ -28,9 +28,6 @@ gem 'turbolinks'
 gem 'jbuilder'
 
 gem "tzinfo-data", group: :development
-
-gem 'simple_form'
-
 gem 'human_power'
 
 # Use unicorn as the app server
