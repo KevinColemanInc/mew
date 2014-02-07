@@ -36,7 +36,7 @@
         <% elsif current_user.is_a? Member %>
           <li><%= link_to 'My Case Managers', case_managers_path %></li>
         <% end %>
-      <li><%= link_to 'Account', edit_user_registration_path %></li>
+      <li><%= link_to current_user.email, edit_user_registration_path %></li>
       <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
       <% else %>
       <li><%= link_to 'Login', new_user_session_path %></li>
