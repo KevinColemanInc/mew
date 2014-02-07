@@ -26,7 +26,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 gem 'jbuilder'
-
+gem 'simple_form'
 gem "tzinfo-data", group: :development
 gem 'human_power'
 
