@@ -19,8 +19,8 @@
 /* Kevin's Custom CSS */
 .search-box
 {
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 0px;
     width: 250px;
     display: inline !important;
 }
