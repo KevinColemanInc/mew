@@ -15,6 +15,18 @@
  */
 
 
+
+/* Kevin's Custom CSS */
+.search-box
+{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 250px;
+    display: inline !important;
+}
+
+/* END of Kevin's CSS */
+
 .ng-table th {
     -webkit-touch-callout: none;
     -webkit-user-select: none;

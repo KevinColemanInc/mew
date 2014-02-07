@@ -1,12 +1,14 @@
 <div ng-controller="CaseManagersTableCtrl">
-  <h1>Case Managers</h1>
-
   <div class="row">
     <div class="col-md-6">
-      <input type="search" ng-model="filter.$" class="form-control" />
+      <h1>Case Managers</h1>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <input type="search" ng-model="filter.$"class="search-box form-control width-auto" />
+      </div>
     </div>
   </div>
-
   <table class='table' ng-table="tableParams">
     <tbody>
         <tr ng-repeat="case_manager in $data">
