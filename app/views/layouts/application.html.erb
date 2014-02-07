@@ -8,6 +8,7 @@
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">
+<div class="container">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -35,7 +36,7 @@
         <% elsif current_user.is_a? Member %>
           <li><%= link_to 'My Case Managers', case_managers_path %></li>
         <% end %>
-      <li><%= link_to 'Change Password', edit_user_registration_path %></li>
+      <li><%= link_to 'Account', edit_user_registration_path %></li>
       <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
       <% else %>
       <li><%= link_to 'Login', new_user_session_path %></li>
@@ -43,6 +44,7 @@
       
     </ul>
   </div><!-- /.navbar-collapse -->
+  </div>
 </nav>
 
 <div class="container">
