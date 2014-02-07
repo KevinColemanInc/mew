@@ -19,7 +19,7 @@
   </div>
 <% end %>
 <% if @meter.id %>
-  <div class="row" ng-controller="CommunicationDevicesCtrl">
+  <div class="row" ng-controller="CommunicationDevicesCtrl" ng-cloak>
     <div class="col-md-6">
       <h1>Current communication devices for meter</h1>
       <input type="search" ng-model="current_communication_device_query" class="form-control" placeholder: "Search" />
