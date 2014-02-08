@@ -6,56 +6,61 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<nav class="navbar navbar-default" role="navigation">
-<div class="container">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="/"><i class="fa fa-hospital-o"></i> Focused Care Solutions</a>
-  </div>
+  <body>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="fa fa-hospital-o"></i> Focused Care Solutions</a>
+        </div>
 
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav navbar-right">
-      <% if current_user %>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_user %>
 
-        <% if current_user.is_a? CaseManager %>
-            <% if current_user.has_role? :case_manager_admin %>
-              <li><%= link_to 'Case Managers', case_managers_path %></li>
-              <li><%= link_to 'Meters', meters_path %></li>
-              <li><%= link_to 'Communication Devices', communication_devices_path %></li>
+              <% if current_user.is_a? CaseManager %>
+                  <% if current_user.has_role? :case_manager_admin %>
+                    <li><%= link_to 'Case Managers', case_managers_path %></li>
+                    <li><%= link_to 'Meters', meters_path %></li>
+                    <li><%= link_to 'Communication Devices', communication_devices_path %></li>
+                  <% end %>
+                <li><%= link_to 'Members', members_path %></li>
+                <li><%= link_to 'Member Groups', member_groups_path %></li>
+              <% elsif current_user.is_a? Member %>
+                <li><%= link_to 'My Case Managers', case_managers_path %></li>
+              <% end %>
+            <li><%= link_to current_user.email, edit_user_registration_path %></li>
+            <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+            <% else %>
+            <li><%= link_to 'Login', new_user_session_path %></li>
             <% end %>
-          <li><%= link_to 'Members', members_path %></li>
-          <li><%= link_to 'Member Groups', member_groups_path %></li>
-        <% elsif current_user.is_a? Member %>
-          <li><%= link_to 'My Case Managers', case_managers_path %></li>
-        <% end %>
-      <li><%= link_to current_user.email, edit_user_registration_path %></li>
-      <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
-      <% else %>
-      <li><%= link_to 'Login', new_user_session_path %></li>
-      <% end %>
-      
-    </ul>
-  </div><!-- /.navbar-collapse -->
-  </div>
-</nav>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </nav>
 
-<div class="container">
-  <% if notice %>
-  <p class="notice"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-  <p class="alert"><%= alert %></p>
-  <% end %>
-  <%= yield %>
-</div>
-<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-</body>
+    <div class="container" id="wrap">
+      <% if notice %>
+      <p class="notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+      <p class="alert"><%= alert %></p>
+      <% end %>
+      <%= yield %>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>© Focused Care Solutions 2014</p>
+      </div>
+    </footer>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  </body>
 </html>

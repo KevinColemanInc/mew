@@ -18,6 +18,18 @@
 
 
 /* Kevin's Custom CSS */
+html, body {
+    height: 100%;
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by it's height */
+  margin: 0 auto -60px;
+}
+
 .search-box
 {
     margin-top: 5px;
@@ -40,7 +52,14 @@
 
 }
 
-
+footer 
+{
+    color: #666;
+    background: #fafafa;
+    padding: 17px 0 18px 0;
+    border-top: 1px solid #000;
+    border-color: #e7e7e7;
+}
 
 /* END of Kevin's CSS */
 
