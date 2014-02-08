@@ -12,6 +12,7 @@
  *= require_tree .
  *= require bootstrap
  *= require main
+ *= require nv.d3
  */
 
 
@@ -31,6 +32,12 @@
     margin-bottom: 0px;
     width: 250px;
     display: inline !important;
+}
+
+.measurement_chart
+{
+    width: 100%;
+
 }
 
 

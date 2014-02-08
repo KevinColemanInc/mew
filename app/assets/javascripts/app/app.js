@@ -1,1 +1,1 @@
-var app = angular.module("Mew", ['ngResource', 'ngTable', 'ngSanitize']);
+var app = angular.module("Mew", ['ngResource', 'ngTable', 'ngSanitize', 'nvd3ChartDirectives']);

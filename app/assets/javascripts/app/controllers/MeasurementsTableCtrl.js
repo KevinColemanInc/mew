@@ -1,8 +1,23 @@
 app.controller('MeasurementsTableCtrl', ['$scope', '$resource', '$filter', 'ngTableParams', function($scope, $resource, $filter, ngTableParams) {
   var Measurement = $resource('/members/' + window.member_id + '/measurements.json');
 
+
+  $scope.xAxisTickFormatFunction = function(){
+        return function(d){
+            return d3.time.format('%x')(new Date(d*1000));
+        }
+    }
+
   $scope.measurements = Measurement.query(function(response)
     {
+
+      $scope.chartData = [{ "key": "Glucose Readings",
+                                  "values": [] }];
+
+      angular.forEach(response, function (item) {
+          $scope.chartData[0]["values"].push([item.measured_at, item.glucose_value]);
+      });
+
       $scope.tableParams = new ngTableParams({
           page: 1,            // show first page
           count: 10,          // count per page

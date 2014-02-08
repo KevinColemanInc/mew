@@ -10,9 +10,12 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require d3.v3
+//= require nv.d3
 //= require angular
 //= require angular-route
 //= require angular-resource
+//= require angularjs-nvd3-directives
 //= require ng-table.src.js
 //= require angular-sanitize
 //= require jquery
@@ -20,3 +23,4 @@
 //= require_tree .
 //= require_tree ./app
 //= require bootstrap
+

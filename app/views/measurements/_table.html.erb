@@ -3,6 +3,21 @@
 <% end %>
 
 <div class="row" ng-controller="MeasurementsTableCtrl" ng-cloak>
+
+  <nvd3-line-chart class='measurement_chart'
+      data="chartData"
+        id="exampleId"
+        xAxisTickFormat="xAxisTickFormatFunction()"
+        yAxisTickFormat="yAxisTickFormatFunction()"
+        height="300"
+        showXAxis="true"
+        showYAxis="true"
+        isArea="true"
+        interactive="true"
+        tooltips="true">
+          <svg></svg>
+    </nvd3-line-chart>
+
   <div class="col-md-12">
     <div class="row">
       <div class="col-md-6">
