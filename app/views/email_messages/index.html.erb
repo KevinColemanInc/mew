@@ -16,11 +16,10 @@
   <table class='table table-hover table-condensed' ng-table="tableParams">
     <tbody>
         <tr ng-repeat="email_message in $data">
+          <td data-title="'Sent on'" sortable="'created_at'" data-ng-bind-html="email_message.links.show"></td>
           <td data-title="'From'" sortable="'from'">{{email_message.from}}</td>
           <td data-title="'Body'">{{email_message.body}}</td>
           <td data-title="'Case Manager'" sortable="'case_manager_name'">{{email_message.case_manager_name}}</td>
-          <td data-title="'Sent on'" sortable="'created_at'">{{email_message.created_at | date: 'short'}}</td>
-          <td data-ng-bind-html="email_message.links.show"></td>
         </tr>
     </tbody>
   </table>

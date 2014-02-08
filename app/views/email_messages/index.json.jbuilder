@@ -7,7 +7,7 @@ json.array! @email_messages do |email_message|
   json.created_at email_message.created_at
 
   json.links do
-    json.show link_to 'Show', member_email_message_path(email_message.member, email_message)
+    json.show link_to datetime_to_string(email_messat.created_at), member_email_message_path(email_message.member, email_message)
   end
 
 end

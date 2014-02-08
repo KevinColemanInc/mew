@@ -17,14 +17,14 @@
     <div class="row">
         <table class='table col-md-12 table-hover table-condensed' ng-table="tableParams">
           <tbody>
-              <tr ng-repeat="measurement in $data" ng-class="{'danger': measurement.glucose_value >= 126, 'warning': (measurement.glucose_value < 126 || measurement.glucose_value >= 101)}">
+              <tr ng-repeat="measurement in $data" 
+              ng-class="{'danger': measurement.glucose_value >= 126, 'warning': (measurement.glucose_value < 126 || measurement.glucose_value >= 101)}" 
+              >
+                <td data-title="'Measured At'" sortable="'measured_at'" data-ng-bind-html="measurement.links.show"></td>
                 <td data-title="'Glucose Value'" sortable="'glucose_value'">{{measurement.glucose_value}}</td>
-                <td data-title="'Measured At'" sortable="'measured_at'">{{measurement.measured_at | date: 'short' }}</td>
                 <td data-title="'Code Number'" sortable="'code_number'">{{measurement.code_number}}</td>
                 <td data-title="'Reading Type'" sortable="'reading_type'">{{measurement.reading_type}}</td>
                 <td data-title="'Archived at'" sortable="'archived_at'">{{measurement.archived_at | date: 'short' }}</td>
-                <td data-ng-bind-html="measurement.links.show"></td>
-                <td data-ng-bind-html="measurement.links.edit"></td>
               </tr>
           </tbody>
         </table>

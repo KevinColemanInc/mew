@@ -9,8 +9,7 @@ json.array! @measurements do |measurement|
   json.archived_at measurement.archived_at
 
   json.links do
-    json.edit link_to 'Edit', edit_member_measurement_path(measurement.member, measurement)
-    json.show link_to 'Show', member_measurement_path(measurement.member, measurement)
+    json.show link_to datetime_to_string(measurement.created_at), member_measurement_path(measurement.member, measurement)
   end
 
 end

@@ -13,11 +13,8 @@
   <table class='table table-hover table-condensed' ng-table="tableParams">
     <tbody>
         <tr ng-repeat="meter in $data">
-          <td data-title="'Meter ID'" sortable="'mid'">{{meter.mid}}</td>
+          <td data-title="'Meter ID'" sortable="'mid'" data-ng-bind-html="meter.links.show"></td>
           <td data-title="'Bluetooth Mac'" sortable="'bluetooth_mac'">{{meter.bluetooth_mac}}</td>
-          <td data-ng-bind-html="meter.links.show"></td>
-          <td data-ng-bind-html="meter.links.edit"></td>
-          <td data-ng-bind-html="meter.links.destroy"></td>
         </tr>
     </tbody>
   </table>

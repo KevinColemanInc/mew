@@ -8,7 +8,6 @@ json.array! @communication_devices do |communication_device|
   json.last_communicated_at communication_device.last_communicated_at
 
   json.links do
-    json.edit link_to 'Edit', edit_communication_device_path(communication_device)
-    json.show link_to 'Show', communication_device
+    json.show link_to communication_device.cdid, communication_device
   end
 end
