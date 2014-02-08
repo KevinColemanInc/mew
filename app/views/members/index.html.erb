@@ -14,7 +14,7 @@
     <tbody>
         <tr ng-repeat="member in $data">
           <td data-title="'Name'" sortable="'name'" data-ng-bind-html="member.links.show"></td>
-          <td data-title="'Member ID'" sortable="'email'">{{member.mid}}</td>
+          <td data-title="'Member ID'" sortable="'email'">{{member.member_number}}</td>
           <td data-title="'Total Measurements'" sortable="'measurement_count'" data-ng-bind-html="member.links.measurement_count"></td>
           <td data-title="'Measurements in the last 28 days'" sortable="'measurement_count_last_28_days'">{{member.measurement_count_last_28_days}}</td>
         </tr>
