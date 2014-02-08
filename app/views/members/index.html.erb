@@ -25,7 +25,4 @@
   </table>
   <p><strong>Total members:</strong> {{tableParams.total()}}</p>
 </div>
-
-<br>
-
 <%= link_to 'New Member', new_member_path if current_user.has_role? :case_manager_admin  %>
