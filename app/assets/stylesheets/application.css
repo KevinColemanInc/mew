@@ -25,6 +25,16 @@
     display: inline !important;
 }
 
+.search-label
+{
+    margin-top: 12px;
+    margin-bottom: 0px;
+    width: 250px;
+    display: inline !important;
+}
+
+
+
 /* END of Kevin's CSS */
 
 .ng-table th {
