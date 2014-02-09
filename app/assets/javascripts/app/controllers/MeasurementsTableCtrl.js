@@ -8,6 +8,28 @@ app.controller('MeasurementsTableCtrl', ['$scope', '$resource', '$filter', 'ngTa
         }
     }
 
+                  //  Base        High        Low 
+  var colorArray = ['#75caeb', '#ff4136', '#ff851b'];
+  $scope.colorFunction = function() {
+    return function(d, i) {
+
+      console.log('ll ' + d[1] + ' ' + i + ' ' + d);
+
+        if (d[1] >= 125) {
+          return colorArray[1];
+        } 
+        else if (d[1] < 125 && d[1] > 100)
+        {
+          return colorArray[0];
+        }
+        else if (d[1] < 100)
+        {
+          return colorArray[2];
+        }
+
+    };
+  }
+
   $scope.measurements = Measurement.query(function(response)
     {
 

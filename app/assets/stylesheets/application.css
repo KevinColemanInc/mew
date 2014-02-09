@@ -22,11 +22,6 @@ html, body {
     height: 100%;
 }
 
-body {
-padding-top: 70px;
-padding-bottom: 20px;
-}
-
 #wrap {
   min-height: 100%;
   height: auto !important;
