@@ -10,11 +10,6 @@
     <label for="exampleInputPassword1">Password</label>
     <%= f.password_field :password, :required => false, class: "form-control" %>
   </div>
-  <div class="checkbox">
-    <label>
-    <%= f.check_box :remember_me, :as => :boolean, class: "form-control" if devise_mapping.rememberable? %>
-    </label>
-  </div>
   <%= f.submit "Sign in", class:"btn btn-default" %>
 <% end %>
 

@@ -18,7 +18,7 @@ app.controller('MeasurementsTableCtrl', ['$scope', '$resource', '$filter', 'ngTa
         if (d[1] >= 125) {
           return colorArray[1];
         } 
-        else if (d[1] < 125 && d[1] > 100)
+        else if (d[1] < 125 && d[1] >= 100)
         {
           return colorArray[0];
         }
