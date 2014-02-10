@@ -5,7 +5,7 @@ class MeasurementsController < ApplicationController
 
   # GET /measurement
   def index
-    @measurements = Measurement.mine(@member)
+    @measurements = Measurement.mine(@member).where(archived_at: nil)
     respond_to do |format|
       format.json
       format.html
