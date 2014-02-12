@@ -12,7 +12,7 @@ class MetersController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.json 
+      format.json
     end
   end
 

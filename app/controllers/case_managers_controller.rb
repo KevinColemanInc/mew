@@ -14,8 +14,8 @@ class CaseManagersController < ApplicationController
     end
 
     respond_to do |format|
-      format.json
       format.html
+      format.json
     end
   end
 

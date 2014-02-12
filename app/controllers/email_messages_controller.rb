@@ -8,8 +8,8 @@ class EmailMessagesController < ApplicationController
     @email_messages = EmailMessage.where(member: @member)
     
     respond_to do |format|
-      format.json
       format.html
+      format.json
     end
   end
 

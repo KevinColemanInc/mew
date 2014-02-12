@@ -7,8 +7,8 @@ class MeasurementsController < ApplicationController
   def index
     @measurements = Measurement.mine(@member).where(archived_at: nil)
     respond_to do |format|
-      format.json
       format.html
+      format.json
     end
   end
 

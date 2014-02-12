@@ -1,5 +1,12 @@
 Mew::Application.routes.draw do
 
+  namespace :api, :constraints => {:format => /(json)/} do
+    namespace :v1 do
+      devise_for :users, controllers: {:sessions => 'api/v1/users/sessions'}
+      resources :measurements, only: [:create, :show, :index]
+    end
+  end
+
   resources :case_managers do 
     resources :managed_members, only: [:index, :create, :destroy]
   end
