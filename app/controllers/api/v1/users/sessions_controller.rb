@@ -2,7 +2,7 @@ class API::V1::Users::SessionsController < Devise::SessionsController
   respond_to :json
   
   def create
-    if params[:user][:email].nil? or params[:user][:password].nil?
+    if params[:user] or params[:user][:email].nil? or params[:user][:password].nil?
       @errors = "The request must contain the user email and password."
       return
     end
