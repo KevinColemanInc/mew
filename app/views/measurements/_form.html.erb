@@ -28,6 +28,11 @@
   </div>
 
   <div class="form-group">
+    <label for="title"><%= f.label :note %></label>
+    <%= f.text_area :note, :class => "form-control", :placeholder => "Enter a note"  %>
+  </div>
+
+  <div class="form-group">
     <label for="title"><%= f.label :is_archived? %></label>
     <%= check_box("measurement", "archive", checked: @measurement.archived? ? true : false)  %>
   </div>
