@@ -15,7 +15,7 @@
       <tbody>
         <tr ng-repeat="current_member in current_members | filter:current_member_query">
           <td>{{current_member.member.last_name}}, {{current_member.member.first_name}}</td>
-          <td><button ng-click="removeGroupedMember(current_member)">Remove</button></td>
+          <td><button ng-click="removeGroupedMember(current_member)" class="btn btn-default">Remove</button></td>
         </tr>
       </tbody>
     </table>
@@ -33,7 +33,7 @@
       <tbody>
         <tr ng-repeat="new_member in new_members | filter:new_member_query | orderBy:last_name">
           <td>{{new_member.last_name}}, {{new_member.first_name}}</td>
-          <td><button ng-click="addMember(new_member)">Add</button></td>
+          <td><button ng-click="addMember(new_member)" class="btn btn-default">Add</button></td>
         </tr>
       </tbody>
     </table>

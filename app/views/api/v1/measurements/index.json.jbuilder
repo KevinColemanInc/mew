@@ -1,3 +1,6 @@
+json.status @errors ? 'fail' : 'ok'
+json.errormsg @errors if @errors
+
 json.array! @measurements do |measurement|
   json.id measurement.id
   json.measured_at measurement.measured_at.to_i

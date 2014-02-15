@@ -1,4 +1,5 @@
-json.status @errors ? 'failure' : 'successful'
+json.status @errors ? 'fail' : 'ok'
+json.errormsg @errors if @errors
 
 json.measurement do
   if @measurement.id

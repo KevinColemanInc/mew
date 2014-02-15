@@ -27,6 +27,27 @@
         <% end %>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-12 well">
+        <h2><i class="fa fa-user-md"></i>Case Managers</h2>
+        <table class="table">
+        <th>
+          <tr>
+            <td>Name</td>
+            <td></td>
+          </tr>
+        </th>
+        <tbody>
+          <% @member.managed_members.each do |managed_members| %>
+          <tr>
+            <td><%= managed_members.case_manager.name %></td>
+            <td><% if managed_members.primary %><span class="label label-success">Primary</span><% end %></td>
+          </tr>
+          <% end %>
+        </tbody>
+        </table>
+      </div>
+    </div>
   </div>
   <div class="col-md-8 col-md-offset-1">
     <div class="row">

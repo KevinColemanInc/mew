@@ -6,4 +6,11 @@ class ManagedMember < ActiveRecord::Base
   
   belongs_to :case_manager
   belongs_to :member
+
+  before_save :remove_primary_for_other_cm
+  
+  private
+  def remove_primary_for_other_cm
+      ManagedMember.where(member: self.member).update_all("primary = 'false'") if self.primary
+  end
 end
