@@ -14,21 +14,21 @@ format - should always equal 'json'
 #### Successful response with preferred_meter
 ```json
 {
-  status: 'ok',
-  user: {
-    id: '2b666b4c-2baf-4c3c-9b02-52421f121a4d'
-    display: 'Coleman, Kevin',
-    member_id: '123123',
-    authentication_token: 'ABCD',
-    case_manager: {
-      name: 'Patz, Ben',
-      phone_number: '407.555.5555'
-    },
-    preferred_meter: {
-      id: '2b666b4c-2baf-4c3c-9b02-52421f121a4d',
-      mid: 'Charlie Alpha Brown',
-      bluetooth_mac: 'ABD'
-    }
+  "status": "ok",
+  "user": {
+      "id": "5d2e0fb9-8ebc-4469-aea8-44b0846fe641",
+      "display": "coleman, kevin",
+      "member_id": "1391882870",
+      "authentication_token": "eqw8wEs27RN5-WrffxAd",
+      "case_manager": {
+          "name": "coleman, kevin",
+          "phone_number": null
+      },
+      "preferred_meter": {
+        "id": "2b666b4c-2baf-4c3c-9b02-52421f121a4d",
+        "mid": "Charlie Alpha Brown",
+        "bluetooth_mac": ""
+      }
   }
 }
 ```
