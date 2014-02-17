@@ -2,6 +2,7 @@ class GroupedMembersController < ApplicationController
   before_action :set_grouped_member, only: [:update, :destroy]
   before_filter :authenticate_user!
   
+  load_and_authorize_resource
 
   def index
     @member_group = MemberGroup.find(params[:member_group_id])

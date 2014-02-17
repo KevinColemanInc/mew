@@ -10,6 +10,12 @@ GIT
       warden (~> 1.2.3)
 
 GIT
+  remote: git://github.com/ryanb/cancan.git
+  revision: 4560928dc375f9b31de00381c98334eb6aabc4b9
+  specs:
+    cancan (1.6.10)
+
+GIT
   remote: git://github.com/sferik/rails_admin.git
   revision: 2010c962a577b52e0f32386e04f267cf39c0162a
   specs:
@@ -68,7 +74,6 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     callsite (0.0.11)
-    cancan (1.6.10)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -209,7 +214,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
-  cancan
+  cancan!
   devise!
   faker
   high_voltage (~> 2.1.0)

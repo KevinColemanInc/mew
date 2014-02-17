@@ -197,6 +197,41 @@ format - should always equal 'json'
 }
 ```
 
+### Get a specific measurement for a member
+GET /api/v1/measurements/:id
+
+#### Required params
+id - Id of the measurement
+
+#### Successful response
+```json
+{
+  "status": "ok",
+  "measurement": {
+      "id": "9411188b-2d4e-4b5e-a9e7-668e0e17520c",
+      "measured_at": "2014-02-17T07:22:05.000Z",
+      "glucose_value": 10,
+      "retrieved_at": "2014-02-17T07:22:05.000Z",
+      "created_at": "2014-02-17T07:22:18.025Z",
+      "code_number": "1",
+      "reading_type": "1",
+      "member_id": "5d2e0fb9-8ebc-4469-aea8-44b0846fe641",
+      "token": "13365278b99394ec23c2927db3f8c3aa",
+      "note": null
+  }
+}
+```
+
+#### Authorization Failure
+Users may try to access information that they do not have permission to access.  If the request is looking for an HTML response, mew currently returns a 404 page not found.  If the request is looking for a json format, the following will return:
+
+```json
+{
+  "status": "fail",
+  "errormsg": "You are not authorized to access this page."
+}
+```
+
 ## RoR work flow
 
 ### Starting up RoR

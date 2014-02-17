@@ -41,7 +41,7 @@ group :development, :test, :production do
   gem 'meta_request'
 end
 
-gem 'cancan'
+gem 'cancan', github: 'ryanb/cancan'
 gem 'high_voltage', '~> 2.1.0'
 gem 'rails_12factor', group: :production
 

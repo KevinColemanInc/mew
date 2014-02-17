@@ -1,6 +1,8 @@
 class EmailMessagesController < ApplicationController
   before_action :set_email_message, only: [:show]
 
+  load_and_authorize_resource
+
   # GET /email_messages
   def index
     @member = Member.find(params[:member_id])

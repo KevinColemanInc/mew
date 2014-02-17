@@ -1,6 +1,8 @@
 class MetersController < ApplicationController
   before_action :set_meter, only: [:show, :edit, :update, :destroy]
 
+  load_and_authorize_resource
+
   # GET /meters
   # GET /meters.json
   def index

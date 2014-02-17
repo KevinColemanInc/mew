@@ -4,6 +4,7 @@ class CaseManagersController < ApplicationController
   before_action :set_case_manager, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
   
+  load_and_authorize_resource
 
   # GET /case_managers
   def index

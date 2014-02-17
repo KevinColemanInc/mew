@@ -2,6 +2,7 @@ class MeasurementsController < ApplicationController
   before_action :set_measurement, only: [:index, :show, :edit, :update, :destroy]
   before_filter :authenticate_user!
   
+  load_and_authorize_resource
 
   # GET /measurement
   def index

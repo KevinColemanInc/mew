@@ -9,6 +9,19 @@ class ApplicationController < ActionController::Base
   	cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
   end
 
+  rescue_from CanCan::AccessDenied do |exception|
+    respond_to do |format|
+      format.html { render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false }
+      format.json { render json: { status: "fail", errormsg: exception.message } }
+    end
+  end
+
+  before_filter do
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
+  end
+
   protected
   def authenticate_user_from_token!
     user_id = params[:user_id].presence

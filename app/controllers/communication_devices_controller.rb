@@ -1,7 +1,8 @@
 class CommunicationDevicesController < ApplicationController
   before_action :set_communication_device, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
-  
+
+
   # GET /communication_devices
   # GET /communication_devices.json
   def index

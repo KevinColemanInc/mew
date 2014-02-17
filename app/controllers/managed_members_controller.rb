@@ -2,6 +2,7 @@ class ManagedMembersController < ApplicationController
   before_action :set_managed_member, only: [:destroy]
   before_filter :authenticate_user!
   
+  load_and_authorize_resource
 
   def index
     @case_manager = CaseManager.find(params[:case_manager_id])

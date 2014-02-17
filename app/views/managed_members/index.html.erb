@@ -14,7 +14,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="current_member in current_members | filter:current_member_query | orderBy:last_name">
-          <td>{{current_member.member.last_name}}, {{current_member.member.first_name}}</td>
+          <td>{{current_member.member.name}}</td>
           <td><button ng-click="removeManagedMember(current_member)" class="btn btn-default">Remove</button></td>
         </tr>
       </tbody>
