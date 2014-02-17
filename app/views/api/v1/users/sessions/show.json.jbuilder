@@ -15,11 +15,14 @@ json.user do
       json.phone_number @user.primary_case_manager.phone_number
     end
     if @user.meter
-      json.preferred_meter do 
-        json.id @user.meter.id
-        json.mid @user.meter.mid
-        json.bluetooth_mac @user.meter.bluetooth_mac
-        json.display_name @user.meter.display_name
+      json.preferred_meters do 
+        json.array! [@user.preferred_meter] do |meter|
+          json.id @user.meter.id
+          json.mid @user.meter.mid
+          json.bluetooth_mac @user.meter.bluetooth_mac
+          json.display_name @user.meter.display_name
+          json.model @meter.model
+        end
       end
     end
   end

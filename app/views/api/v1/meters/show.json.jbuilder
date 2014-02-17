@@ -9,5 +9,6 @@ json.meter do
     json.mid @meter.mid
     json.bluetooth_mac @meter.bluetooth_mac
     json.display_name @meter.display_name
+    json.model @meter.model
   end
 end

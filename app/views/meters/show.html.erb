@@ -10,5 +10,15 @@
   <%= @meter.bluetooth_mac %>
 </p>
 
+<p>
+  <strong>Model:</strong>
+  <%= @meter.model %>
+</p>
+
+<p>
+  <strong>Display Name:</strong>
+  <%= @meter.display_name %>
+</p>
+
 <%= link_to 'Edit', edit_meter_path(@meter) %> |
 <%= link_to 'Back', meters_path %>
