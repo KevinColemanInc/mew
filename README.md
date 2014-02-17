@@ -12,6 +12,7 @@ user[password] - password of the user
 format - should always equal 'json'
 
 #### Successful response with preferred_meter
+```json
 {
   status: 'ok',
   user: {
@@ -30,8 +31,10 @@ format - should always equal 'json'
     }
   }
 }
+```
 
 #### Successful response
+```json
 {
   "status": "ok",
   "user": {
@@ -45,8 +48,10 @@ format - should always equal 'json'
       }
   }
 }
+```
 
 #### Failed response
+```json
 {
   "status": "fail",
   "errormsg": "invalid email or password.",
@@ -54,6 +59,7 @@ format - should always equal 'json'
       "errors": "invalid email or password."
   }
 }
+```
 
 ### Registering a Meter
 POST /api/v1/meters
@@ -68,6 +74,7 @@ user[user_token] - auth token given by session creation
 format - should always equal 'json'
 
 #### Successful response
+```json
 {
   "status": "ok",
   "meter": {
@@ -76,8 +83,10 @@ format - should always equal 'json'
       "bluetooth_mac": "08:00:69:02:01:FC"
   }
 }
+```
 
 #### Failed response
+```json
 {
   "status": "fail",
   "errormsg": "Mid can't be blank and Bluetooth mac is invalid",
@@ -85,27 +94,29 @@ format - should always equal 'json'
       "errors": "Mid can't be blank and Bluetooth mac is invalid"
   }
 }
+```
 
 ### Creating a Measurement
 POST /api/v1/measurements
 When a new measurement is created, a hash is made based off of: glucose_value, measured_at, code_number, reading_type, meter_id.  The app verifies that this hash is unique to the database before it is able to save it.  If this measurement is later edited, a new hash is not generated with the new values.
 
 #### Required params
-  measurement[glucose_value] - value of the glucose measurement
-  measurement[measured_at] - date time that this measurement was measured at
-  measurement[code_number] - not sure what this is... but its in the docs.
-  measurement[reading_type] - normal: 0, before meal(AC): 1, before meal(PC): 2, CTL mode(QC): 3
-  measurement[retrieved_at] - when the communication device retrieved the measurement
-  measurement[meter_id] - the id of the meter used to create this measurement
-  measurement[communication_device_id] - the id for the communication device that was used to pull the mesaurement off of the meter
-  user[user_id] - Email paired with Auth token
-  user[user_token] - Auth token given by session creation
-  format - should always equal 'json'
+measurement[glucose_value] - value of the glucose measurement
+measurement[measured_at] - date time that this measurement was measured at
+measurement[code_number] - not sure what this is... but its in the docs.
+measurement[reading_type] - normal: 0, before meal(AC): 1, before meal(PC): 2, CTL mode(QC): 3
+measurement[retrieved_at] - when the communication device retrieved the measurement
+measurement[meter_id] - the id of the meter used to create this measurement
+measurement[communication_device_id] - the id for the communication device that was used to pull the mesaurement off of the meter
+user[user_id] - Email paired with Auth token
+user[user_token] - Auth token given by session creation
+format - should always equal 'json'
 
 #### Optional params
-  measurement[note] - note about the measurement
+measurement[note] - note about the measurement
 
 #### Successful response
+```json
 {
   "status": "ok",
   "measurement": {
@@ -121,8 +132,10 @@ When a new measurement is created, a hash is made based off of: glucose_value, m
       "note": ""
   }
 }
+```
 
 #### Failed response 1
+```json
 {
   "status": "fail",
   "errormsg": "Glucose value can't be blank",
@@ -130,8 +143,10 @@ When a new measurement is created, a hash is made based off of: glucose_value, m
       "errors": "Glucose value can't be blank"
   }
 }
+```
 
 #### Failed response 2
+```json
 {
   "status": "fail",
   "errormsg": "Token must be unique",
@@ -139,14 +154,15 @@ When a new measurement is created, a hash is made based off of: glucose_value, m
       "errors": "Token must be unique"
   }
 }
+```
 
 ### Get all measurements for a member
 GET /api/v1/measurements
 
 #### Required params
-  user[user_id] - Email paired with Auth token
-  user[user_token] - Auth token given by session creation
-  format - should always equal 'json'
+user[user_id] - Email paired with Auth token
+user[user_token] - Auth token given by session creation
+format - should always equal 'json'
 
 #### Successful response
 ```json
