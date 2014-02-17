@@ -27,10 +27,10 @@
 
               <% if current_user.is_a? CaseManager %>
                   <% if current_user.has_role? :case_manager_admin %>
-                    <li><%= link_to 'Case Managers', case_managers_path %></li>
                     <li><%= link_to 'Meters', meters_path %></li>
                     <li><%= link_to 'Communication Devices', communication_devices_path %></li>
                   <% end %>
+                <li><%= link_to 'Case Managers', case_managers_path %></li>
                 <li><%= link_to 'Members', members_path %></li>
                 <li><%= link_to 'Member Groups', member_groups_path %></li>
               <% elsif current_user.is_a? Member %>
@@ -58,7 +58,17 @@
 
     <footer>
       <div class="container">
-        <p>© Focused Care Solutions 2014</p>
+        <div class="row">
+          <div class="col-md-4">
+            <p class="muted text-center">© Focused Care Solutions 2014</p>
+          </div>
+          <div class="col-md-4">
+            <p class="text-center"><a href="/pages/faq" title="frequently asked questions">Frequently Asked Questions</a></p>
+          </div>
+          <div class="col-md-4">
+            <p class="text-center"><a href="/pages/privacy_statement" title="privacy statement">Privacy Statement</a></p>
+          </div>
+        </div>
       </div>
     </footer>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
