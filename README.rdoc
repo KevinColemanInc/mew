@@ -149,6 +149,7 @@ GET /api/v1/measurements
   format - should always equal 'json'
 
 #### Successful response
+```json
 {
   "status": "ok",
   "measurements": [
@@ -168,6 +169,7 @@ GET /api/v1/measurements
       }
   ]
 }
+```
 
 ## RoR work flow
 
