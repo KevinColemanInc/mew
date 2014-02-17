@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140217190018) do
+ActiveRecord::Schema.define(version: 20140217195429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20140217190018) do
     t.string   "bluetooth_mac"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "model"
   end
 
   create_table "meters_users", id: false, force: true do |t|

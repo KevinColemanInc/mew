@@ -2,7 +2,7 @@
   <div class="col-md-3">
     <div class="row">
       <div class="col-md-12 well">
-        <h2><i class="fa fa-user"></i> <%= @member.name %></h2><%= link_to 'Edit', edit_member_path(@member) %>
+        <h2><i class="fa fa-user"></i> <%= @member.display_name %></h2><%= link_to 'Edit', edit_member_path(@member) %>
         <p>ID: <%= @member.member_number %></p>
         <p>Phone: <%= number_to_phone @member.phone_number %></p>
         <p><%= link_to 'Message history', member_email_messages_path(@member), class: "btn btn-primary" %> <%= link_to 'Contact', new_member_email_message_path(@member), class: "btn btn-success" %> </p>
@@ -40,7 +40,7 @@
         <tbody>
           <% @member.managed_members.each do |managed_members| %>
           <tr>
-            <td><%= managed_members.case_manager.name %></td>
+            <td><%= managed_members.case_manager.display_name %></td>
             <td><% if managed_members.primary %><span class="label label-success">Primary</span><% end %></td>
           </tr>
           <% end %>

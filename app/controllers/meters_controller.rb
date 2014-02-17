@@ -14,7 +14,6 @@ class MetersController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.json
     end
   end
 
@@ -40,10 +39,8 @@ class MetersController < ApplicationController
     respond_to do |format|
       if @meter.save
         format.html { redirect_to @meter, notice: 'Meter was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @meter }
       else
         format.html { render action: 'new' }
-        format.json { render json: @meter.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,10 +51,8 @@ class MetersController < ApplicationController
     respond_to do |format|
       if @meter.update(meter_params)
         format.html { redirect_to @meter, notice: 'Meter was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @meter.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -80,6 +75,6 @@ class MetersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meter_params
-      params.require(:meter).permit(:mid, :bluetooth_mac)
+      params.require(:meter).permit(:mid, :bluetooth_mac, :display_name)
     end
 end

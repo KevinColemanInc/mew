@@ -19,6 +19,6 @@ class API::V1::MetersController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def meter_params
-      params.require(:meter).permit(:mid, :bluetooth_mac)
+      params.require(:meter).permit(:mid, :bluetooth_mac, :display_name)
     end
 end

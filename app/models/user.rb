@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
 
   has_many :managed_members
 
-  def name
-  	"#{last_name}, #{first_name}"
+  def display_name
+    "#{last_name}, #{first_name}"
   end
   
   def archive

@@ -10,6 +10,7 @@ json.measurement do
     json.member_id measurement.member_id
     json.token measurement.token
     json.note measurement.note
+    json.display_name measurement.display_name
   else
     json.errors @errors
   end

@@ -27,17 +27,18 @@ format - should always equal 'json'
   "status": "ok",
   "user": {
       "id": "5d2e0fb9-8ebc-4469-aea8-44b0846fe641",
-      "display": "coleman, kevin",
+      "display_name": "coleman, kevin",
       "member_id": "1391882870",
       "authentication_token": "eqw8wEs27RN5-WrffxAd",
       "case_manager": {
-          "name": "coleman, kevin",
+          "display_name": "coleman, kevin",
           "phone_number": null
       },
       "preferred_meter": {
         "id": "2b666b4c-2baf-4c3c-9b02-52421f121a4d",
         "mid": "Charlie Alpha Brown",
         "bluetooth_mac": ""
+        "display_name": "meter"
       }
   }
 }
@@ -53,7 +54,8 @@ format - should always equal 'json'
       "member_id": "1391882870",
       "authentication_token": "eqw8wEs27RN5-WrffxAd",
       "case_manager": {
-          "name": "coleman, kevin",
+          "id": "5d2e0fb9-8ebc-4469-aea8-44b0846fe641",
+          "display_name": "coleman, kevin",
           "phone_number": null
       }
   }
@@ -90,7 +92,8 @@ format - should always equal 'json'
   "meter": {
       "id": "0777830f-3ea7-4247-965c-ccd6575afca0",
       "mid": "Alpha Bravo Charlie",
-      "bluetooth_mac": "08:00:69:02:01:FC"
+      "bluetooth_mac": "08:00:69:02:01:FC",
+      "display_name": "Alpha Bravo Charlie"
   }
 }
 ```
@@ -139,7 +142,8 @@ measurement[note] - note about the measurement
       "reading_type": "1",
       "member_id": "5d2e0fb9-8ebc-4469-aea8-44b0846fe641",
       "token": "2d42f4e98abd1a224c019d15ffeafdcf",
-      "note": ""
+      "note": "",
+      "display_name": "10 mg/dL at 2014-02-17T05:47:54.000Z"
   }
 }
 ```
@@ -190,7 +194,8 @@ format - should always equal 'json'
               "reading_type": "1",
               "member_id": "5d2e0fb9-8ebc-4469-aea8-44b0846fe641",
               "token": "08fe40aad5185110e31db845edc29657",
-              "note": ""
+              "note": "",
+              "display_name": "10 mg/dL at 2014-02-17T05:47:54.000Z"
           }
       }
   ]
@@ -217,7 +222,8 @@ id - Id of the measurement
       "reading_type": "1",
       "member_id": "5d2e0fb9-8ebc-4469-aea8-44b0846fe641",
       "token": "13365278b99394ec23c2927db3f8c3aa",
-      "note": null
+      "note": null,
+      "display_name": "10 mg/dL at 2014-02-17T05:47:54.000Z"
   }
 }
 ```

@@ -17,12 +17,12 @@
 
 <p>
   <strong>Member:</strong>
-  <%= @email_message.member.name %>
+  <%= @email_message.member.display_name %>
 </p>
 
 <p>
   <strong>Case manager:</strong>
-  <%= @email_message.case_manager.name %>
+  <%= @email_message.case_manager.display_name %>
 </p>
 
 <%= link_to 'Back', member_email_messages_path(member_id: @member.id) %>

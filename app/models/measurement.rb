@@ -39,5 +39,9 @@ class Measurement < ActiveRecord::Base
     end
   end
   
+  def display_name
+    "#{glucose_value} mg/dL at #{measured_at.strftime('%-m/%e/%y %l:%M %P')}"
+  end
+
 end
 
