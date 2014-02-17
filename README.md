@@ -7,9 +7,9 @@ Note: All times must be UTC and formatted for ISO 8601 '2001-02-03T04:05:06+07:0
 POST /api/v1/users/sessions
 
 #### Required params
-  user[email] - email address of the user
-  user[password] - password of the user
-  format - should always equal 'json'
+user[email] - email address of the user
+user[password] - password of the user
+format - should always equal 'json'
 
 #### Successful response with preferred_meter
 {
