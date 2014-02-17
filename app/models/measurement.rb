@@ -16,7 +16,7 @@ class Measurement < ActiveRecord::Base
   belongs_to :case_manager
 
   before_create :set_preferred_meter, :measurement_must_be_unique
-  before_validation :set_hash
+  before_validation :set_token
 
   def self.mine(user)
   	where(member: user)
@@ -33,9 +33,9 @@ class Measurement < ActiveRecord::Base
     end
   end
 
-  def set_hash
+  def set_token
     if self.token.blank?
-      self.token = Digest::MD5.hexdigest "#{self.glucose_value}-#{self.measured_at}-#{self.code_number}-#{self.reading_type}-#{self.meter_id}"
+      self.token = Digest::MD5.hexdigest "#{self.measured_at}-#{self.bluetooth_mac}"
     end
   end
   

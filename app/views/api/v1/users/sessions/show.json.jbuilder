@@ -14,14 +14,14 @@ json.user do
       json.display_name @user.primary_case_manager.display_name
       json.phone_number @user.primary_case_manager.phone_number
     end
-    if @user.meter
+    if @user.preferred_meter
       json.preferred_meters do 
         json.array! [@user.preferred_meter] do |meter|
-          json.id @user.meter.id
-          json.mid @user.meter.mid
-          json.bluetooth_mac @user.meter.bluetooth_mac
-          json.display_name @user.meter.display_name
-          json.model @meter.model
+          json.id meter.id
+          json.mid meter.mid
+          json.bluetooth_mac meter.bluetooth_mac
+          json.display_name meter.display_name
+          json.model meter.model
         end
       end
     end

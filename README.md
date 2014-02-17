@@ -24,23 +24,27 @@ format - should always equal 'json'
 #### Successful response with preferred_meter
 ```json
 {
-  "status": "ok",
-  "user": {
-      "id": "5d2e0fb9-8ebc-4469-aea8-44b0846fe641",
-      "display_name": "coleman, kevin",
-      "member_id": "1391882870",
-      "authentication_token": "eqw8wEs27RN5-WrffxAd",
-      "case_manager": {
-          "display_name": "coleman, kevin",
-          "phone_number": null
-      },
-      "preferred_meter": {
-        "id": "2b666b4c-2baf-4c3c-9b02-52421f121a4d",
-        "mid": "Charlie Alpha Brown",
-        "bluetooth_mac": ""
-        "display_name": "meter"
-      }
-  }
+    "status": "ok",
+    "user": {
+        "id": "60fe0a5b-7e0c-42f2-9ce7-a21627e0d796",
+        "display_name": "coleman, kevin",
+        "member_id": "1392679972",
+        "authentication_token": "z457fyPgE6sauTuGfS71",
+        "case_manager": {
+            "id": "6bbfc536-fbd4-498d-8aa7-7176221119f7",
+            "display_name": "coleman, kevin",
+            "phone_number": null
+        },
+        "preferred_meters": [
+            {
+                "id": "2e44c712-0a3e-4cec-bc6d-efd2e10ff0ea",
+                "mid": "M5",
+                "bluetooth_mac": "06:9B:76:D4:D2:7C",
+                "display_name": "id sequi sed",
+                "model": "glucose_value"
+            }
+        ]
+    }
 }
 ```
 
@@ -79,8 +83,10 @@ This registers a meter with out system.  If the meter already exists, it will no
 If it doesn't exist, it will try to make one and save it to the db.
 
 #### Required params
-meter[mid] - user friend id of the meter
+meter[mid] - serial number
 meter[bluetooth_mac] - bluetooth mac address of the meter
+meter[model] - model of the meter should always be "glucose_meter"
+meter[display_name] - display name of the meter
 user[user_id] - email paired with Auth token
 user[user_token] - auth token given by session creation
 format - should always equal 'json'
@@ -90,10 +96,11 @@ format - should always equal 'json'
 {
   "status": "ok",
   "meter": {
-      "id": "0777830f-3ea7-4247-965c-ccd6575afca0",
-      "mid": "Alpha Bravo Charlie",
-      "bluetooth_mac": "08:00:69:02:01:FC",
-      "display_name": "Alpha Bravo Charlie"
+      "id": "2e44c712-0a3e-4cec-bc6d-efd2e10ff0ea",
+      "mid": "M5",
+      "bluetooth_mac": "06:9B:76:D4:D2:7C",
+      "display_name": "id sequi sed",
+      "model": "glucose_value"
   }
 }
 ```

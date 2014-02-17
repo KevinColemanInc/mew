@@ -53,7 +53,10 @@ ManagedMember.create(member:member_ben, case_manager: case_manager_kevin)
 																 phone_number: Faker::PhoneNumber.phone_number
 																 )
 
-	meter = Meter.create!(mid: "M#{5}", bluetooth_mac: (1..6).map{"%0.2X"%rand(256)}.join(":"))
+	meter = Meter.create!(mid: "M#{5}", 
+												bluetooth_mac: (1..6).map{"%0.2X"%rand(256)}.join(":"),
+												display_name: Faker::Lorem.words(3, false).join(" "),
+												model: "glucose_value")
 
 	last_measurement = rand(90..110)
 	measurement_count = rand(10..52)
@@ -74,7 +77,8 @@ ManagedMember.create(member:member_ben, case_manager: case_manager_kevin)
 
 end
 
-fora_meter = Meter.create!(mid: "foracare", bluetooth_mac: (1..6).map{"%0.2X"%rand(256)}.join(":"))
+fora_meter = Meter.create!(mid: "foracare", bluetooth_mac: (1..6).map{"%0.2X"%rand(256)}.join(":"),display_name: Faker::Lorem.words(3, false).join(" "),
+												model: "glucose_value")
 c_device = CommunicationDevice.create!(cdid: "android-phone", phone_number: "4074531225", device_type: "Android Phone", device_model: "spider man")
 
 puts 'ending seeding.'
