@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140215210328) do
+ActiveRecord::Schema.define(version: 20140217051557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20140215210328) do
     t.uuid     "case_manager_id"
     t.datetime "archived_at"
     t.text     "note"
+    t.string   "token"
   end
 
   create_table "member_groups", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
@@ -91,6 +92,7 @@ ActiveRecord::Schema.define(version: 20140215210328) do
     t.string   "bluetooth_mac"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.uuid     "preferred_meter_id"
   end
 
   create_table "meters_users", id: false, force: true do |t|

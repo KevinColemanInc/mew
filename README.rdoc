@@ -1,5 +1,174 @@
 # README
 
+## API v1 documentation
+Note: All times must be UTC and formatted for ISO 8601 '2001-02-03T04:05:06+07:00'
+
+### Logging in
+POST /api/v1/users/sessions
+
+#### Required params
+  user[email] - email address of the user
+  user[password] - password of the user
+  format - should always equal 'json'
+
+#### Successful response with preferred_meter
+{
+  status: 'ok',
+  user: {
+    id: '2b666b4c-2baf-4c3c-9b02-52421f121a4d'
+    display: 'Coleman, Kevin',
+    member_id: '123123',
+    authentication_token: 'ABCD',
+    case_manager: {
+      name: 'Patz, Ben',
+      phone_number: '407.555.5555'
+    },
+    preferred_meter: {
+      id: '2b666b4c-2baf-4c3c-9b02-52421f121a4d',
+      mid: 'Charlie Alpha Brown',
+      bluetooth_mac: 'ABD'
+    }
+  }
+}
+
+#### Successful response
+{
+  "status": "ok",
+  "user": {
+      "id": "5d2e0fb9-8ebc-4469-aea8-44b0846fe641",
+      "display": "coleman, kevin",
+      "member_id": "1391882870",
+      "authentication_token": "eqw8wEs27RN5-WrffxAd",
+      "case_manager": {
+          "name": "coleman, kevin",
+          "phone_number": null
+      }
+  }
+}
+
+#### Failed response
+{
+  "status": "fail",
+  "errormsg": "invalid email or password.",
+  "user": {
+      "errors": "invalid email or password."
+  }
+}
+
+### Registering a Meter
+POST /api/v1/meters
+This registers a meter with out system.  If the meter already exists, it will not create a new one and will what we already have.
+If it doesn't exist, it will try to make one and save it to the db.
+
+#### Required params
+meter[mid] - user friend id of the meter
+meter[bluetooth_mac] - bluetooth mac address of the meter
+user[user_id] - email paired with Auth token
+user[user_token] - auth token given by session creation
+format - should always equal 'json'
+
+#### Successful response
+{
+  "status": "ok",
+  "meter": {
+      "id": "0777830f-3ea7-4247-965c-ccd6575afca0",
+      "mid": "Alpha Bravo Charlie",
+      "bluetooth_mac": "08:00:69:02:01:FC"
+  }
+}
+
+#### Failed response
+{
+  "status": "fail",
+  "errormsg": "Mid can't be blank and Bluetooth mac is invalid",
+  "meter": {
+      "errors": "Mid can't be blank and Bluetooth mac is invalid"
+  }
+}
+
+### Creating a Measurement
+POST /api/v1/measurements
+When a new measurement is created, a hash is made based off of: glucose_value, measured_at, code_number, reading_type, meter_id.  The app verifies that this hash is unique to the database before it is able to save it.  If this measurement is later edited, a new hash is not generated with the new values.
+
+#### Required params
+  measurement[glucose_value] - value of the glucose measurement
+  measurement[measured_at] - date time that this measurement was measured at
+  measurement[code_number] - not sure what this is... but its in the docs.
+  measurement[reading_type] - normal: 0, before meal(AC): 1, before meal(PC): 2, CTL mode(QC): 3
+  measurement[retrieved_at] - when the communication device retrieved the measurement
+  measurement[meter_id] - the id of the meter used to create this measurement
+  measurement[communication_device_id] - the id for the communication device that was used to pull the mesaurement off of the meter
+  user[user_id] - Email paired with Auth token
+  user[user_token] - Auth token given by session creation
+  format - should always equal 'json'
+
+#### Optional params
+  measurement[note] - note about the measurement
+
+#### Successful response
+{
+  "status": "ok",
+  "measurement": {
+      "id": "096d5f2f-af00-4b99-b2db-0ef75654e1a1",
+      "measured_at": 1392616074,
+      "glucose_value": 12,
+      "retrieved_at": "2014-02-17T05:47:54.000Z",
+      "created_at": "2014-02-17T06:00:57.065Z",
+      "code_number": "1",
+      "reading_type": "1",
+      "member_id": "5d2e0fb9-8ebc-4469-aea8-44b0846fe641",
+      "token": "2d42f4e98abd1a224c019d15ffeafdcf",
+      "note": ""
+  }
+}
+
+#### Failed response 1
+{
+  "status": "fail",
+  "errormsg": "Glucose value can't be blank",
+  "measurement": {
+      "errors": "Glucose value can't be blank"
+  }
+}
+
+#### Failed response 2
+{
+  "status": "fail",
+  "errormsg": "Token must be unique",
+  "measurement": {
+      "errors": "Token must be unique"
+  }
+}
+
+### Get all measurements for a member
+GET /api/v1/measurements
+
+#### Required params
+  user[user_id] - Email paired with Auth token
+  user[user_token] - Auth token given by session creation
+  format - should always equal 'json'
+
+#### Successful response
+{
+  "status": "ok",
+  "measurements": [
+      {
+          "measurement": {
+              "id": "4fd0e2bc-c62c-4925-8a3d-4278d1d7845f",
+              "measured_at": "2014-02-17T05:47:54.000Z",
+              "glucose_value": 10,
+              "retrieved_at": "2014-02-17T05:47:54.000Z",
+              "created_at": "2014-02-17T06:00:36.126Z",
+              "code_number": "1",
+              "reading_type": "1",
+              "member_id": "5d2e0fb9-8ebc-4469-aea8-44b0846fe641",
+              "token": "08fe40aad5185110e31db845edc29657",
+              "note": ""
+          }
+      }
+  ]
+}
+
 ## RoR work flow
 
 ### Starting up RoR
