@@ -1,2 +1,2 @@
-<%= link_to 'Edit', edit_case_manager_path(@case_manager) %> |
+<%= link_to 'Edit', edit_case_manager_path(@case_manager) if current_user.has_role? :case_manager_admin %> |
 <%= link_to 'Back', case_managers_path %>
