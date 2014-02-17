@@ -23,7 +23,7 @@ class Measurement < ActiveRecord::Base
   end	
 
   def set_preferred_meter
-    member.update_attributes(prefered_meter: self.meter) if meter
+    member.update_attributes(preferred_meter_id: self.meter.id) if meter
   end
 
   private

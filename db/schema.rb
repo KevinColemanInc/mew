@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140217051557) do
+ActiveRecord::Schema.define(version: 20140217190018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,7 +92,6 @@ ActiveRecord::Schema.define(version: 20140217051557) do
     t.string   "bluetooth_mac"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.uuid     "preferred_meter_id"
   end
 
   create_table "meters_users", id: false, force: true do |t|
@@ -124,6 +123,7 @@ ActiveRecord::Schema.define(version: 20140217051557) do
     t.text     "note"
     t.string   "authentication_token"
     t.datetime "token_expires_at"
+    t.uuid     "preferred_meter_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

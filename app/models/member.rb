@@ -7,10 +7,9 @@ class Member < User
   has_many :measurements
 
   has_and_belongs_to_many :meters
-  has_and_belongs_to_many :communication_devices
   has_many :case_managers, through: :managed_members
 
-  belongs_to :meter, class_name: "Meter", foreign_key: "preferred_meter_id"
+  belongs_to :preferred_meter, class_name: "Meter"
   
   has_many :managed_members
   has_many :grouped_members
