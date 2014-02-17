@@ -20,7 +20,8 @@ module Mew
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-
+    config.autoload_paths += %W(#{config.root}/lib)
+    
     config.action_mailer.smtp_settings = {
         :address   => "smtp.mandrillapp.com",
         :port      => 587, # ports 587 and 2525 are also supported with STARTTLS

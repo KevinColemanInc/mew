@@ -3,6 +3,16 @@
 ## API v1 documentation
 Note: All times must be UTC and formatted for ISO 8601 '2001-02-03T04:05:06+07:00'
 
+### Login request
+If you try to reach a resource and you don't provide valid credentials, then you will get a response like this:
+
+```json
+{
+    "status": "fail",
+    "errormsg": "You need to sign in or sign up before continuing."
+}
+```
+
 ### Logging in
 POST /api/v1/users/sessions
 
@@ -61,7 +71,7 @@ format - should always equal 'json'
 }
 ```
 
-### Registering a Meter
+### Registering a meter
 POST /api/v1/meters
 This registers a meter with out system.  If the meter already exists, it will not create a new one and will what we already have.
 If it doesn't exist, it will try to make one and save it to the db.
@@ -96,7 +106,7 @@ format - should always equal 'json'
 }
 ```
 
-### Creating a Measurement
+### Creating a measurement
 POST /api/v1/measurements
 When a new measurement is created, a hash is made based off of: glucose_value, measured_at, code_number, reading_type, meter_id.  The app verifies that this hash is unique to the database before it is able to save it.  If this measurement is later edited, a new hash is not generated with the new values.
 
