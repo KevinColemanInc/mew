@@ -56,7 +56,7 @@ ManagedMember.create(member:member_ben, case_manager: case_manager_kevin)
 	meter = Meter.create!(mid: "M#{5}", 
 												bluetooth_mac: (1..6).map{"%0.2X"%rand(256)}.join(":"),
 												display_name: Faker::Lorem.words(3, false).join(" "),
-												model: "glucose_value")
+												model: "blood_glucose")
 
 	last_measurement = rand(90..110)
 	measurement_count = rand(10..52)
