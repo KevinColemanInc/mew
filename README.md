@@ -141,7 +141,7 @@ measurement[note] - note about the measurement
   "status": "ok",
   "measurement": {
       "id": "096d5f2f-af00-4b99-b2db-0ef75654e1a1",
-      "measured_at": 1392616074,
+      "measured_at": "2014-02-17T05:47:54.000Z",
       "glucose_value": 12,
       "retrieved_at": "2014-02-17T05:47:54.000Z",
       "created_at": "2014-02-17T06:00:57.065Z",
