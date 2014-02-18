@@ -35,7 +35,7 @@ class Measurement < ActiveRecord::Base
 
   def set_token
     if self.token.blank?
-      self.token = Digest::MD5.hexdigest "#{self.measured_at}-#{self.bluetooth_mac}"
+      self.token = Digest::MD5.hexdigest "#{self.measured_at}-#{self.meter.bluetooth_mac}"
     end
   end
   
