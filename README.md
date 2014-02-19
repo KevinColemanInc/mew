@@ -14,7 +14,7 @@ If you try to reach a resource and you don't provide valid credentials, then you
 ```
 
 ### Logging in
-POST /api/v1/users/sessions
+POST /api/v1/users/sign_in
 
 #### Required params
 user[email] - email address of the user
