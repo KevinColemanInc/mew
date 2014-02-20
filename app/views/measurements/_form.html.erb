@@ -12,6 +12,11 @@
   </div>
 
   <div class="form-group">
+    <label for="title"><%= f.label :measured_at_time_zone %></label>
+    <%= f.text_field :measured_at_time_zone, :class => "form-control", :placeholder => "Enter time zone"  %>
+  </div>
+
+  <div class="form-group">
     <label for="title"><%= f.label :code_number %></label>
     <%= f.number_field :code_number, :class => "form-control", :placeholder => "Enter code number"  %>
   </div>

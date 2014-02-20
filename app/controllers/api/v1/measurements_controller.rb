@@ -23,6 +23,7 @@ class API::V1::MeasurementsController < ApplicationController
   def create
     @measurement = Measurement.new(measurement_params)
     @measurement.member = current_user
+    @measurement.measured_at_time_zone = params[:measurement][:measured_at_time_zone].timezone
     
     @errors = @measurement.save ? nil : @measurement.errors.full_messages.to_sentence
     
