@@ -45,7 +45,8 @@ class API::V1::MeasurementsController < ApplicationController
                                           :reading_type, 
                                           :retrieved_at, 
                                           :meter_id, 
-                                          :communication_device_id)
+                                          :communication_device_id,
+                                          :measured_at_time_zone)
     end
 
 end

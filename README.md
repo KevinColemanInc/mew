@@ -128,6 +128,7 @@ measurement[reading_type] - normal: 0, before meal(AC): 1, before meal(PC): 2, C
 measurement[retrieved_at] - when the communication device retrieved the measurement
 measurement[meter_id] - the id of the meter used to create this measurement
 measurement[communication_device_id] - the id for the communication device that was used to pull the mesaurement off of the meter
+measurement[retrieved_at_time_zone] - what the timezone was for the retrieved measurement
 user[user_id] - Email paired with Auth token
 user[user_token] - Auth token given by session creation
 format - should always equal 'json'
@@ -144,6 +145,7 @@ measurement[note] - note about the measurement
       "measured_at": "2014-02-17T05:47:54.000Z",
       "glucose_value": 12,
       "retrieved_at": "2014-02-17T05:47:54.000Z",
+      "retrieved_at_time_zone": "Eastern Time (US & Canada)",
       "created_at": "2014-02-17T06:00:57.065Z",
       "code_number": "1",
       "reading_type": "1",
