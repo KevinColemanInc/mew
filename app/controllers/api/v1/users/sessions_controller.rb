@@ -1,5 +1,7 @@
 class API::V1::Users::SessionsController < Devise::SessionsController
   respond_to :json
+
+  protect_from_forgery :except => :create 
   
   def create
     if params.has_key?(:user)
