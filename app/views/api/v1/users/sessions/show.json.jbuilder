@@ -6,6 +6,7 @@ json.user do
     json.errors @errors
   else
     json.id @user.id
+    json.email @user.email
     json.display_name @user.display_name
     json.member_id @user.member_number
     json.authentication_token @user.authentication_token
