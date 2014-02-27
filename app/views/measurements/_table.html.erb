@@ -3,49 +3,68 @@
 <% end %>
 
 <div class="row" ng-controller="MeasurementsTableCtrl" ng-cloak>
-  <nvd3-discrete-bar-chart
-      data="chartData"
-        id="exampleId"
-        xAxisTickFormat="xAxisTickFormatFunction()"
-        height="300"
-        showXAxis="false"
-        showYAxis="true"
-        interactive="true"
-        color="colorFunction()"
-        tooltips="true"
-        staggerlabels="true">
-          <svg></svg>
-    </nvd3-discrete-bar-chart>
-
   <div class="col-md-12">
     <div class="row">
-      <div class="col-md-6">
-        <h1><i class="fa fa-stethoscope"></i> Measurements</h1>
+      <div class="col-md-12">
+        <nvd3-discrete-bar-chart
+            data="chartData"
+              id="exampleId"
+              xAxisTickFormat="xAxisTickFormatFunction()"
+              height="300"
+              showXAxis="false"
+              showYAxis="true"
+              interactive="true"
+              color="colorFunction()"
+              tooltips="true"
+              staggerlabels="true">
+                <svg></svg>
+        </nvd3-discrete-bar-chart>
       </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label class="col-md-1 control-label search-label">Find</label>
-          <div class="col-md-10">
-            <input type="search" ng-model="filter.$" class="form-control search-box" />
+    </div>
+        
+    <div class="row text-center">
+      <div class="col-md-2 col-md-offset-2">
+        <b>Maximum</b> {{max_measurement.glucose_value}} mg/dL
+      </div>
+      <div class="col-md-2 col-md-offset-1">
+        <b>Minimum</b> {{min_measurement.glucose_value}} mg/dL
+      </div>
+      <div class="col-md-2 col-md-offset-1">
+        <b>Average</b> {{total_value / measurements.length | number:2}} mg/dL
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-6">
+            <h1><i class="fa fa-stethoscope"></i> Measurements</h1>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="col-md-1 control-label search-label">Find</label>
+              <div class="col-md-10">
+                <input type="search" ng-model="filter.$" class="form-control search-box" />
+              </div>
+            </div>
           </div>
         </div>
+        <div class="row">
+            <table class='table col-md-12 table-hover table-condensed' ng-table="tableParams">
+              <tbody>
+                  <tr ng-repeat="measurement in $data" 
+                  ng-class="{'danger': measurement.glucose_value >= 126, 'warning': (measurement.glucose_value < 126 || measurement.glucose_value >= 101)}" 
+                  >
+                    <td data-title="'Measured At'" sortable="'measured_at'" data-ng-bind-html="measurement.links.show"></td>
+                    <td data-title="'Glucose Value'" sortable="'glucose_value'">{{measurement.glucose_value}}</td>
+                    <td data-title="'Code Number'" sortable="'code_number'">{{measurement.code_number}}</td>
+                    <td data-title="'Reading Type'" sortable="'reading_type'">{{measurement.reading_type}}</td>
+                    <td data-title="'Archived at'" sortable="'archived_at'">{{measurement.archived_at | date: 'short' }}</td>
+                  </tr>
+              </tbody>
+            </table>
+        </div>
+        <p><strong>Total measurements:</strong> {{tableParams.total()}}</p>
       </div>
     </div>
-    <div class="row">
-        <table class='table col-md-12 table-hover table-condensed' ng-table="tableParams">
-          <tbody>
-              <tr ng-repeat="measurement in $data" 
-              ng-class="{'danger': measurement.glucose_value >= 126, 'warning': (measurement.glucose_value < 126 || measurement.glucose_value >= 101)}" 
-              >
-                <td data-title="'Measured At'" sortable="'measured_at'" data-ng-bind-html="measurement.links.show"></td>
-                <td data-title="'Glucose Value'" sortable="'glucose_value'">{{measurement.glucose_value}}</td>
-                <td data-title="'Code Number'" sortable="'code_number'">{{measurement.code_number}}</td>
-                <td data-title="'Reading Type'" sortable="'reading_type'">{{measurement.reading_type}}</td>
-                <td data-title="'Archived at'" sortable="'archived_at'">{{measurement.archived_at | date: 'short' }}</td>
-              </tr>
-          </tbody>
-        </table>
-    </div>
-    <p><strong>Total measurements:</strong> {{tableParams.total()}}</p>
-  </div>
 </div>

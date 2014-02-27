@@ -36,8 +36,21 @@ app.controller('MeasurementsTableCtrl', ['$scope', '$resource', '$filter', 'ngTa
       $scope.chartData = [{ "key": "Glucose Readings",
                                   "values": [] }];
 
+      $scope.max_measurement = $scope.measurements[0];
+      $scope.min_measurement = $scope.measurements[0];
+      $scope.total_value = 0;
+
       angular.forEach(response, function (item) {
+          
           $scope.chartData[0]["values"].push([item.measured_at, item.glucose_value]);
+          
+          if(item.glucose_value > $scope.max_measurement.glucose_value)
+            $scope.max_measurement = item;
+
+          if(item.glucose_value > $scope.max_measurement.glucose_value)
+            $scope.max_measurement = item;
+
+          $scope.total_value += item.glucose_value;
       });
 
       $scope.tableParams = new ngTableParams({
