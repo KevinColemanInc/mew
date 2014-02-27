@@ -129,6 +129,7 @@ measurement[code_number] - not sure what this is... but its in the docs.
 measurement[reading_type] - normal: 0, before meal(AC): 1, before meal(PC): 2, CTL mode(QC): 3
 measurement[retrieved_at] - when the communication device retrieved the measurement
 measurement[meter_id] - the id of the meter used to create this measurement
+measurement[payload] - raw bytes back from the devise
 measurement[communication_device_id] - the id for the communication device that was used to pull the mesaurement off of the meter
 user[user_id] - Email paired with Auth token
 user[user_token] - Auth token given by session creation
@@ -153,6 +154,7 @@ measurement[note] - note about the measurement
       "token": "2d42f4e98abd1a224c019d15ffeafdcf",
       "note": "",
       "display_name": "10 mg/dL at 2014-02-17T05:47:54.000Z"
+      "payload": "FFAAFFAAFF"
   }
 }
 ```
@@ -205,6 +207,7 @@ format - should always equal 'json'
               "token": "08fe40aad5185110e31db845edc29657",
               "note": "",
               "display_name": "10 mg/dL at 2014-02-17T05:47:54.000Z"
+              "payload": "FFAAFFAAFF"
           }
       }
   ]
@@ -233,6 +236,7 @@ id - Id of the measurement
       "token": "13365278b99394ec23c2927db3f8c3aa",
       "note": null,
       "display_name": "10 mg/dL at 2014-02-17T05:47:54.000Z"
+      "payload": "FFAAFFAAFF"
   }
 }
 ```

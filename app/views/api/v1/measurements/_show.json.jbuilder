@@ -11,6 +11,7 @@ json.measurement do
     json.token measurement.token
     json.note measurement.note
     json.display_name measurement.display_name
+    json.payload measurement.payload
   else
     json.errors @errors
   end
