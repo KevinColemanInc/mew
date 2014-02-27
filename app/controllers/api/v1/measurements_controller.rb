@@ -47,7 +47,8 @@ class API::V1::MeasurementsController < ApplicationController
                                           :retrieved_at, 
                                           :meter_id, 
                                           :communication_device_id,
-                                          :payload)
+                                          :payload,
+                                          :measured_at_time_zone)
     end
 
 end
