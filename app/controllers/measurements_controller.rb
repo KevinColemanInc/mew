@@ -79,7 +79,7 @@ class MeasurementsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def measurement_params
-      params.require(:measurement).permit(:note, :glucose_value, :measured_at, :code_number, :reading_type, :member_id)
+      params.require(:measurement).permit(:note, :measured_at_time_zone, :glucose_value, :measured_at, :code_number, :reading_type, :member_id)
     end
 
 end

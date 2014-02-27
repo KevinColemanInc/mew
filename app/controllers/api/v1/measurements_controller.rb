@@ -23,6 +23,7 @@ class API::V1::MeasurementsController < ApplicationController
   def create
     @measurement = Measurement.new(measurement_params)
     @measurement.member = current_user
+    @measurement.retrieved_at_time_zone = (DateTime.iso8601 params[:measurement][:retrieved_at]).zone
     
     @errors = @measurement.save ? nil : @measurement.errors.full_messages.to_sentence
     
@@ -46,7 +47,8 @@ class API::V1::MeasurementsController < ApplicationController
                                           :retrieved_at, 
                                           :meter_id, 
                                           :communication_device_id,
-                                          :payload)
+                                          :payload,
+                                          :measured_at_time_zone)
     end
 
 end

@@ -29,7 +29,6 @@ class ApplicationController < ActionController::Base
 
     if user && Devise.secure_compare(user.authentication_token, params[:user_token]) && user.token_expires_at > Time.now
       sign_in :user, user
-      puts 'auth worked!'
     end
   end
 
