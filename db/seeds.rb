@@ -1,6 +1,7 @@
 puts 'starting seeding...'
 User.destroy_all
 Meter.destroy_all
+Measurement.destroy_all
 CommunicationDevice.destroy_all
 ManagedMember.destroy_all
 
@@ -72,7 +73,9 @@ ManagedMember.create(member:member_ben, case_manager: case_manager_kevin)
 												 reading_type: 2,
 												 communication_device: c,
 												 meter: meter,
-												 member: u)
+												 member: u,
+												 retrieved_at: Time.now,
+												 retrieved_at_time_zone: Time.now.zone)
 	end
 
 end
