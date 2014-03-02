@@ -35,6 +35,13 @@ html, body {
     width: 250px;
     display: inline !important;
 }
+.search-dropdown
+{
+    margin-top: 15px;
+    margin-bottom: 0px;
+    width: 250px;
+    display: inline !important;
+}
 
 .search-label
 {
