@@ -821,7 +821,6 @@
 
   function checkElementID( scope, attrs, element, chart, data ) {
     configureXaxis( chart, scope, attrs );
-    configureX2axis( chart, scope, attrs );
     configureYaxis( chart, scope, attrs );
     configureY1axis( chart, scope, attrs );
     configureY2axis( chart, scope, attrs );

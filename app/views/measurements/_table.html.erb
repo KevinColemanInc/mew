@@ -42,9 +42,24 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <label class="col-md-1 control-label search-label">Find</label>
+              <label class="col-md-1 control-label search-label">Date Range</label>
               <div class="col-md-10">
-                <input type="search" ng-model="filter.$" class="form-control search-box" />
+                <select data-ng-model="search.dateRange">
+                  <option value="">All time</option>
+                  <option value="1">1 day</option>
+                  <option value="2">2 days</option>
+                  <option value="3">3 days</option>
+                  <option value="7">1 week</option>
+                  <option value="14">2 weeks</option>
+                  <option value="28">1 month</option>
+                  <option value="56">2 months</option>
+                  <option value="84">3 months</option>
+                  <option value="112">4 months</option>
+                  <option value="168">6 months</option>
+                  <option value="336">1 year</option>
+
+
+                </select> 
               </div>
             </div>
           </div>
@@ -56,10 +71,9 @@
                   ng-class="{'danger': measurement.glucose_value >= 126, 'warning': (measurement.glucose_value < 126 || measurement.glucose_value >= 101)}" 
                   >
                     <td data-title="'Measured At'" sortable="'measured_at'" data-ng-bind-html="measurement.links.show"></td>
-                    <td data-title="'Glucose Value'" sortable="'glucose_value'">{{measurement.glucose_value}}</td>
+                    <td data-title="'Glucose Value (mg/dL)'" sortable="'glucose_value'">{{measurement.glucose_value}}</td>
                     <td data-title="'Code Number'" sortable="'code_number'">{{measurement.code_number}}</td>
                     <td data-title="'Reading Type'" sortable="'reading_type'">{{measurement.reading_type}}</td>
-                    <td data-title="'Archived at'" sortable="'archived_at'">{{measurement.archived_at | date: 'short' }}</td>
                   </tr>
               </tbody>
             </table>
@@ -68,3 +82,5 @@
       </div>
     </div>
 </div>
+</div>
+

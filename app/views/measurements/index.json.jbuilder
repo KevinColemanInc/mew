@@ -1,6 +1,6 @@
 json.array! @measurements do |measurement|
   json.id measurement.id
-  json.measured_at measurement.measured_at.to_i
+  json.measured_at measurement.measured_at.iso8601
   json.glucose_value measurement.glucose_value
   json.retrieved_at measurement.retrieved_at
   json.created_at measurement.created_at
