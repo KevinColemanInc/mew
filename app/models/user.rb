@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  before_create :upper_case_names
+
   has_many :managed_members
 
   def display_name
@@ -35,6 +37,12 @@ class User < ActiveRecord::Base
       break token unless User.where(access_token: token).first
     end
     self.token_expires_at = Time.now + 3.months
+  end
+
+  private
+  def upper_case_names
+    first_name.capitalize!
+    last_name.capitalize!
   end
 
 end
