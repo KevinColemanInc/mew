@@ -136,8 +136,6 @@ measurement[reading_type] | normal, AC, PC, CTL mode(QC): 3 |    yes
 measurement[retrieved_at] | when the communication device retrieved the measurement |    yes
 measurement[meter_id]  | the id of the meter used to create this measurement |    yes
 measurement[payload]  |  raw bytes back from the devise |    yes
-measurement[communication_device_id] | the id for the communication device that was used to pull the mesaurement off of the meter |    yes
-measurement[retrieved_at_time_zone] | what the timezone was for the retrieved measurement |    yes
 user[email] | email paired with Auth token      |    yes |
 user[access_token] | auth token given by session creation      |    yes |
 format  | should always equal 'json' |    yes
