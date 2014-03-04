@@ -9,8 +9,8 @@ class Meter < ActiveRecord::Base
   
   private
   def limit_meter_models
-    if model != "blood_glucose"
-      errors.add(:model, "must be blood_glucose")
+    if model != "BloodGlucose"
+      errors.add(:model, "must be BloodGlucose")
     end
   end
 

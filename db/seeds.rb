@@ -57,7 +57,7 @@ ManagedMember.create(member:member_ben, case_manager: case_manager_kevin)
 	meter = Meter.create!(mid: "M#{5}", 
 												bluetooth_mac: (1..6).map{"%0.2X"%rand(256)}.join(":"),
 												display_name: Faker::Lorem.words(3, false).join(" "),
-												model: "blood_glucose")
+												model: "BloodGlucose")
 
 	last_measurement = rand(90..110)
 	measurement_count = rand(10..52)
@@ -70,7 +70,7 @@ ManagedMember.create(member:member_ben, case_manager: case_manager_kevin)
 		Measurement.create!(glucose_value: "#{last_measurement}",
 												 measured_at: Time.now - (measurement_count.days + i.days),
 												 code_number: 2,
-												 reading_type: 2,
+												 reading_type: 'AC',
 												 communication_device: c,
 												 meter: meter,
 												 member: u,
@@ -81,7 +81,7 @@ ManagedMember.create(member:member_ben, case_manager: case_manager_kevin)
 end
 
 fora_meter = Meter.create!(mid: "foracare", bluetooth_mac: (1..6).map{"%0.2X"%rand(256)}.join(":"),display_name: Faker::Lorem.words(3, false).join(" "),
-												model: "blood_glucose")
+												model: "BloodGlucose")
 c_device = CommunicationDevice.create!(cdid: "android-phone", phone_number: "4074531225", device_type: "Android Phone", device_model: "spider man")
 
 puts 'ending seeding.'

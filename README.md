@@ -43,7 +43,7 @@ format - should always equal 'json'
             "mid": "M5",
             "bluetooth_mac": "06:9B:76:D4:D2:7C",
             "display_name": "id sequi sed",
-            "model": "glucose_value"
+            "model": "BloodGlucose"
         }
     ]
 }
@@ -90,9 +90,9 @@ If it doesn't exist, it will try to make one and save it to the db.
 | ------------- |-------------| -----:|
 | meter[mid]      | serial number | yes |
 | meter[bluetooth_mac]     | bluetooth mac address of the meter      |   yes |
-| meter[model] | model of the meter should always be "glucose_meter"      |    yes |
+| meter[model] | model of the meter should always be "BloodGlucose"      |    yes |
 | meter[display_name] | display name of the meter      |    yes |
-| user[user_email] | email paired with Auth token      |    yes |
+| user[email] | email paired with Auth token      |    yes |
 | user[access_token] | auth token given by session creation      |    yes |
 | format | should always equal 'json'      |    yes |
 
@@ -105,7 +105,7 @@ If it doesn't exist, it will try to make one and save it to the db.
       "mid": "M5",
       "bluetooth_mac": "06:9B:76:D4:D2:7C",
       "display_name": "id sequi sed",
-      "model": "glucose_value"
+      "model": "BloodGlucose"
   }
 }
 ```
@@ -132,13 +132,13 @@ When a new measurement is created, a hash is made based off of: glucose_value, m
 measurement[glucose_value] | value of the glucose measurement |    yes
 measurement[measured_at] | date time that this measurement was measured at |    yes
 measurement[code_number] | not sure what this is... but its in the docs. |    yes
-measurement[reading_type] | normal: 0, before meal(AC): 1, before meal(PC): 2, CTL mode(QC): 3 |    yes
+measurement[reading_type] | normal, AC, PC, CTL mode(QC): 3 |    yes
 measurement[retrieved_at] | when the communication device retrieved the measurement |    yes
 measurement[meter_id]  | the id of the meter used to create this measurement |    yes
 measurement[payload]  |  raw bytes back from the devise |    yes
 measurement[communication_device_id] | the id for the communication device that was used to pull the mesaurement off of the meter |    yes
 measurement[retrieved_at_time_zone] | what the timezone was for the retrieved measurement |    yes
-user[user_email] | email paired with Auth token      |    yes |
+user[email] | email paired with Auth token      |    yes |
 user[access_token] | auth token given by session creation      |    yes |
 format  | should always equal 'json' |    yes
 measurement[note] | note about the measurement |    no
@@ -194,7 +194,7 @@ GET /api/v1/measurements
 
 | Key        | Value           | Required?  |
 | ------------- |-------------| -----:|
-user[user_email] | email paired with Auth token      |    yes |
+user[email] | email paired with Auth token      |    yes |
 user[access_token] | auth token given by session creation      |    yes |
 format | should always equal 'json' | yes
 
@@ -230,7 +230,7 @@ GET /api/v1/measurements/:id
 
 | Key        | Value           | Required?  |
 | ------------- |-------------| -----:|
-user[user_email] | email paired with Auth token      |    yes |
+user[email] | email paired with Auth token      |    yes |
 user[access_token] | auth token given by session creation      |    yes |
 format | should always equal 'json' | yes
 
