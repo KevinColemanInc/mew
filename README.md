@@ -86,29 +86,15 @@ If it doesn't exist, it will try to make one and save it to the db.
 
 #### Params
 
-| Parameter        | Description           | Required?  |
+| Key        | Value           | Required?  |
 | ------------- |-------------| -----:|
-| meter[mid]      | serial number | true |
-| meter[bluetooth_mac]     | bluetooth mac address of the meter      |   true |
-| meter[model] | model of the meter should always be "glucose_meter"      |    true |
-| meter[display_name] | display name of the meter      |    true |
-| user[user_id] | email paired with Auth token      |    true |
-| user[user_token] | auth token given by session creation      |    true |
-| format | should always equal 'json'      |    true |
-
-meter[mid] - serial number
-
-meter[bluetooth_mac] - 
-
-meter[model] - 
-
-meter[display_name] - 
-
-user[user_id] - 
-
-user[user_token] - 
-
-format - 
+| meter[mid]      | serial number | yes |
+| meter[bluetooth_mac]     | bluetooth mac address of the meter      |   yes |
+| meter[model] | model of the meter should always be "glucose_meter"      |    yes |
+| meter[display_name] | display name of the meter      |    yes |
+| user[user_id] | email paired with Auth token      |    yes |
+| user[user_token] | auth token given by session creation      |    yes |
+| format | should always equal 'json'      |    yes |
 
 #### Successful response
 ```json
@@ -139,22 +125,23 @@ format -
 POST /api/v1/measurements
 When a new measurement is created, a hash is made based off of: glucose_value, measured_at, code_number, reading_type, meter_id.  The app verifies that this hash is unique to the database before it is able to save it.  If this measurement is later edited, a new hash is not generated with the new values.
 
-#### Required params
-measurement[glucose_value] - value of the glucose measurement
-measurement[measured_at] - date time that this measurement was measured at
-measurement[code_number] - not sure what this is... but its in the docs.
-measurement[reading_type] - normal: 0, before meal(AC): 1, before meal(PC): 2, CTL mode(QC): 3
-measurement[retrieved_at] - when the communication device retrieved the measurement
-measurement[meter_id] - the id of the meter used to create this measurement
-measurement[payload] - raw bytes back from the devise
-measurement[communication_device_id] - the id for the communication device that was used to pull the mesaurement off of the meter
-measurement[retrieved_at_time_zone] - what the timezone was for the retrieved measurement
-user[user_id] - Email paired with Auth token
-user[user_token] - Auth token given by session creation
-format - should always equal 'json'
+#### Params
 
-#### Optional params
-measurement[note] - note about the measurement
+| Key        | Value           | Required?  |
+| ------------- |-------------| -----:|
+measurement[glucose_value] | value of the glucose measurement |    yes
+measurement[measured_at] | date time that this measurement was measured at |    yes
+measurement[code_number] | not sure what this is... but its in the docs. |    yes
+measurement[reading_type] | normal: 0, before meal(AC): 1, before meal(PC): 2, CTL mode(QC): 3 |    yes
+measurement[retrieved_at] | when the communication device retrieved the measurement |    yes
+measurement[meter_id]  | the id of the meter used to create this measurement |    yes
+measurement[payload]  |  raw bytes back from the devise |    yes
+measurement[communication_device_id] | the id for the communication device that was used to pull the mesaurement off of the meter |    yes
+measurement[retrieved_at_time_zone] | what the timezone was for the retrieved measurement |    yes
+user[user_id] | Email paired with Auth token |    yes
+user[user_token] | Auth token given by session creation |    yes
+format  | should always equal 'json' |    yes
+measurement[note] | note about the measurement |    no
 
 #### Successful response
 ```json
@@ -203,10 +190,13 @@ measurement[note] - note about the measurement
 ### Get all measurements for a member
 GET /api/v1/measurements
 
-#### Required params
-user[user_id] - Email paired with Auth token
-user[user_token] - Auth token given by session creation
-format - should always equal 'json'
+#### Params
+
+| Key        | Value           | Required?  |
+| ------------- |-------------| -----:|
+user[user_id] | Email paired with Auth token |  yes
+user[user_token] | Auth token given by session creation | yes
+format | should always equal 'json' | yes
 
 #### Successful response
 ```json
@@ -236,8 +226,13 @@ format - should always equal 'json'
 ### Get a specific measurement for a member
 GET /api/v1/measurements/:id
 
-#### Required params
-id - Id of the measurement
+#### Params
+
+| Key        | Value           | Required?  |
+| ------------- |-------------| -----:|
+user[user_id] | Email paired with Auth token |  yes
+user[user_token] | Auth token given by session creation | yes
+format | should always equal 'json' | yes
 
 #### Successful response
 ```json
