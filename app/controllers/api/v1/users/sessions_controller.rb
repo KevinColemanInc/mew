@@ -28,7 +28,7 @@ class API::V1::Users::SessionsController < Devise::SessionsController
       @errors = "api is for members only"
       render :show and return
     else 
-      @user.generate_authentication_token
+      @user.generate_access_token
       @user.save
       render :show and return
     end

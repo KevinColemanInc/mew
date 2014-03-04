@@ -9,7 +9,7 @@ json.user do
     json.email @user.email
     json.display_name @user.display_name
     json.member_id @user.member_number
-    json.authentication_token @user.authentication_token
+    json.access_token @user.access_token
     json.case_manager do
       json.id @user.primary_case_manager.id
       json.display_name @user.primary_case_manager.display_name

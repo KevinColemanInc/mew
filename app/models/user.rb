@@ -29,10 +29,10 @@ class User < ActiveRecord::Base
     !archived?
   end
 
-  def generate_authentication_token
-    self.authentication_token =  loop do
+  def generate_access_token
+    self.access_token =  loop do
       token = Devise.friendly_token
-      break token unless User.where(authentication_token: token).first
+      break token unless User.where(access_token: token).first
     end
     self.token_expires_at = Time.now + 3.months
   end

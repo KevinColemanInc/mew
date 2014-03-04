@@ -30,7 +30,7 @@ format - should always equal 'json'
         "email": "c.programer@gmail.com",
         "display_name": "coleman, kevin",
         "member_id": "1392734563",
-        "authentication_token": "uNqmPwrkbRVPV7qj26K2",
+        "access_token": "uNqmPwrkbRVPV7qj26K2",
         "case_manager": {
             "id": "77dad3e3-d518-4b38-a717-ab4dd576eea0",
             "display_name": "coleman, kevin",
@@ -58,7 +58,7 @@ format - should always equal 'json'
       "email": "c.programer@gmail.com",
       "display_name": "coleman, kevin",
       "member_id": "1392734563",
-      "authentication_token": "uNqmPwrkbRVPV7qj26K2",
+      "access_token": "uNqmPwrkbRVPV7qj26K2",
       "case_manager": {
           "id": "77dad3e3-d518-4b38-a717-ab4dd576eea0",
           "display_name": "coleman, kevin",
@@ -92,8 +92,8 @@ If it doesn't exist, it will try to make one and save it to the db.
 | meter[bluetooth_mac]     | bluetooth mac address of the meter      |   yes |
 | meter[model] | model of the meter should always be "glucose_meter"      |    yes |
 | meter[display_name] | display name of the meter      |    yes |
-| user[user_id] | email paired with Auth token      |    yes |
-| user[user_token] | auth token given by session creation      |    yes |
+| user[user_email] | email paired with Auth token      |    yes |
+| user[access_token] | auth token given by session creation      |    yes |
 | format | should always equal 'json'      |    yes |
 
 #### Successful response
@@ -138,8 +138,8 @@ measurement[meter_id]  | the id of the meter used to create this measurement |  
 measurement[payload]  |  raw bytes back from the devise |    yes
 measurement[communication_device_id] | the id for the communication device that was used to pull the mesaurement off of the meter |    yes
 measurement[retrieved_at_time_zone] | what the timezone was for the retrieved measurement |    yes
-user[user_id] | Email paired with Auth token |    yes
-user[user_token] | Auth token given by session creation |    yes
+user[user_email] | email paired with Auth token      |    yes |
+user[access_token] | auth token given by session creation      |    yes |
 format  | should always equal 'json' |    yes
 measurement[note] | note about the measurement |    no
 
@@ -194,8 +194,8 @@ GET /api/v1/measurements
 
 | Key        | Value           | Required?  |
 | ------------- |-------------| -----:|
-user[user_id] | Email paired with Auth token |  yes
-user[user_token] | Auth token given by session creation | yes
+user[user_email] | email paired with Auth token      |    yes |
+user[access_token] | auth token given by session creation      |    yes |
 format | should always equal 'json' | yes
 
 #### Successful response
@@ -230,8 +230,8 @@ GET /api/v1/measurements/:id
 
 | Key        | Value           | Required?  |
 | ------------- |-------------| -----:|
-user[user_id] | Email paired with Auth token |  yes
-user[user_token] | Auth token given by session creation | yes
+user[user_email] | email paired with Auth token      |    yes |
+user[access_token] | auth token given by session creation      |    yes |
 format | should always equal 'json' | yes
 
 #### Successful response

@@ -24,10 +24,10 @@ class ApplicationController < ActionController::Base
 
   protected
   def authenticate_user_from_token!
-    user_id = params[:user_id].presence
-    user    = User.find(user_id) if params[:user_id]
+    user_email = params[:user_email].presence
+    user    = User.where(email: user_email).first if params[:user_email]
 
-    if user && Devise.secure_compare(user.authentication_token, params[:user_token]) && user.token_expires_at > Time.now
+    if user && Devise.secure_compare(user.access_token, params[:access_token]) && user.token_expires_at > Time.now
       sign_in :user, user
     end
   end
