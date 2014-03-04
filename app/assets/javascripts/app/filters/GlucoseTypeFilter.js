@@ -4,16 +4,16 @@ app.filter('glucoseTypeFilter', function() {
 
     switch(parseInt(item))
     {
-      case 0:
+      case 'normal':
         return 'Normal';
         break;
-      case 1:
+      case 'AC':
         return 'Before Meal(AC)';
         break;
-      case 2:
+      case 'PC':
         return 'Before Meal(PC)';
         break;
-      case 3:
+      case 'QC':
         return 'CTL Mode(QC)';
         break;
       default:
