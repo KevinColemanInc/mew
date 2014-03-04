@@ -85,13 +85,30 @@ This registers a meter with out system.  If the meter already exists, it will no
 If it doesn't exist, it will try to make one and save it to the db.
 
 #### Required params
+
+| Parameter        | Description           | Required?  |
+| ------------- |:-------------:| -----:|
+| meter[mid]      | serial number | true |
+| meter[bluetooth_mac]     | bluetooth mac address of the meter      |   true |
+| meter[model] | model of the meter should always be "glucose_meter"      |    true |
+| meter[display_name] | display name of the meter      |    true |
+| user[user_id] | email paired with Auth token      |    true |
+| user[user_token] | auth token given by session creation      |    true |
+| format | should always equal 'json'      |    true |
+
 meter[mid] - serial number
-meter[bluetooth_mac] - bluetooth mac address of the meter
-meter[model] - model of the meter should always be "glucose_meter"
-meter[display_name] - display name of the meter
-user[user_id] - email paired with Auth token
-user[user_token] - auth token given by session creation
-format - should always equal 'json'
+
+meter[bluetooth_mac] - 
+
+meter[model] - 
+
+meter[display_name] - 
+
+user[user_id] - 
+
+user[user_token] - 
+
+format - 
 
 #### Successful response
 ```json
