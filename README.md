@@ -28,7 +28,7 @@ format - should always equal 'json'
     "user": {
         "id": "e64c87aa-9cbb-4fe1-8a44-53c4c9ae7bba",
         "email": "c.programer@gmail.com",
-        "display_name": "coleman, kevin",
+        "display_name": "kevin coleman",
         "member_id": "1392734563",
         "access_token": "uNqmPwrkbRVPV7qj26K2",
         "case_manager": {
@@ -56,7 +56,7 @@ format - should always equal 'json'
   "user": {
       "id": "e64c87aa-9cbb-4fe1-8a44-53c4c9ae7bba",
       "email": "c.programer@gmail.com",
-      "display_name": "coleman, kevin",
+      "display_name": "kevin kevin",
       "member_id": "1392734563",
       "access_token": "uNqmPwrkbRVPV7qj26K2",
       "case_manager": {
