@@ -84,10 +84,10 @@ POST /api/v1/meters
 This registers a meter with out system.  If the meter already exists, it will not create a new one and will what we already have.
 If it doesn't exist, it will try to make one and save it to the db.
 
-#### Required params
+#### Params
 
 | Parameter        | Description           | Required?  |
-| ------------- |:-------------:| -----:|
+| ------------- |-------------| -----:|
 | meter[mid]      | serial number | true |
 | meter[bluetooth_mac]     | bluetooth mac address of the meter      |   true |
 | meter[model] | model of the meter should always be "glucose_meter"      |    true |
