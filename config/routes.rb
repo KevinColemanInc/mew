@@ -6,6 +6,9 @@ Mew::Application.routes.draw do
       resources :meters, only: [:create]
       resources :measurements, only: [:create, :show, :index]
       resources :communication_devices, only: [:create, :show, :update]
+
+      resources :reports
+      match '/reports/:id/run' => 'reports#run', via: [:get], as: :api_v1_run_report
     end
   end
 
@@ -16,6 +19,8 @@ Mew::Application.routes.draw do
   resources :member_groups, except: [:show] do
     resources :grouped_members, only: [:index, :create, :destroy]
   end
+
+  resources :reports
 
   resources :members do
     resources :email_messages, only: [:index, :create, :new, :show]

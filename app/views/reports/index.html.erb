@@ -1,0 +1,24 @@
+<div ng-controller="ReportsTableCtrl" ng-cloak>
+  <div class="row">
+    <div class="col-md-6">
+      <h1><i class="fa fa-signal"></i> Reports</h1>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label class="col-md-1 control-label search-label">Find</label>
+        <div class="col-md-10">
+          <input type="search" ng-model="filter.$" class="form-control search-box" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class='table table-hover table-condensed' ng-table="tableParams">
+    <tbody>
+        <tr ng-repeat="report in $data">
+          <td data-title="'Name'" sortable="'name'" data-ng-bind-html="report.links.show"></td>
+        </tr>
+    </tbody>
+  </table>
+  <p><strong>Total reports:</strong> {{tableParams.total()}}</p>
+</div>
