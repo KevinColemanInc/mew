@@ -1,10 +1,11 @@
 class ReportsController < ApplicationController
-  before_action :set_managed_member, only: [:show]
+  before_action :set_report, only: [:show]
   before_filter :authenticate_user!
   
   load_and_authorize_resource
 
   def index
+    
   end
 
   def show

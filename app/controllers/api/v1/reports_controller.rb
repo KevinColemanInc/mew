@@ -3,6 +3,8 @@ class API::V1::ReportsController < ApplicationController
   before_filter :authenticate_user_from_token!
   before_filter :authenticate_user!
 
+  before_action :set_report, only: [:show]
+
   load_and_authorize_resource
 
   def index
@@ -11,12 +13,14 @@ class API::V1::ReportsController < ApplicationController
   end
 
   def run
-    @meter = Meter.where(bluetooth_mac: params[:meter][:bluetooth_mac]).first
-    @meter ||= Meter.new(meter_params)
-    
-    @errors = @meter.save ? nil : @meter.errors.full_messages.to_sentence
-
+    @results = ActiveRecord::Base.connection.execute(@report.sql)
     render :run
   end
 
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+    def set_report
+      @report = Report.find(params[:id])
+    end
 end

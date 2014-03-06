@@ -1,7 +1,11 @@
-<div ng-controller="ReportResultsTableCtrl" ng-cloak>
+<%= javascript_tag do %>
+  window.report_id = '<%= @report.id %>';
+<% end %>
+<div ng-controller="RunReportsCtrl" ng-cloak>
   <div class="row">
     <div class="col-md-6">
-      <h1><i class="fa fa-signal"></i> <%= @report.name %></h1>
+      <h1><i class="fa fa-signal"></i> <%= @report.name %> Report</h1>
+      <p>Run at <%= datetime_to_string Time.now %></p>
     </div>
     <div class="col-md-6">
       <div class="form-group">
@@ -14,11 +18,19 @@
   </div>
 
   <table class='table table-hover table-condensed' ng-table="tableParams">
+    <thead>
+              <tr>
+                  <th ng-repeat="heading in results.table.headers">
+                      <div>{{heading}}</div>
+                  </th>
+              </tr>
+          </thead>
     <tbody>
         <tr ng-repeat="report in $data">
-          <td data-title="'Name'" sortable="'name'" data-ng-bind-html="report.links.show"></td>
+          <td ng-repeat="heading in results.table.headers" sortable="heading">{{report[heading]}}</td>
         </tr>
     </tbody>
   </table>
+
   <p><strong>Total reports:</strong> {{tableParams.total()}}</p>
 </div>

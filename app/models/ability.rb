@@ -12,6 +12,8 @@ class Ability
           can :read, CaseManager
       end
 
+      can :manage, Report
+
       can :manage, CommunicationDevice
       can :manage, EmailMessage
 
