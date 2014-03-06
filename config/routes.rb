@@ -4,7 +4,7 @@ Mew::Application.routes.draw do
     namespace :v1 do
       devise_for :users, controllers: {:sessions => 'api/v1/users/sessions'}
       resources :meters, only: [:create]
-      resources :measurements, only: [:create, :show, :index]
+      resources :measurements, only: [:create, :show, :index, :update]
       resources :communication_devices, only: [:create, :show, :update]
 
       resources :reports

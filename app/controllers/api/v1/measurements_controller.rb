@@ -1,5 +1,5 @@
 class API::V1::MeasurementsController < ApplicationController
-  before_action :set_measurement, only: [:index, :show]
+  before_action :set_measurement, only: [:index, :show, :update]
 
   skip_before_filter :verify_authenticity_token
 
@@ -17,6 +17,13 @@ class API::V1::MeasurementsController < ApplicationController
 
   # GET /measurements/1
   def show
+    
+  end
+
+   # PATCH/PUT /measurements/1
+  def update
+    @errors = @measurement.update(measurement_params) ? nil : @measurement.errors.full_messages.to_sentence
+    render :show
   end
 
   # POST /measurements

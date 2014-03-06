@@ -81,6 +81,7 @@ format - should always equal 'json'
 
 ### Registering a meter
 POST /api/v1/meters
+
 This registers a meter with out system.  If the meter already exists, it will not create a new one and will what we already have.
 If it doesn't exist, it will try to make one and save it to the db.
 
@@ -123,6 +124,7 @@ If it doesn't exist, it will try to make one and save it to the db.
 
 ### Creating a measurement
 POST /api/v1/measurements
+
 When a new measurement is created, a hash is made based off of: glucose_value, measured_at, code_number, reading_type, meter_id.  The app verifies that this hash is unique to the database before it is able to save it.  If this measurement is later edited, a new hash is not generated with the new values.
 
 #### Params
@@ -231,6 +233,46 @@ GET /api/v1/measurements/:id
 user[email] | email paired with Auth token      |    yes |
 user[access_token] | auth token given by session creation      |    yes |
 format | should always equal 'json' | yes
+
+#### Successful response
+```json
+{
+  "status": "ok",
+  "measurement": {
+      "id": "9411188b-2d4e-4b5e-a9e7-668e0e17520c",
+      "measured_at": "2014-02-17T07:22:05.000Z",
+      "glucose_value": 10,
+      "retrieved_at": "2014-02-17T07:22:05.000Z",
+      "created_at": "2014-02-17T07:22:18.025Z",
+      "code_number": "1",
+      "reading_type": "1",
+      "member_id": "5d2e0fb9-8ebc-4469-aea8-44b0846fe641",
+      "token": "13365278b99394ec23c2927db3f8c3aa",
+      "note": null,
+      "display_name": "10 mg/dL at 2014-02-17T05:47:54.000Z"
+      "payload": "FFAAFFAAFF"
+  }
+}
+```
+
+### Update a specific measurement
+PATCH /api/v1/measurements/:id
+
+#### Params
+
+| Key        | Value           | Required?  |
+| ------------- |-------------| -----:|
+measurement[glucose_value] | value of the glucose measurement |    yes
+measurement[measured_at] | date time that this measurement was measured at |    yes
+measurement[code_number] | not sure what this is... but its in the docs. |    yes
+measurement[reading_type] | normal, AC, PC, CTL mode(QC): 3 |    yes
+measurement[retrieved_at] | when the communication device retrieved the measurement |    yes
+measurement[meter_id]  | the id of the meter used to create this measurement |    yes
+measurement[payload]  |  raw bytes back from the devise |    yes
+user[email] | email paired with Auth token      |    yes |
+user[access_token] | auth token given by session creation      |    yes |
+format  | should always equal 'json' |    yes
+measurement[note] | note about the measurement |    no
 
 #### Successful response
 ```json

@@ -4,6 +4,10 @@ Meter.destroy_all
 Measurement.destroy_all
 CommunicationDevice.destroy_all
 ManagedMember.destroy_all
+EmailMessage.destroy_all
+GroupedMember.destroy_all
+ManagedMember.destroy_all
+
 
 case_manager_kevin = CaseManager.create!(first_name: "kevin", last_name: "coleman", email: "kevin.coleman@gatech.edu", password: "password", roles: [:case_manager_admin])
 case_manager_ben = CaseManager.create!(first_name: "ben", last_name: "patz", email: "bjpatz@gmail.com", password: "password", roles: [:case_manager_admin])
