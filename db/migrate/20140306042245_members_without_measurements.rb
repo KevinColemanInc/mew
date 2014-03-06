@@ -20,7 +20,7 @@ class MembersWithoutMeasurements < ActiveRecord::Migration
     records_array = ActiveRecord::Base.connection.execute(sql)
     
     Report.create!(
-      name: "Members without measuremnts",
+      name: "Members without measurements",
       sql: sql
       )
 
