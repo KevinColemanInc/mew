@@ -7,7 +7,7 @@ json.user do
   else
     json.id @user.id
     json.email @user.email
-    json.display_name "#{@user.first_name @user.last_name}"
+    json.display_name "#{@user.first_name} #{@user.last_name}"
     json.member_id @user.member_number
     json.access_token @user.access_token
     json.case_manager do
