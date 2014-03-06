@@ -16,8 +16,10 @@
       </div>
     </div>
   </div>
+  
+  <a class="btn" ng-mousedown="csv.generate()" ng-href="{{ csv.link() }}" download="test.csv">Export to CSV</a>
 
-  <table class='table table-hover table-condensed' ng-table="tableParams">
+  <table class='table table-hover table-condensed' ng-table="tableParams" export-csv="csv">
     <thead>
               <tr>
                   <th ng-repeat="heading in results.table.headers">

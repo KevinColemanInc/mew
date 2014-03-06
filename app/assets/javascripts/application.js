@@ -16,6 +16,7 @@
 //= require angular-route
 //= require angular-resource
 //= require angularjs-nvd3-directives
+//= require ng-table-export.src.js
 //= require ng-table.src.js
 //= require angular-sanitize
 //= require jquery
