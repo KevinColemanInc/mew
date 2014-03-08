@@ -4,8 +4,6 @@ class MemberGroup < ActiveRecord::Base
 
   belongs_to :created_by, class_name: "CaseManager"
 	
-	has_and_belongs_to_many :members, through: :grouped_members
-
 	has_many :grouped_members
 
 

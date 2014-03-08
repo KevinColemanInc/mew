@@ -45,7 +45,11 @@ gem 'cancan', github: 'ryanb/cancan'
 gem 'high_voltage', '~> 2.1.0'
 gem 'rails_12factor', group: :production
 
-gem 'rails_admin', github: 'sferik/rails_admin'
+gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
+gem "formtastic", github: "justinfrench/formtastic"
+gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4.1"
+
 gem 'devise', github: 'plataformatec/devise'
 gem 'role_model'
 

@@ -8,6 +8,7 @@ class Ability
     if user.is_a? CaseManager
       if user.has_role? :case_manager_admin
           can :manage, CaseManager
+          can :read, ActiveAdmin::Page, :name => "Dashboard"
       else
           can :read, CaseManager
       end

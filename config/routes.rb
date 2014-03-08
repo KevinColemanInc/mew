@@ -1,5 +1,6 @@
 Mew::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
   namespace :api, :constraints => {:format => /(json)/} do
     namespace :v1 do
       devise_for :users, controllers: {:sessions => 'api/v1/users/sessions'}
@@ -32,9 +33,6 @@ Mew::Application.routes.draw do
   devise_for :users, controllers: {:sessions => 'users/sessions', :registrations => 'users/registrations'}
   resources :communication_devices
   resources :meters
-
-  mount RailsAdmin::Engine => '/admin_panel', :as => 'rails_admin'
-  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
