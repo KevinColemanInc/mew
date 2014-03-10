@@ -30,6 +30,10 @@ class Measurement < ActiveRecord::Base
     "#{glucose_value} mg/dL at #{measured_at.strftime('%-m/%e/%y %l:%M %P')}"
   end
 
+  def generate_token
+    Digest::MD5.hexdigest "#{self.measured_at}-#{self.meter.bluetooth_mac}"
+  end
+
   private
   def measurement_must_be_unique
     if Measurement.where(token: self.token).count > 0
@@ -39,7 +43,7 @@ class Measurement < ActiveRecord::Base
 
   def set_token
     if self.token.blank? and self.meter
-      self.token = Digest::MD5.hexdigest "#{self.measured_at}-#{self.meter.bluetooth_mac}"
+      self.token = self.generate_token
     end
   end
   

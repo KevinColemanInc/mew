@@ -28,12 +28,14 @@ class API::V1::MeasurementsController < ApplicationController
 
   # POST /measurements
   def create
-
-
     @measurement = Measurement.new(measurement_params)
     @measurement.member = current_user
     @measurement.retrieved_at_time_zone = (DateTime.iso8601 params[:measurement][:retrieved_at]).zone
     
+    existing = Measurement.where(token: @measurement.generate_token).first
+
+    @measurement = existing if existing
+
     @errors = @measurement.save ? nil : @measurement.errors.full_messages.to_sentence
     
     render :show

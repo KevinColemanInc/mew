@@ -30,8 +30,8 @@ class Ability
     elsif user.is_a? Member
       can :read, User, id: user.id
       can :create, Meter
-      can [:create, :read], Measurement, member_id: user.id, archived_at: nil
-      can [:create, :show], CommunicationDevice
+      can :manage, Measurement, member_id: user.id, archived_at: nil
+      can [:create, :read], CommunicationDevice
     end
     
   end
