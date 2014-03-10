@@ -3,7 +3,7 @@ json.measurement do
     json.id measurement.id
     json.measured_at measurement.measured_at.iso8601
     json.glucose_value measurement.glucose_value
-    json.retrieved_at (measurement.retrieved_at.change(:offset => measurement.retrieved_at_time_zone)).iso8601
+    json.retrieved_at meaurement.retrieved_at_in_zone.iso8601
     json.created_at measurement.created_at.iso8601
     json.code_number measurement.code_number
     json.reading_type measurement.reading_type

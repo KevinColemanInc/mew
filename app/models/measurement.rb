@@ -34,6 +34,10 @@ class Measurement < ActiveRecord::Base
     Digest::MD5.hexdigest "#{self.measured_at}-#{self.meter.bluetooth_mac}"
   end
 
+  def retrieved_at_in_zone
+    self.retrieved_at.in_time_zone self.retrieved_at_time_zone
+  end
+
   private
   def measurement_must_be_unique
     if Measurement.where(token: self.token).count > 0
