@@ -30,7 +30,7 @@ class API::V1::MeasurementsController < ApplicationController
   def create
     @measurement = Measurement.new(measurement_params)
     @measurement.member = current_user
-    @measurement.retrieved_at_time_zone = ActiveSupport::TimeZone[(DateTime.iso8601 params[:measurement][:retrieved_at]).utc_offset]
+    @measurement.retrieved_at_time_zone = ActiveSupport::TimeZone[(DateTime.iso8601 params[:measurement][:retrieved_at]).utc_offset].name
     
     existing = Measurement.where(token: @measurement.generate_token).first
 
