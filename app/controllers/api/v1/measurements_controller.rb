@@ -12,7 +12,7 @@ class API::V1::MeasurementsController < ApplicationController
 
   # GET /measurement
   def index
-    @measurements = Measurement.mine(@member).where(archived_at: nil)
+    @measurements = Measurement.mine(current_user).where(archived_at: nil)
   end
 
   # GET /measurements/1
@@ -28,6 +28,8 @@ class API::V1::MeasurementsController < ApplicationController
 
   # POST /measurements
   def create
+
+
     @measurement = Measurement.new(measurement_params)
     @measurement.member = current_user
     @measurement.retrieved_at_time_zone = (DateTime.iso8601 params[:measurement][:retrieved_at]).zone
