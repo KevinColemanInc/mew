@@ -8,6 +8,7 @@ json.measurement do
     json.code_number measurement.code_number
     json.reading_type measurement.reading_type
     json.member_id measurement.member_id
+    json.meter_id measurement.meter_id
     json.token measurement.token
     json.note measurement.note
     json.display_name measurement.display_name

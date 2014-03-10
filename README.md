@@ -157,6 +157,7 @@ measurement[note] | note about the measurement |    no
       "code_number": "1",
       "reading_type": "1",
       "member_id": "5d2e0fb9-8ebc-4469-aea8-44b0846fe641",
+      "meter_id": "5d2e0fb9-8ebc-4469-aea8-44b0846fe641",
       "token": "2d42f4e98abd1a224c019d15ffeafdcf",
       "note": "",
       "display_name": "10 mg/dL at 2014-02-17T05:47:54.000Z"
@@ -211,6 +212,7 @@ format | should always equal 'json' | yes
               "retrieved_at": "2014-02-17T05:47:54.000Z",
               "created_at": "2014-02-17T06:00:36.126Z",
               "code_number": "1",
+              "meter_id": "5d2e0fb9-8ebc-4469-aea8-44b0846fe641",
               "reading_type": "1",
               "member_id": "5d2e0fb9-8ebc-4469-aea8-44b0846fe641",
               "token": "08fe40aad5185110e31db845edc29657",
@@ -247,6 +249,7 @@ format | should always equal 'json' | yes
       "code_number": "1",
       "reading_type": "1",
       "member_id": "5d2e0fb9-8ebc-4469-aea8-44b0846fe641",
+      "meter_id": "5d2e0fb9-8ebc-4469-aea8-44b0846fe641",
       "token": "13365278b99394ec23c2927db3f8c3aa",
       "note": null,
       "display_name": "10 mg/dL at 2014-02-17T05:47:54.000Z"
