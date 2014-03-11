@@ -40,7 +40,7 @@ class Measurement < ActiveRecord::Base
 
   private
   def measurement_must_be_unique
-    if Measurement.where(token: self.token).count > 0
+    if Measurement.where("token = ? and id != ?", self.token, self.id).count > 0
       errors.add(:token, "must be unique")
     end
   end

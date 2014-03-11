@@ -28,6 +28,22 @@ member_kevin = Member.create!(phone_number: "4074544981",
 							  email: "c.programer@gmail.com", 
 							  password: "password")
 
+
+fora_meter = Meter.create!(mid: "foracare", bluetooth_mac: (1..6).map{"%0.2X"%rand(256)}.join(":"),display_name: Faker::Lorem.words(3, false).join(" "),
+												model: "BloodGlucose")
+c_device = CommunicationDevice.create!(cdid: "android-phone", phone_number: "4074531225", device_type: "Android Phone", device_model: "spider man")
+
+
+Measurement.create!(glucose_value: 500,
+												 measured_at: Time.now,
+												 code_number: 2,
+												 reading_type: 'AC',
+												 communication_device: c_device,
+												 meter: fora_meter,
+												 member: member_kevin,
+												 retrieved_at: Time.now,
+												 retrieved_at_time_zone: Time.now.zone)
+
 member_ben = Member.create!(phone_number: "4074544981", 
 							  member_number: (Time.now - 3.day).to_i, 
 							  first_name: "ben", 
@@ -83,11 +99,6 @@ ManagedMember.create(member:member_ben, case_manager: case_manager_kevin)
 	end
 
 end
-
-fora_meter = Meter.create!(mid: "foracare", bluetooth_mac: (1..6).map{"%0.2X"%rand(256)}.join(":"),display_name: Faker::Lorem.words(3, false).join(" "),
-												model: "BloodGlucose")
-c_device = CommunicationDevice.create!(cdid: "android-phone", phone_number: "4074531225", device_type: "Android Phone", device_model: "spider man")
-
 puts 'ending seeding.'
 
 
