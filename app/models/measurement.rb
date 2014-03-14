@@ -41,7 +41,7 @@ class Measurement < ActiveRecord::Base
 
   def measured_at_in_zone
     t = self.measured_at
-    DateTime.new(t.year,t.month,t.day,t.hour,t.min,t.sec, "#{self.retrieved_at_time_zone.to_i/60/60}") + self.retrieved_at_time_zone.to_i.seconds
+    DateTime.new(t.year,t.month,t.day,t.hour,t.min,t.sec, "#{self.measured_at_time_zone.to_i/60/60}") + self.measured_at_time_zone.to_i.seconds
   end
 
   private
